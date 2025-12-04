@@ -1,550 +1,257 @@
 <!DOCTYPE html>
-<html lang="ar-SA" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عيادة ديرما كير - نظام حجز المواعيد الذكي</title>
     
-    <!-- Meta Tags محسنة -->
-    <meta name="description" content="احجز موعدك في عيادة ديرما كير - أفضل عيادة تجميلية في الرياض. نظام حجوزات ذكي وسريع وآمن.">
-    <meta name="keywords" content="عيادة تجميلية, حجز مواعيد, ليزر, بوتوكس, فيلر, الرياض, عيادة تجميل, حجوزات طبية">
+    <!-- إعدادات أساسية -->
+    <meta name="description" content="نظام حجز مواعيد متكامل للعيادات التجميلية">
     <meta name="author" content="Badr Aldien">
-    <meta name="robots" content="index, follow">
     
-    <!-- Fonts -->
+    <!-- الروابط الخارجية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
-    <!-- Styles -->
+    <!-- الأنماط الداخلية -->
     <link rel="stylesheet" href="style.css">
     
-    <style>
-        /* إصلاحات إضافية */
-        .contact {
-            padding: 100px 0;
-            background: white;
-        }
-        
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .contact-item {
-            text-align: center;
-            padding: 2rem;
-            background: #f8fafc;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .contact-item i {
-            font-size: 2.5rem;
-            color: #7C3AED;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-item h3 {
-            color: #1E293B;
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer {
-            background: #1E293B;
-            color: white;
-            padding: 3rem 0 1.5rem;
-            margin-top: 4rem;
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .footer-logo .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .footer-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: #8B5CF6;
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
-        }
-        
-        /* إصلاح المشاكل الشائعة */
-        .form-step {
-            display: none;
-        }
-        
-        .form-step.active {
-            display: block;
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 1.5rem 0;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        
-        .confirmation-details {
-            background: #f8fafc;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-        
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .detail-item:last-child {
-            border-bottom: none;
-        }
-        
-        .detail-label {
-            font-weight: 600;
-            color: #1E293B;
-        }
-        
-        .detail-value {
-            color: #7C3AED;
-            font-weight: 500;
-        }
-        
-        /* إصلاح القائمة المتنقلة */
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1rem;
-            margin: 0;
-            padding: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                padding: 2rem;
-                transition: all 0.3s ease;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-image img {
-                transform: none;
-            }
-        }
-        
-        /* إصلاح تنسيق النص */
-        .section-header p {
-            font-size: 1.2rem;
-            color: #64748B;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-        
-        /* تحسين الأزرار */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 44px;
-            min-width: 44px;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
-            color: white;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: #7C3AED;
-            border: 2px solid #7C3AED;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        
-        .btn-secondary:hover {
-            background: #7C3AED;
-            color: white;
-            transform: translateY(-3px);
-        }
-    </style>
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-stethoscope"></i>
-                </div>
-                <div class="logo-text">
-                    <span>عيادة ديرما كير</span>
-                    <span>نظام الحجوزات الذكي</span>
-                </div>
-            </a>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="قائمة التنقل">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-links">
-                <li><a href="#home" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
-                <li><a href="#services"><i class="fas fa-concierge-bell"></i> الخدمات</a></li>
-                <li><a href="#booking"><i class="fas fa-calendar-check"></i> حجز موعد</a></li>
-                <li><a href="#contact"><i class="fas fa-phone-alt"></i> تواصل معنا</a></li>
-                <li><a href="login.html" class="admin-link"><i class="fas fa-cogs"></i> لوحة التحكم</a></li>
-            </ul>
+    <!-- === شريط التنقل === -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <!-- الشعار -->
+                <a href="#home" class="brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-name">ديرما كير</span>
+                        <span class="brand-tagline">نظام الحجوزات الذكي</span>
+                    </div>
+                </a>
+                
+                <!-- قائمة التنقل -->
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="#services" class="nav-link"><i class="fas fa-concierge-bell"></i> الخدمات</a></li>
+                    <li><a href="#booking" class="nav-link"><i class="fas fa-calendar-check"></i> حجز موعد</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-phone"></i> تواصل معنا</a></li>
+                    <li><a href="login.html" class="nav-link admin-btn"><i class="fas fa-cogs"></i> لوحة التحكم</a></li>
+                </ul>
+                
+                <!-- زر القائمة للجوال -->
+                <button class="nav-toggle" id="navToggle" aria-label="تبديل القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="animate__animated animate__fadeInUp">رعاية طبية متكاملة في عيادة ديرما كير</h1>
-                <p class="animate__animated animate__fadeInUp animate__delay-1s">احصل على أفضل الخدمات التجميلية والطبية بأعلى معايير الجودة والأمان. فريق طبي متخصص بأحدث التقنيات العالمية.</p>
-                
-                <div class="hero-stats animate__animated animate__fadeInUp animate__delay-2s">
-                    <div class="stat">
-                        <span class="stat-number">5,000+</span>
-                        <span class="stat-label">مريض راضٍ</span>
+    <!-- === قسم البطل === -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-title animate__animated animate__fadeInUp">
+                        رعاية طبية <span class="highlight">متميزة</span> في عيادة ديرما كير
+                    </h1>
+                    <p class="hero-description animate__animated animate__fadeInUp animate__delay-1s">
+                        احصل على أفضل الخدمات التجميلية والطبية بأعلى معايير الجودة والأمان. 
+                        فريق طبي متخصص بأحدث التقنيات العالمية لرعايتك.
+                    </p>
+                    
+                    <div class="hero-stats animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="stat-item">
+                            <span class="stat-number">5,000+</span>
+                            <span class="stat-label">مريض راضٍ</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">رضا العملاء</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">اختصاصي</span>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">اختصاصي</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">رضا العملاء</span>
+                    
+                    <div class="hero-actions animate__animated animate__fadeInUp animate__delay-3s">
+                        <a href="#booking" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-plus"></i> احجز موعد الآن
+                        </a>
+                        <a href="#services" class="btn btn-outline btn-lg">
+                            <i class="fas fa-eye"></i> استعرض الخدمات
+                        </a>
                     </div>
                 </div>
                 
-                <div class="hero-buttons">
-                    <a href="#booking" class="btn btn-primary animate__animated animate__fadeInUp animate__delay-3s">
-                        <i class="fas fa-calendar-alt"></i> احجز موعد الآن
-                    </a>
-                    <a href="#services" class="btn btn-secondary animate__animated animate__fadeInUp animate__delay-3s">
-                        <i class="fas fa-eye"></i> استعرض الخدمات
-                    </a>
+                <div class="hero-image animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="عيادة ديرما كير" 
+                             loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="hero-image animate__animated animate__fadeIn animate__delay-1s">
-                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="عيادة ديرما كير - بيئة طبية حديثة" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\"><rect width=\"800\" height=\"600\" fill=\"%237C3AED\"/><text x=\"400\" y=\"300\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\">عيادة ديرما كير</text></svg>'">
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-container">
+    <!-- === قسم الخدمات === -->
+    <section class="services" id="services">
+        <div class="container">
             <div class="section-header">
-                <h2>خدماتنا الطبية المتخصصة</h2>
-                <p>نقدم مجموعة واسعة من الخدمات التجميلية والطبية بأعلى معايير الجودة</p>
+                <h2 class="section-title">خدماتنا الطبية المتخصصة</h2>
+                <p class="section-subtitle">نقدم مجموعة واسعة من الخدمات التجميلية والطبية بأعلى معايير الجودة</p>
             </div>
             
             <div class="services-grid" id="servicesGrid">
-                <!-- Services will be loaded from JavaScript -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laser"></i>
-                    </div>
-                    <h3>جلسة ليزر إزالة الشعر</h3>
-                    <p>جلسة ليزر متقدمة لإزالة الشعر نهائياً باستخدام أحدث التقنيات</p>
-                    <ul class="service-features">
-                        <li>مناسبة لجميع أنواع البشرة</li>
-                        <li>نتائج دائمة</li>
-                        <li>آمنة وفعالة</li>
-                    </ul>
-                    <div class="service-price">
-                        500 ريال <span>للجلسة الواحدة</span>
-                    </div>
-                    <button class="btn btn-primary" onclick="bookingSystem.selectService(1)">
-                        <i class="fas fa-calendar-plus"></i> احجز الآن
-                    </button>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-syringe"></i>
-                    </div>
-                    <h3>حقن البوتوكس</h3>
-                    <p>حقن البوتوكس لتجديد الشباب وإزالة التجاعيد</p>
-                    <ul class="service-features">
-                        <li>نتائج فورية</li>
-                        <li>إجراء سريع</li>
-                        <li>بدون ألم</li>
-                    </ul>
-                    <div class="service-price">
-                        800 ريال <span>للجلسة الواحدة</span>
-                    </div>
-                    <button class="btn btn-primary" onclick="bookingSystem.selectService(2)">
-                        <i class="fas fa-calendar-plus"></i> احجز الآن
-                    </button>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-allergies"></i>
-                    </div>
-                    <h3>حشو الفيلر</h3>
-                    <p>علاج تجميلي لملء التجاعيد وتكبير الشفاه</p>
-                    <ul class="service-features">
-                        <li>نتائج طبيعية</li>
-                        <li>آمنة</li>
-                        <li>تأثير يدوم لفترات طويلة</li>
-                    </ul>
-                    <div class="service-price">
-                        1200 ريال <span>للجلسة الواحدة</span>
-                    </div>
-                    <button class="btn btn-primary" onclick="bookingSystem.selectService(3)">
-                        <i class="fas fa-calendar-plus"></i> احجز الآن
-                    </button>
-                </div>
+                <!-- الخدمات سيتم تحميلها بواسطة JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" class="booking">
-        <div class="booking-container">
+    <!-- === قسم الحجز === -->
+    <section class="booking" id="booking">
+        <div class="container">
             <div class="section-header">
-                <h2>احجز موعدك الآن</h2>
-                <p>اختر الخدمة المناسبة وحدد موعدك بسهولة</p>
+                <h2 class="section-title">احجز موعدك الآن</h2>
+                <p class="section-subtitle">اختر الخدمة المناسبة وحدد موعدك بسهولة</p>
             </div>
             
             <div class="booking-card">
+                <!-- خطوات الحجز -->
                 <div class="booking-steps">
                     <div class="step active" data-step="1">
-                        <div class="step-number">1</div>
-                        <div class="step-label">اختر الخدمة</div>
+                        <div class="step-icon"><i class="fas fa-concierge-bell"></i></div>
+                        <div class="step-text">الخدمة</div>
                     </div>
                     <div class="step" data-step="2">
-                        <div class="step-number">2</div>
-                        <div class="step-label">حدد الموعد</div>
+                        <div class="step-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="step-text">الموعد</div>
                     </div>
                     <div class="step" data-step="3">
-                        <div class="step-number">3</div>
-                        <div class="step-label">المعلومات الشخصية</div>
+                        <div class="step-icon"><i class="fas fa-user"></i></div>
+                        <div class="step-text">المعلومات</div>
                     </div>
                     <div class="step" data-step="4">
-                        <div class="step-number">4</div>
-                        <div class="step-label">تأكيد الحجز</div>
+                        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="step-text">التأكيد</div>
                     </div>
                 </div>
                 
-                <form id="bookingForm">
-                    <!-- Step 1: Service Selection -->
-                    <div class="form-step active" data-step="1">
+                <!-- نموذج الحجز -->
+                <form id="bookingForm" class="booking-form">
+                    <!-- الخطوة 1: اختيار الخدمة -->
+                    <div class="form-step active" id="step1">
                         <div class="form-group">
-                            <label for="serviceType"><i class="fas fa-concierge-bell"></i> نوع الخدمة</label>
-                            <select id="serviceType" class="form-control" required>
+                            <label for="serviceSelect" class="form-label">
+                                <i class="fas fa-stethoscope"></i> نوع الخدمة
+                            </label>
+                            <select id="serviceSelect" class="form-control" required>
                                 <option value="">اختر الخدمة المطلوبة</option>
-                                <option value="1">جلسة ليزر إزالة الشعر - 500 ريال</option>
-                                <option value="2">حقن البوتوكس - 800 ريال</option>
-                                <option value="3">حشو الفيلر - 1200 ريال</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="doctor"><i class="fas fa-user-md"></i> الاختصاصي</label>
-                            <select id="doctor" class="form-control" required>
+                            <label for="doctorSelect" class="form-label">
+                                <i class="fas fa-user-md"></i> الاختصاصي
+                            </label>
+                            <select id="doctorSelect" class="form-control" required>
                                 <option value="">اختر الطبيب</option>
-                                <option value="1">د. أحمد محمد - جراحة التجميل</option>
-                                <option value="2">د. سارة عبدالله - الأمراض الجلدية</option>
                             </select>
                         </div>
                     </div>
                     
-                    <!-- Step 2: Date & Time -->
-                    <div class="form-step" data-step="2">
+                    <!-- الخطوة 2: اختيار الموعد -->
+                    <div class="form-step" id="step2">
                         <div class="form-group">
-                            <label for="appointmentDate"><i class="fas fa-calendar-day"></i> تاريخ الموعد</label>
+                            <label for="appointmentDate" class="form-label">
+                                <i class="fas fa-calendar-day"></i> تاريخ الموعد
+                            </label>
                             <input type="date" id="appointmentDate" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="appointmentTime"><i class="fas fa-clock"></i> وقت الموعد</label>
+                            <label for="appointmentTime" class="form-label">
+                                <i class="fas fa-clock"></i> وقت الموعد
+                            </label>
                             <select id="appointmentTime" class="form-control" required>
                                 <option value="">اختر الوقت المناسب</option>
-                                <option value="09:00">09:00 صباحاً</option>
-                                <option value="10:00">10:00 صباحاً</option>
-                                <option value="11:00">11:00 صباحاً</option>
-                                <option value="12:00">12:00 ظهراً</option>
-                                <option value="13:00">01:00 ظهراً</option>
-                                <option value="14:00">02:00 ظهراً</option>
-                                <option value="15:00">03:00 عصراً</option>
-                                <option value="16:00">04:00 عصراً</option>
-                                <option value="17:00">05:00 مساءً</option>
-                                <option value="18:00">06:00 مساءً</option>
-                                <option value="19:00">07:00 مساءً</option>
-                                <option value="20:00">08:00 مساءً</option>
                             </select>
                         </div>
                     </div>
                     
-                    <!-- Step 3: Personal Information -->
-                    <div class="form-step" data-step="3">
+                    <!-- الخطوة 3: المعلومات الشخصية -->
+                    <div class="form-step" id="step3">
                         <div class="form-group">
-                            <label for="fullName"><i class="fas fa-user"></i> الاسم الكامل</label>
+                            <label for="fullName" class="form-label">
+                                <i class="fas fa-user"></i> الاسم الكامل
+                            </label>
                             <input type="text" id="fullName" class="form-control" required placeholder="أدخل اسمك الكامل">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="phone"><i class="fas fa-phone"></i> رقم الهاتف</label>
-                            <input type="tel" id="phone" class="form-control" required placeholder="05xxxxxxxx">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">
+                                    <i class="fas fa-phone"></i> رقم الهاتف
+                                </label>
+                                <input type="tel" id="phone" class="form-control" required placeholder="05xxxxxxxx">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope"></i> البريد الإلكتروني
+                                </label>
+                                <input type="email" id="email" class="form-control" required placeholder="example@email.com">
+                            </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
-                            <input type="email" id="email" class="form-control" required placeholder="example@email.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="notes"><i class="fas fa-notes-medical"></i> ملاحظات إضافية</label>
+                            <label for="notes" class="form-label">
+                                <i class="fas fa-notes-medical"></i> ملاحظات إضافية
+                            </label>
                             <textarea id="notes" class="form-control" rows="3" placeholder="ملاحظات خاصة أو معلومات إضافية..."></textarea>
                         </div>
                     </div>
                     
-                    <!-- Step 4: Confirmation -->
-                    <div class="form-step" data-step="4">
-                        <div class="confirmation-details" id="confirmationDetails">
-                            <h3 style="margin-bottom: 1rem; color: #7C3AED;">تفاصيل الحجز</h3>
-                            <div class="detail-item">
-                                <span class="detail-label">الخدمة:</span>
-                                <span class="detail-value" id="confService">لم يتم الاختيار</span>
+                    <!-- الخطوة 4: تأكيد الحجز -->
+                    <div class="form-step" id="step4">
+                        <div class="confirmation-card">
+                            <h3 class="confirmation-title"><i class="fas fa-file-contract"></i> تأكيد الحجز</h3>
+                            
+                            <div class="confirmation-details" id="confirmationDetails">
+                                <!-- التفاصيل ستظهر هنا -->
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">الطبيب:</span>
-                                <span class="detail-value" id="confDoctor">لم يتم الاختيار</span>
+                            
+                            <div class="form-group terms-group">
+                                <input type="checkbox" id="termsAgreement" required>
+                                <label for="termsAgreement" class="terms-label">
+                                    أوافق على <a href="#" class="terms-link">الشروط والأحكام</a> وسياسة الخصوصية
+                                </label>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">التاريخ:</span>
-                                <span class="detail-value" id="confDate">لم يتم الاختيار</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">الوقت:</span>
-                                <span class="detail-value" id="confTime">لم يتم الاختيار</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">الاسم:</span>
-                                <span class="detail-value" id="confName">لم يتم الإدخال</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">الهاتف:</span>
-                                <span class="detail-value" id="confPhone">لم يتم الإدخال</span>
-                            </div>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="terms" required>
-                            <label for="terms">أوافق على الشروط والأحكام وسياسة الخصوصية</label>
                         </div>
                     </div>
                     
+                    <!-- أزرار التنقل -->
                     <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                        <button type="button" class="btn btn-outline" id="prevBtn">
                             <i class="fas fa-arrow-right"></i> السابق
                         </button>
+                        
                         <button type="button" class="btn btn-primary" id="nextBtn">
                             التالي <i class="fas fa-arrow-left"></i>
                         </button>
-                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                        
+                        <button type="submit" class="btn btn-success" id="submitBtn">
                             <i class="fas fa-check-circle"></i> تأكيد الحجز
                         </button>
                     </div>
@@ -553,452 +260,170 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-container">
+    <!-- === قسم التواصل === -->
+    <section class="contact" id="contact">
+        <div class="container">
             <div class="section-header">
-                <h2>تواصل معنا</h2>
-                <p>نحن هنا للإجابة على جميع استفساراتك</p>
+                <h2 class="section-title">تواصل معنا</h2>
+                <p class="section-subtitle">نحن هنا للإجابة على جميع استفساراتك</p>
             </div>
             
-            <div class="contact-info">
+            <div class="contact-grid">
                 <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>العنوان</h3>
-                    <p>الرياض، حي الصحافة، شارع الملك فهد</p>
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="contact-title">العنوان</h3>
+                    <p class="contact-text">الرياض، حي الصحافة، شارع الملك فهد</p>
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <h3>الهاتف</h3>
-                    <p>+966 11 123 4567</p>
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="contact-title">الهاتف</h3>
+                    <p class="contact-text">+966 11 123 4567</p>
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>البريد الإلكتروني</h3>
-                    <p>info@dermacare.com</p>
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-title">البريد الإلكتروني</h3>
+                    <p class="contact-text">info@dermacare.com</p>
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <h3>ساعات العمل</h3>
-                    <p>الأحد - الخميس: 9 صباحاً - 9 مساءً<br>الجمعة - السبت: 4 مساءً - 10 مساءً</p>
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="contact-title">ساعات العمل</h3>
+                    <p class="contact-text">الأحد - الخميس: 9 ص - 9 م<br>الجمعة - السبت: 4 م - 10 م</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- === تذييل الصفحة === -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-stethoscope"></i>
+                <div class="footer-brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-heartbeat"></i>
                     </div>
-                    <div class="logo-text">
-                        <span>عيادة ديرما كير</span>
-                        <span>نظام الحجوزات الذكي</span>
+                    <div class="brand-text">
+                        <span class="brand-name">عيادة ديرما كير</span>
+                        <span class="brand-tagline">نظام الحجوزات الذكي</span>
                     </div>
                 </div>
                 
-                <div class="footer-links">
-                    <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="لينكدإن"><i class="fab fa-linkedin"></i></a>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="تويتر">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="فيسبوك">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="إنستغرام">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="لينكدإن">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2024 عيادة ديرما كير. جميع الحقوق محفوظة.</p>
-                <p>تصميم وتطوير: Badr Aldien</p>
+                <p class="copyright">&copy; 2024 عيادة ديرما كير. جميع الحقوق محفوظة.</p>
+                <p class="developer">تصميم وتطوير: Badr Aldien</p>
             </div>
         </div>
     </footer>
 
-    <!-- Success Modal -->
+    <!-- === نافذة التأكيد === -->
     <div class="modal" id="successModal">
         <div class="modal-content">
-            <div class="modal-icon success">
-                <i class="fas fa-check-circle"></i>
+            <div class="modal-header">
+                <div class="modal-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="modal-title">تم الحجز بنجاح!</h3>
             </div>
-            <h3>تم الحجز بنجاح!</h3>
-            <p id="successMessage">تم تأكيد حجز موعدك بنجاح. سيتم التواصل معك لتأكيد التفاصيل.</p>
+            
+            <div class="modal-body">
+                <p id="successMessage" class="modal-message"></p>
+                <div class="booking-info" id="bookingInfo">
+                    <!-- معلومات الحجز ستظهر هنا -->
+                </div>
+            </div>
+            
             <div class="modal-actions">
-                <button class="btn btn-primary" id="printReceipt">
+                <button class="btn btn-primary" id="printBtn">
                     <i class="fas fa-print"></i> طباعة الوصل
                 </button>
-                <button class="btn btn-secondary" id="closeModal">
+                <button class="btn btn-outline" id="closeModalBtn">
                     <i class="fas fa-times"></i> إغلاق
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    
+    <!-- === الروابط النصية === -->
     <script>
-        // إصلاحات JavaScript الأساسية
-        document.addEventListener('DOMContentLoaded', function() {
-            // إعداد القائمة المتنقلة للجوال
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                    mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                        ? '<i class="fas fa-times"></i>'
-                        : '<i class="fas fa-bars"></i>';
-                });
-                
-                // إغلاق القائمة عند النقر على رابط
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    });
-                });
+        // تهيئة بيانات الخدمات الأساسية
+        window.defaultServices = [
+            {
+                id: 1,
+                name: "جلسة ليزر إزالة الشعر",
+                description: "جلسة ليزر متقدمة لإزالة الشعر نهائياً باستخدام أحدث التقنيات",
+                price: 500,
+                duration: 60,
+                category: "laser",
+                icon: "fas fa-laser",
+                features: ["مناسبة لجميع أنواع البشرة", "نتائج دائمة", "آمنة وفعالة"]
+            },
+            {
+                id: 2,
+                name: "حقن البوتوكس",
+                description: "حقن البوتوكس لتجديد الشباب وإزالة التجاعيد",
+                price: 800,
+                duration: 30,
+                category: "injections",
+                icon: "fas fa-syringe",
+                features: ["نتائج فورية", "إجراء سريع", "بدون ألم"]
+            },
+            {
+                id: 3,
+                name: "حشو الفيلر",
+                description: "علاج تجميلي لملء التجاعيد وتكبير الشفاه",
+                price: 1200,
+                duration: 45,
+                category: "injections",
+                icon: "fas fa-allergies",
+                features: ["نتائج طبيعية", "آمنة", "تأثير يدوم لفترات طويلة"]
             }
-            
-            // إعداد التنقل السلس
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // تحديث الروابط النشطة
-                        document.querySelectorAll('.nav-links a').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // إعداد شريط التنقل المتحرك
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-            
-            // إعداد تاريخ اليوم في حقل التاريخ
-            const dateInput = document.getElementById('appointmentDate');
-            if (dateInput) {
-                const today = new Date();
-                const tomorrow = new Date(today);
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                dateInput.min = tomorrow.toISOString().split('T')[0];
-                
-                // تعيين تاريخ افتراضي (بعد 3 أيام)
-                const defaultDate = new Date(today);
-                defaultDate.setDate(defaultDate.getDate() + 3);
-                dateInput.value = defaultDate.toISOString().split('T')[0];
+        ];
+        
+        window.defaultDoctors = [
+            {
+                id: 1,
+                name: "د. أحمد محمد",
+                specialty: "جراحة التجميل",
+                experience: 15,
+                services: [1, 2, 3]
+            },
+            {
+                id: 2,
+                name: "د. سارة عبدالله",
+                specialty: "الأمراض الجلدية",
+                experience: 10,
+                services: [1, 3]
             }
-            
-            // نظام الحجز البسيط
-            let currentStep = 1;
-            const totalSteps = 4;
-            const steps = document.querySelectorAll('.step');
-            const formSteps = document.querySelectorAll('.form-step');
-            const nextBtn = document.getElementById('nextBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            if (nextBtn && prevBtn && submitBtn) {
-                nextBtn.addEventListener('click', nextStep);
-                prevBtn.addEventListener('click', prevStep);
-                submitBtn.addEventListener('click', submitBooking);
-                
-                // تحديث تفاصيل التأكيد
-                updateConfirmation();
-                
-                // تحديث عند تغيير الحقول
-                document.getElementById('serviceType')?.addEventListener('change', updateConfirmation);
-                document.getElementById('doctor')?.addEventListener('change', updateConfirmation);
-                document.getElementById('appointmentDate')?.addEventListener('change', updateConfirmation);
-                document.getElementById('appointmentTime')?.addEventListener('change', updateConfirmation);
-                document.getElementById('fullName')?.addEventListener('input', updateConfirmation);
-                document.getElementById('phone')?.addEventListener('input', updateConfirmation);
-            }
-            
-            function nextStep() {
-                if (currentStep < totalSteps) {
-                    if (validateStep(currentStep)) {
-                        updateBookingData();
-                        changeStep(currentStep + 1);
-                    }
-                }
-            }
-            
-            function prevStep() {
-                if (currentStep > 1) {
-                    changeStep(currentStep - 1);
-                }
-            }
-            
-            function changeStep(step) {
-                // إخفاء الخطوة الحالية
-                steps[currentStep - 1].classList.remove('active');
-                formSteps[currentStep - 1].classList.remove('active');
-                
-                // إظهار الخطوة الجديدة
-                currentStep = step;
-                steps[currentStep - 1].classList.add('active');
-                formSteps[currentStep - 1].classList.add('active');
-                
-                // تحديث الأزرار
-                updateButtons();
-                
-                // إذا كانت الخطوة الأخيرة، تحديث التفاصيل
-                if (currentStep === totalSteps) {
-                    updateConfirmation();
-                }
-            }
-            
-            function updateButtons() {
-                prevBtn.style.display = currentStep > 1 ? 'flex' : 'none';
-                nextBtn.style.display = currentStep < totalSteps ? 'flex' : 'none';
-                submitBtn.style.display = currentStep === totalSteps ? 'flex' : 'none';
-            }
-            
-            function validateStep(step) {
-                switch(step) {
-                    case 1:
-                        const service = document.getElementById('serviceType');
-                        const doctor = document.getElementById('doctor');
-                        if (!service.value || !doctor.value) {
-                            alert('يرجى اختيار الخدمة والطبيب');
-                            return false;
-                        }
-                        return true;
-                    case 2:
-                        const date = document.getElementById('appointmentDate');
-                        const time = document.getElementById('appointmentTime');
-                        if (!date.value || !time.value) {
-                            alert('يرجى اختيار التاريخ والوقت');
-                            return false;
-                        }
-                        return true;
-                    case 3:
-                        const name = document.getElementById('fullName');
-                        const phone = document.getElementById('phone');
-                        const email = document.getElementById('email');
-                        
-                        if (!name.value || !phone.value || !email.value) {
-                            alert('يرجى ملء جميع الحقول المطلوبة');
-                            return false;
-                        }
-                        
-                        const phoneRegex = /^05\d{8}$/;
-                        if (!phoneRegex.test(phone.value)) {
-                            alert('يرجى إدخال رقم هاتف صحيح (يبدأ بـ 05 ويتكون من 10 أرقام)');
-                            return false;
-                        }
-                        
-                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailRegex.test(email.value)) {
-                            alert('يرجى إدخال بريد إلكتروني صحيح');
-                            return false;
-                        }
-                        return true;
-                    case 4:
-                        const terms = document.getElementById('terms');
-                        if (!terms.checked) {
-                            alert('يرجى الموافقة على الشروط والأحكام');
-                            return false;
-                        }
-                        return true;
-                    default:
-                        return true;
-                }
-            }
-            
-            function updateBookingData() {
-                // يمكن إضافة منطق حفظ البيانات هنا
-                console.log('تم تحديث بيانات الحجز للخطوة:', currentStep);
-            }
-            
-            function updateConfirmation() {
-                const serviceSelect = document.getElementById('serviceType');
-                const doctorSelect = document.getElementById('doctor');
-                const dateInput = document.getElementById('appointmentDate');
-                const timeSelect = document.getElementById('appointmentTime');
-                const nameInput = document.getElementById('fullName');
-                const phoneInput = document.getElementById('phone');
-                
-                if (serviceSelect) {
-                    document.getElementById('confService').textContent = 
-                        serviceSelect.options[serviceSelect.selectedIndex]?.text || 'لم يتم الاختيار';
-                }
-                
-                if (doctorSelect) {
-                    document.getElementById('confDoctor').textContent = 
-                        doctorSelect.options[doctorSelect.selectedIndex]?.text || 'لم يتم الاختيار';
-                }
-                
-                if (dateInput && dateInput.value) {
-                    const date = new Date(dateInput.value);
-                    document.getElementById('confDate').textContent = 
-                        date.toLocaleDateString('ar-SA', {
-                            weekday: 'long',
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        });
-                }
-                
-                if (timeSelect) {
-                    document.getElementById('confTime').textContent = 
-                        timeSelect.options[timeSelect.selectedIndex]?.text || 'لم يتم الاختيار';
-                }
-                
-                if (nameInput) {
-                    document.getElementById('confName').textContent = 
-                        nameInput.value || 'لم يتم الإدخال';
-                }
-                
-                if (phoneInput) {
-                    document.getElementById('confPhone').textContent = 
-                        phoneInput.value || 'لم يتم الإدخال';
-                }
-            }
-            
-            function submitBooking(e) {
-                if (e) e.preventDefault();
-                
-                if (!validateStep(4)) return;
-                
-                // إنشاء رقم حجز فريد
-                const bookingId = 'BK-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4).toUpperCase();
-                const confirmationCode = Math.random().toString(36).substr(2, 6).toUpperCase();
-                
-                // عرض رسالة النجاح
-                const modal = document.getElementById('successModal');
-                const message = document.getElementById('successMessage');
-                
-                if (modal && message) {
-                    message.innerHTML = `
-                        تم تأكيد حجز موعدك بنجاح!<br>
-                        <strong>رقم الحجز:</strong> ${bookingId}<br>
-                        <strong>رمز التأكيد:</strong> ${confirmationCode}<br><br>
-                        سيتم التواصل معك على الرقم ${document.getElementById('phone').value} لتأكيد التفاصيل.
-                    `;
-                    
-                    modal.classList.add('active');
-                    
-                    // إعداد حدث طباعة الوصل
-                    document.getElementById('printReceipt').onclick = function() {
-                        printReceipt(bookingId, confirmationCode);
-                    };
-                    
-                    // إغلاق النافذة
-                    document.getElementById('closeModal').onclick = function() {
-                        modal.classList.remove('active');
-                        resetForm();
-                    };
-                }
-            }
-            
-            function printReceipt(bookingId, confirmationCode) {
-                const receiptContent = `
-                    <!DOCTYPE html>
-                    <html dir="rtl">
-                    <head>
-                        <meta charset="UTF-8">
-                        <title>وصل الحجز</title>
-                        <style>
-                            body { font-family: 'Cairo', sans-serif; padding: 20px; text-align: right; }
-                            h2 { color: #7C3AED; text-align: center; }
-                            table { width: 100%; margin: 20px 0; border-collapse: collapse; }
-                            td { padding: 8px; border-bottom: 1px solid #ddd; }
-                            .total { font-weight: bold; color: #10B981; }
-                        </style>
-                    </head>
-                    <body>
-                        <h2>عيادة ديرما كير</h2>
-                        <h3>وصل تأكيد الحجز</h3>
-                        <table>
-                            <tr><td>رقم الحجز:</td><td>${bookingId}</td></tr>
-                            <tr><td>رمز التأكيد:</td><td>${confirmationCode}</td></tr>
-                            <tr><td>التاريخ:</td><td>${document.getElementById('confDate').textContent}</td></tr>
-                            <tr><td>الوقت:</td><td>${document.getElementById('confTime').textContent}</td></tr>
-                            <tr><td>الخدمة:</td><td>${document.getElementById('confService').textContent}</td></tr>
-                            <tr><td>الطبيب:</td><td>${document.getElementById('confDoctor').textContent}</td></tr>
-                            <tr><td>اسم المريض:</td><td>${document.getElementById('confName').textContent}</td></tr>
-                            <tr><td>الهاتف:</td><td>${document.getElementById('confPhone').textContent}</td></tr>
-                        </table>
-                        <p style="text-align: center; color: #666; margin-top: 30px;">
-                            شكراً لاختياركم عيادة ديرما كير
-                        </p>
-                    </body>
-                    </html>
-                `;
-                
-                const printWindow = window.open('', '_blank');
-                printWindow.document.write(receiptContent);
-                printWindow.document.close();
-                printWindow.print();
-            }
-            
-            function resetForm() {
-                // إعادة تعيين النموذج
-                document.getElementById('bookingForm').reset();
-                
-                // العودة إلى الخطوة الأولى
-                changeStep(1);
-                
-                // إعادة تعيين التاريخ
-                const dateInput = document.getElementById('appointmentDate');
-                if (dateInput) {
-                    const today = new Date();
-                    const defaultDate = new Date(today);
-                    defaultDate.setDate(defaultDate.getDate() + 3);
-                    dateInput.value = defaultDate.toISOString().split('T')[0];
-                }
-            }
-            
-            // تعريف bookingSystem للخدمات
-            window.bookingSystem = {
-                selectService: function(serviceId) {
-                    const serviceSelect = document.getElementById('serviceType');
-                    if (serviceSelect) {
-                        serviceSelect.value = serviceId;
-                        updateConfirmation();
-                    }
-                    
-                    // التمرير إلى قسم الحجز
-                    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-                }
-            };
-        });
+        ];
     </script>
-    
-    <!-- Font Awesome for social icons -->
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-    <script>
-        // Fallback for Font Awesome
-        if (typeof FontAwesomeKitConfig === 'undefined') {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-            document.head.appendChild(link);
-        }
-    </script>
+
+    <!-- === ملفات JavaScript === -->
+    <script src="script.js" defer></script>
 </body>
 </html>
