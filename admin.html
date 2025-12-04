@@ -747,4 +747,246 @@
                                     <h4 style="margin: 0; color: #333;">${doctor.name}</h4>
                                     <span style="color: #666; font-size: 14px;">${doctor.specialty}</span>
                                 </div>
-                                <div style="display
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: #666; font-size: 14px;">الخبرة: ${doctor.experience} سنة</span>
+                                    <div>
+                                        <button onclick="dashboardManager.editDoctor(${doctor.id})" style="background: #f59e0b; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-left: 5px; cursor: pointer;">تعديل</button>
+                                        <button onclick="dashboardManager.deleteDoctor(${doctor.id})" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">حذف</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    doctorsList.innerHTML = html;
+                }
+                
+                setupEventListeners() {
+                    // تسجيل الخروج
+                    document.getElementById('logoutBtn').addEventListener('click', () => {
+                        localStorage.removeItem('admin_session');
+                        window.location.href = 'login.html';
+                    });
+                    
+                    // تحديث البيانات
+                    document.getElementById('refreshBtn').addEventListener('click', () => {
+                        this.refreshData();
+                    });
+                    
+                    // إضافة خدمة
+                    document.getElementById('addServiceBtn').addEventListener('click', () => {
+                        this.openServiceModal();
+                    });
+                    
+                    document.getElementById('cancelServiceBtn').addEventListener('click', () => {
+                        document.getElementById('serviceModal').style.display = 'none';
+                    });
+                    
+                    document.getElementById('serviceForm').addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        this.saveService();
+                    });
+                    
+                    // إضافة طبيب
+                    document.getElementById('addDoctorBtn').addEventListener('click', () => {
+                        this.openDoctorModal();
+                    });
+                    
+                    // إغلاق النوافذ عند النقر خارجها
+                    document.addEventListener('click', (e) => {
+                        const modal = document.getElementById('serviceModal');
+                        if (e.target === modal) {
+                            modal.style.display = 'none';
+                        }
+                    });
+                }
+                
+                // وظائف الخدمات
+                openServiceModal(serviceId = null) {
+                    this.currentServiceId = serviceId;
+                    const modal = document.getElementById('serviceModal');
+                    const title = modal.querySelector('h2');
+                    
+                    if (serviceId) {
+                        const service = this.services.find(s => s.id === serviceId);
+                        if (service) {
+                            title.textContent = 'تعديل الخدمة';
+                            document.getElementById('serviceName').value = service.name;
+                            document.getElementById('servicePrice').value = service.price;
+                        }
+                    } else {
+                        title.textContent = 'إضافة خدمة جديدة';
+                        document.getElementById('serviceForm').reset();
+                    }
+                    
+                    modal.style.display = 'flex';
+                }
+                
+                saveService() {
+                    const name = document.getElementById('serviceName').value.trim();
+                    const price = parseInt(document.getElementById('servicePrice').value);
+                    
+                    if (!name || isNaN(price)) {
+                        alert('يرجى ملء جميع الحقول بشكل صحيح');
+                        return;
+                    }
+                    
+                    if (this.currentServiceId) {
+                        // تعديل خدمة
+                        const index = this.services.findIndex(s => s.id === this.currentServiceId);
+                        if (index !== -1) {
+                            this.services[index] = {
+                                ...this.services[index],
+                                name,
+                                price
+                            };
+                        }
+                    } else {
+                        // إضافة خدمة جديدة
+                        const newId = this.services.length > 0 ? Math.max(...this.services.map(s => s.id)) + 1 : 1;
+                        this.services.push({
+                            id: newId,
+                            name,
+                            price,
+                            duration: 30
+                        });
+                    }
+                    
+                    localStorage.setItem('clinicServices', JSON.stringify(this.services));
+                    this.loadServices();
+                    document.getElementById('serviceModal').style.display = 'none';
+                    this.showMessage('تم حفظ الخدمة بنجاح');
+                }
+                
+                editService(serviceId) {
+                    this.openServiceModal(serviceId);
+                }
+                
+                deleteService(serviceId) {
+                    if (confirm('هل أنت متأكد من حذف هذه الخدمة؟')) {
+                        this.services = this.services.filter(s => s.id !== serviceId);
+                        localStorage.setItem('clinicServices', JSON.stringify(this.services));
+                        this.loadServices();
+                        this.showMessage('تم حذف الخدمة بنجاح');
+                    }
+                }
+                
+                // وظائف الأطباء
+                openDoctorModal() {
+                    alert('ميزة إضافة الأطباء قريباً...');
+                }
+                
+                editDoctor(doctorId) {
+                    alert('ميزة تعديل الأطباء قريباً...');
+                }
+                
+                deleteDoctor(doctorId) {
+                    if (confirm('هل أنت متأكد من حذف بيانات هذا الطبيب؟')) {
+                        this.doctors = this.doctors.filter(d => d.id !== doctorId);
+                        localStorage.setItem('clinicDoctors', JSON.stringify(this.doctors));
+                        this.loadDoctors();
+                        this.showMessage('تم حذف الطبيب بنجاح');
+                    }
+                }
+                
+                // وظائف الحجوزات
+                viewBooking(index) {
+                    const booking = this.bookings[index];
+                    if (!booking) return;
+                    
+                    alert(`تفاصيل الحجز:\n\nاسم المريض: ${booking.name}\nالهاتف: ${booking.phone}\nالحالة: ${this.getStatusText(booking.status)}`);
+                }
+                
+                editBooking(index) {
+                    const booking = this.bookings[index];
+                    if (!booking) return;
+                    
+                    const newStatus = prompt('تغيير حالة الحجز:\npending - قيد الانتظار\nconfirmed - مؤكد\ncancelled - ملغى', booking.status);
+                    
+                    if (newStatus && ['pending', 'confirmed', 'cancelled'].includes(newStatus)) {
+                        this.bookings[index].status = newStatus;
+                        localStorage.setItem('clinicBookings', JSON.stringify(this.bookings));
+                        this.loadBookings();
+                        this.loadData();
+                        this.showMessage('تم تحديث حالة الحجز');
+                    }
+                }
+                
+                deleteBooking(index) {
+                    if (confirm('هل أنت متأكد من حذف هذا الحجز؟')) {
+                        this.bookings.splice(index, 1);
+                        localStorage.setItem('clinicBookings', JSON.stringify(this.bookings));
+                        this.loadBookings();
+                        this.loadData();
+                        this.showMessage('تم حذف الحجز بنجاح');
+                    }
+                }
+                
+                refreshData() {
+                    this.services = JSON.parse(localStorage.getItem('clinicServices')) || [];
+                    this.doctors = JSON.parse(localStorage.getItem('clinicDoctors')) || [];
+                    this.bookings = JSON.parse(localStorage.getItem('clinicBookings')) || [];
+                    
+                    this.loadData();
+                    this.showMessage('تم تحديث البيانات بنجاح');
+                }
+                
+                // وظائف مساعدة
+                formatDate(dateString) {
+                    if (!dateString) return 'غير محدد';
+                    try {
+                        return new Date(dateString).toLocaleDateString('ar-SA');
+                    } catch (e) {
+                        return dateString;
+                    }
+                }
+                
+                getStatusText(status) {
+                    const statusMap = {
+                        'pending': 'قيد الانتظار',
+                        'confirmed': 'مؤكد',
+                        'cancelled': 'ملغى'
+                    };
+                    return statusMap[status] || 'غير معروف';
+                }
+                
+                showMessage(message) {
+                    // إنشاء رسالة
+                    const messageDiv = document.createElement('div');
+                    messageDiv.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        left: 20px;
+                        right: 20px;
+                        background: #10B981;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        text-align: center;
+                        font-weight: 600;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                        z-index: 2000;
+                    `;
+                    
+                    messageDiv.textContent = message;
+                    document.body.appendChild(messageDiv);
+                    
+                    // إزالة الرسالة بعد 3 ثواني
+                    setTimeout(() => {
+                        messageDiv.style.transition = 'opacity 0.3s';
+                        messageDiv.style.opacity = '0';
+                        setTimeout(() => {
+                            if (messageDiv.parentNode) {
+                                messageDiv.parentNode.removeChild(messageDiv);
+                            }
+                        }, 300);
+                    }, 3000);
+                }
+            }
+            
+            // بدء النظام
+            window.dashboardManager = new DashboardManager();
+        }
+    </script>
+</body>
+</html>
