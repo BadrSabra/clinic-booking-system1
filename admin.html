@@ -1,199 +1,141 @@
 <!DOCTYPE html>
-<html lang="ar-SA" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم عيادة ديرما كير</title>
-    
-    <!-- Meta Tags -->
-    <meta name="description" content="لوحة تحكم نظام حجز مواعيد عيادة ديرما كير - إدارة حجوزات وخدمات العيادة">
-    <meta name="keywords" content="لوحة تحكم, إدارة عيادة, نظام حجوزات, إدارة مواعيد">
-    <meta name="author" content="Badr Aldien">
+    <title>لوحة التحكم - عيادة ديرما كير</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Styles -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* إضافات خاصة بلوحة التحكم */
-        .admin-body {
+        /* أنماط خاصة بلوحة التحكم */
+        body {
+            font-family: 'Cairo', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            font-family: 'Cairo', sans-serif;
-        }
-        
-        /* Dashboard Styles */
-        .dashboard-section {
-            padding: 120px 0 40px;
-            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
         
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 100px 20px 40px;
         }
         
         /* Header */
         .dashboard-header {
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            animation: slideInDown 0.5s ease;
         }
         
         .dashboard-title {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 15px;
         }
         
         .dashboard-title i {
-            font-size: 2.5rem;
             color: #7C3AED;
+            font-size: 32px;
         }
         
         .dashboard-title h1 {
-            font-size: 2rem;
-            color: #1E293B;
             margin: 0;
+            color: #333;
+            font-size: 24px;
         }
         
         .admin-info {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 15px;
         }
         
         .admin-avatar {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            width: 50px;
+            height: 50px;
+            background: #7C3AED;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+            font-size: 20px;
         }
         
         .admin-details h4 {
-            color: #1E293B;
-            margin-bottom: 0.25rem;
-            font-size: 1.1rem;
+            margin: 0;
+            color: #333;
+            font-size: 16px;
         }
         
         .admin-details p {
-            color: #64748B;
-            font-size: 0.9rem;
-            margin: 0;
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 14px;
         }
         
         .logout-btn {
-            background: linear-gradient(135deg, #EF4444, #DC2626);
+            background: #ef4444;
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            min-height: 44px;
-            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
+            gap: 8px;
+            font-weight: 600;
         }
         
         .logout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+            background: #dc2626;
         }
         
         /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.6s ease;
+            gap: 20px;
+            margin-bottom: 30px;
         }
         
         .stat-card {
             background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 20px;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-        
-        .stat-card.primary {
-            border-right: 4px solid #7C3AED;
-        }
-        
-        .stat-card.primary:hover {
-            border-color: #7C3AED;
-        }
-        
-        .stat-card.success {
-            border-right: 4px solid #10B981;
-        }
-        
-        .stat-card.success:hover {
-            border-color: #10B981;
-        }
-        
-        .stat-card.warning {
-            border-right: 4px solid #F59E0B;
-        }
-        
-        .stat-card.warning:hover {
-            border-color: #F59E0B;
-        }
-        
-        .stat-card.danger {
-            border-right: 4px solid #EF4444;
-        }
-        
-        .stat-card.danger:hover {
-            border-color: #EF4444;
+            gap: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .stat-icon {
-            width: 70px;
-            height: 70px;
-            background: #F8FAFC;
-            border-radius: 15px;
+            width: 60px;
+            height: 60px;
+            background: #f3f4f6;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
+            font-size: 24px;
         }
         
         .stat-card.primary .stat-icon {
@@ -212,14 +154,10 @@
             color: #EF4444;
         }
         
-        .stat-card:hover .stat-icon {
-            transform: scale(1.1);
-        }
-        
         .stat-content h3 {
-            font-size: 2.5rem;
-            margin-bottom: 0.25rem;
-            font-weight: 800;
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
         }
         
         .stat-card.primary .stat-content h3 {
@@ -239,476 +177,302 @@
         }
         
         .stat-content p {
-            color: #64748B;
-            font-size: 1rem;
-            margin: 0;
+            margin: 5px 0 0;
+            color: #666;
         }
         
         /* Main Content */
         .dashboard-main {
-            display: grid;
-            gap: 2rem;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .dashboard-card {
-            background: white;
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .section-title i {
+            color: #7C3AED;
+        }
+        
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        select, input {
+            padding: 10px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #7C3AED;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: #7C3AED;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #6d28d9;
+        }
+        
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+        
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 25px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+        
+        th {
+            background: #f9fafb;
+            padding: 15px;
+            text-align: right;
+            color: #333;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
             border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            animation: fadeInUp 0.7s ease;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-confirmed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-cancelled {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 6px;
+            background: #f3f4f6;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .action-btn.view {
+            color: #3b82f6;
+        }
+        
+        .action-btn.edit {
+            color: #f59e0b;
+        }
+        
+        .action-btn.delete {
+            color: #ef4444;
+        }
+        
+        .action-btn:hover {
+            background: #e5e7eb;
+        }
+        
+        /* Management Cards */
+        .management-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .management-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 25px;
         }
         
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            margin-bottom: 20px;
         }
         
         .card-header h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            color: #1E293B;
             margin: 0;
-        }
-        
-        .card-header h3 i {
-            color: #7C3AED;
-        }
-        
-        .card-actions {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .card-actions .btn {
+            color: #333;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 44px;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
-            color: white;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: #7C3AED;
-            border: 2px solid #7C3AED;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-        
-        .btn-secondary:hover {
-            background: #7C3AED;
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* Filters */
-        .filters {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            padding: 1.5rem;
-            background: #F8FAFC;
-            border-radius: 15px;
-        }
-        
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .filter-group label {
-            font-weight: 600;
-            color: #1E293B;
-            white-space: nowrap;
-        }
-        
-        .filter-group select,
-        .filter-group input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            border: 2px solid #E2E8F0;
-            border-radius: 10px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-        
-        .filter-group select:focus,
-        .filter-group input:focus {
-            outline: none;
-            border-color: #7C3AED;
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-        }
-        
-        /* Table */
-        .table-container {
-            overflow-x: auto;
-            border-radius: 15px;
-            border: 1px solid #E2E8F0;
-        }
-        
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 1000px;
-        }
-        
-        .data-table th {
-            background: #F8FAFC;
-            padding: 1rem;
-            text-align: right;
-            font-weight: 700;
-            color: #1E293B;
-            border-bottom: 2px solid #E2E8F0;
-            white-space: nowrap;
-        }
-        
-        .data-table td {
-            padding: 1rem;
-            text-align: right;
-            border-bottom: 1px solid #E2E8F0;
-            vertical-align: middle;
-        }
-        
-        .data-table tr:hover {
-            background: #F8FAFC;
-        }
-        
-        .data-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-align: center;
-            min-width: 100px;
-        }
-        
-        .status-pending {
-            background: #FEF3C7;
-            color: #92400E;
-        }
-        
-        .status-confirmed {
-            background: #D1FAE5;
-            color: #065F46;
-        }
-        
-        .status-cancelled {
-            background: #FEE2E2;
-            color: #991B1B;
-        }
-        
-        .status-completed {
-            background: #DBEAFE;
-            color: #1E40AF;
-        }
-        
-        .table-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .table-actions button {
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            background: #F8FAFC;
-            color: #64748B;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .table-actions button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .table-actions button.view {
-            color: #3B82F6;
-        }
-        
-        .table-actions button.edit {
-            color: #F59E0B;
-        }
-        
-        .table-actions button.delete {
-            color: #EF4444;
-        }
-        
-        .table-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #E2E8F0;
-        }
-        
-        .pagination {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .pagination button {
-            width: 40px;
-            height: 40px;
-            border: 1px solid #E2E8F0;
-            background: white;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .pagination button:hover {
-            background: #F8FAFC;
-        }
-        
-        .pagination button.active {
-            background: #7C3AED;
-            color: white;
-            border-color: #7C3AED;
-        }
-        
-        /* Management Grid */
-        .management-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        .management-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            height: 100%;
+            gap: 10px;
         }
         
         .search-box {
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
         
         .search-box input {
             width: 100%;
-            padding: 0.8rem 1rem 0.8rem 3rem;
-            border: 2px solid #E2E8F0;
-            border-radius: 12px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .search-box input:focus {
-            outline: none;
-            border-color: #7C3AED;
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+            padding: 12px 45px 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
         }
         
         .search-box i {
             position: absolute;
-            right: 1rem;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #64748B;
+            color: #9ca3af;
         }
         
         .items-list {
-            max-height: 400px;
+            max-height: 300px;
             overflow-y: auto;
-            padding-right: 0.5rem;
-        }
-        
-        .items-list::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .items-list::-webkit-scrollbar-track {
-            background: #F8FAFC;
-            border-radius: 10px;
-        }
-        
-        .items-list::-webkit-scrollbar-thumb {
-            background: #CBD5E1;
-            border-radius: 10px;
         }
         
         .item-card {
-            background: #F8FAFC;
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
             border: 2px solid transparent;
         }
         
         .item-card:hover {
-            background: white;
             border-color: #7C3AED;
-            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.1);
         }
         
         .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
+            align-items: center;
+            margin-bottom: 10px;
         }
         
         .item-title {
-            font-weight: 700;
-            color: #1E293B;
-            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
             margin: 0;
         }
         
         .item-price {
-            font-weight: 800;
+            font-weight: 700;
             color: #7C3AED;
-            font-size: 1.3rem;
         }
         
         .item-description {
-            color: #64748B;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
         
         .item-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
-            color: #64748B;
+        }
+        
+        .item-details {
+            font-size: 13px;
+            color: #9ca3af;
         }
         
         .item-actions {
             display: flex;
-            gap: 0.5rem;
+            gap: 8px;
         }
         
-        .item-actions button {
-            width: 36px;
-            height: 36px;
+        .item-btn {
+            width: 32px;
+            height: 32px;
             border: none;
-            border-radius: 8px;
-            background: white;
+            border-radius: 6px;
+            background: #f3f4f6;
             cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .item-actions button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .item-btn.edit {
+            color: #f59e0b;
         }
         
-        .item-actions button.edit {
-            color: #F59E0B;
-        }
-        
-        .item-actions button.delete {
-            color: #EF4444;
-        }
-        
-        /* Working Hours */
-        .working-hours-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .day-schedule {
-            background: #F8FAFC;
-            border-radius: 12px;
-            padding: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .day-schedule:hover {
-            background: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .day-name {
-            font-weight: 700;
-            color: #1E293B;
-            min-width: 100px;
-        }
-        
-        .time-inputs {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .time-input-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .time-input-group label {
-            color: #64748B;
-            font-size: 0.9rem;
-        }
-        
-        .time-input {
-            padding: 0.5rem;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-        
-        .time-input:focus {
-            outline: none;
-            border-color: #7C3AED;
+        .item-btn.delete {
+            color: #ef4444;
         }
         
         /* Modals */
@@ -719,144 +483,93 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
-            backdrop-filter: blur(5px);
         }
         
         .modal.active {
             display: flex;
-            animation: fadeIn 0.3s ease;
         }
         
         .modal-content {
             background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
+            border-radius: 12px;
+            padding: 30px;
+            width: 90%;
             max-width: 500px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideInUp 0.4s ease;
             max-height: 90vh;
             overflow-y: auto;
         }
         
-        .modal-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .modal-content::-webkit-scrollbar-track {
-            background: #F8FAFC;
-            border-radius: 10px;
-        }
-        
-        .modal-content::-webkit-scrollbar-thumb {
-            background: #CBD5E1;
-            border-radius: 10px;
-        }
-        
-        .modal-content h3 {
-            color: #1E293B;
-            margin-bottom: 2rem;
+        .modal-header {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: #333;
         }
         
-        .modal-content h3 i {
+        .modal-header i {
             color: #7C3AED;
         }
         
-        /* Empty States */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
         .empty-state {
             text-align: center;
-            padding: 3rem 1rem;
-            color: #64748B;
+            padding: 40px 20px;
+            color: #9ca3af;
         }
         
         .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 48px;
+            margin-bottom: 15px;
             opacity: 0.5;
         }
         
-        .empty-state h4 {
-            color: #64748B;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Animations */
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
         /* Responsive */
-        @media (max-width: 992px) {
-            .management-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
         @media (max-width: 768px) {
             .dashboard-header {
                 flex-direction: column;
+                gap: 20px;
                 text-align: center;
             }
             
             .admin-info {
                 flex-direction: column;
-                text-align: center;
-            }
-            
-            .card-header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .card-actions {
-                justify-content: center;
             }
             
             .filters {
@@ -865,50 +578,20 @@
             
             .filter-group {
                 flex-direction: column;
-                align-items: stretch;
+                align-items: flex-start;
             }
             
-            .day-schedule {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1rem;
-            }
-            
-            .time-inputs {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.5rem;
-            }
-            
-            .time-input-group {
-                justify-content: space-between;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .dashboard-container {
-                padding: 0 1rem;
-            }
-            
-            .dashboard-card {
-                padding: 1.5rem;
-            }
-            
-            .stats-grid {
+            .management-cards {
                 grid-template-columns: 1fr;
             }
             
-            .table-actions {
+            .form-actions {
                 flex-direction: column;
-            }
-            
-            .modal-content {
-                padding: 1.5rem;
             }
         }
     </style>
 </head>
-<body class="admin-body">
+<body>
     <!-- تحقق من تسجيل الدخول -->
     <script>
         (function() {
@@ -917,1187 +600,155 @@
                 window.location.href = 'login.html';
                 return;
             }
-
-            try {
-                const sessionData = JSON.parse(session);
-                const now = new Date().getTime();
-                
-                // التحقق من انتهاء الجلسة (24 ساعة)
-                if (now - sessionData.loginTime > 24 * 60 * 60 * 1000) {
-                    localStorage.removeItem('admin_session');
-                    window.location.href = 'login.html';
-                    return;
-                }
-                
-                // تحديث آخر نشاط
-                sessionData.lastActivity = now;
-                localStorage.setItem('admin_session', JSON.stringify(sessionData));
-                
-            } catch (e) {
-                localStorage.removeItem('admin_session');
-                window.location.href = 'login.html';
-            }
         })();
     </script>
 
-    <!-- Admin Dashboard -->
-    <div class="dashboard-section">
-        <div class="dashboard-container">
-            <!-- Header -->
-            <div class="dashboard-header">
-                <div class="dashboard-title">
-                    <i class="fas fa-cogs"></i>
-                    <h1>لوحة تحكم عيادة ديرما كير</h1>
-                </div>
-                
-                <div class="admin-info">
-                    <div class="admin-avatar">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                    <div class="admin-details">
-                        <h4>مسؤول النظام</h4>
-                        <p id="lastLoginTime">آخر دخول: جاري التحميل...</p>
-                    </div>
-                    <button class="logout-btn" id="logoutBtn">
-                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                    </button>
-                </div>
+    <!-- لوحة التحكم -->
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                <i class="fas fa-cogs"></i>
+                <h1>لوحة تحكم عيادة ديرما كير</h1>
             </div>
             
-            <!-- Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card primary">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="totalBookings">0</h3>
-                        <p>إجمالي الحجوزات</p>
-                    </div>
+            <div class="admin-info">
+                <div class="admin-avatar">
+                    <i class="fas fa-user-shield"></i>
                 </div>
-                
-                <div class="stat-card success">
-                    <div class="stat-icon">
-                        <i class="fas fa-user-check"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="confirmedBookings">0</h3>
-                        <p>حجوزات مؤكدة</p>
-                    </div>
+                <div class="admin-details">
+                    <h4>مسؤول النظام</h4>
+                    <p id="loginTime">آخر دخول: اليوم</p>
                 </div>
-                
-                <div class="stat-card warning">
-                    <div class="stat-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="pendingBookings">0</h3>
-                        <p>حجوزات قيد الانتظار</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card danger">
-                    <div class="stat-icon">
-                        <i class="fas fa-times-circle"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="cancelledBookings">0</h3>
-                        <p>حجوزات ملغاة</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="dashboard-main">
-                <!-- Bookings Table -->
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-list"></i> قائمة الحجوزات</h3>
-                        <div class="card-actions">
-                            <button class="btn btn-primary" id="exportBtn">
-                                <i class="fas fa-file-export"></i> تصدير البيانات
-                            </button>
-                            <button class="btn btn-secondary" id="refreshBtn">
-                                <i class="fas fa-sync-alt"></i> تحديث
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="filters">
-                        <div class="filter-group">
-                            <label for="filterStatus">الحالة:</label>
-                            <select id="filterStatus" class="form-control">
-                                <option value="all">جميع الحالات</option>
-                                <option value="pending">قيد الانتظار</option>
-                                <option value="confirmed">مؤكد</option>
-                                <option value="cancelled">ملغى</option>
-                                <option value="completed">مكتمل</option>
-                            </select>
-                        </div>
-                        
-                        <div class="filter-group">
-                            <label for="filterDate">التاريخ:</label>
-                            <input type="date" id="filterDate" class="form-control">
-                        </div>
-                        
-                        <button class="btn btn-primary" id="applyFilters">
-                            <i class="fas fa-filter"></i> تطبيق الفلتر
-                        </button>
-                        <button class="btn btn-secondary" id="clearFilters">
-                            <i class="fas fa-times"></i> مسح الفلاتر
-                        </button>
-                    </div>
-                    
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>اسم المريض</th>
-                                    <th>الخدمة</th>
-                                    <th>الطبيب</th>
-                                    <th>التاريخ</th>
-                                    <th>الوقت</th>
-                                    <th>الهاتف</th>
-                                    <th>الحالة</th>
-                                    <th>الإجراءات</th>
-                                </tr>
-                            </thead>
-                            <tbody id="bookingsTable">
-                                <!-- سيتم تعبئة البيانات هنا -->
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="table-footer">
-                        <div class="table-info">
-                            <p>إجمالي النتائج: <span id="totalResults">0</span></p>
-                        </div>
-                        <div class="pagination" id="pagination">
-                            <button class="active">1</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Management Tools -->
-                <div class="management-grid">
-                    <!-- Services Management -->
-                    <div class="management-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h3>
-                            <button class="btn btn-primary" id="addServiceBtn">
-                                <i class="fas fa-plus"></i> إضافة خدمة
-                            </button>
-                        </div>
-                        
-                        <div class="search-box">
-                            <input type="text" id="searchServices" placeholder="بحث عن خدمة...">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        
-                        <div class="items-list" id="servicesList">
-                            <!-- سيتم تعبئة الخدمات هنا -->
-                        </div>
-                    </div>
-                    
-                    <!-- Doctors Management -->
-                    <div class="management-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-user-md"></i> إدارة الأطباء</h3>
-                            <button class="btn btn-primary" id="addDoctorBtn">
-                                <i class="fas fa-plus"></i> إضافة طبيب
-                            </button>
-                        </div>
-                        
-                        <div class="search-box">
-                            <input type="text" id="searchDoctors" placeholder="بحث عن طبيب...">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        
-                        <div class="items-list" id="doctorsList">
-                            <!-- سيتم تعبئة الأطباء هنا -->
-                        </div>
-                    </div>
-                    
-                    <!-- Working Hours -->
-                    <div class="management-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-clock"></i> أوقات العمل</h3>
-                            <button class="btn btn-primary" id="saveHoursBtn">
-                                <i class="fas fa-save"></i> حفظ التغييرات
-                            </button>
-                        </div>
-                        
-                        <div class="working-hours-list" id="workingHours">
-                            <!-- سيتم تحميل أوقات العمل هنا -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals -->
-    <!-- Add/Edit Service Modal -->
-    <div class="modal" id="serviceModal">
-        <div class="modal-content">
-            <h3><i class="fas fa-concierge-bell"></i> <span id="serviceModalTitle">إضافة خدمة جديدة</span></h3>
-            
-            <form id="serviceForm">
-                <div class="form-group">
-                    <label for="serviceName">اسم الخدمة</label>
-                    <input type="text" id="serviceName" class="form-control" required placeholder="أدخل اسم الخدمة">
-                </div>
-                
-                <div class="form-group">
-                    <label for="serviceDescription">الوصف</label>
-                    <textarea id="serviceDescription" class="form-control" rows="3" required placeholder="أدخل وصف الخدمة"></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="servicePrice">السعر (ريال)</label>
-                    <input type="number" id="servicePrice" class="form-control" required min="0" placeholder="0">
-                </div>
-                
-                <div class="form-group">
-                    <label for="serviceDuration">المدة (دقائق)</label>
-                    <input type="number" id="serviceDuration" class="form-control" required min="15" step="15" placeholder="30">
-                </div>
-                
-                <div class="form-group">
-                    <label for="serviceCategory">الفئة</label>
-                    <select id="serviceCategory" class="form-control" required>
-                        <option value="">اختر الفئة</option>
-                        <option value="laser">علاجات الليزر</option>
-                        <option value="injections">الحقن التجميلية</option>
-                        <option value="skin">علاجات البشرة</option>
-                        <option value="hair">علاجات الشعر</option>
-                        <option value="other">خدمات أخرى</option>
-                    </select>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancelServiceBtn">إلغاء</button>
-                    <button type="submit" class="btn btn-primary" id="saveServiceBtn">حفظ الخدمة</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Add/Edit Doctor Modal -->
-    <div class="modal" id="doctorModal">
-        <div class="modal-content">
-            <h3><i class="fas fa-user-md"></i> <span id="doctorModalTitle">إضافة طبيب جديد</span></h3>
-            
-            <form id="doctorForm">
-                <div class="form-group">
-                    <label for="doctorName">اسم الطبيب</label>
-                    <input type="text" id="doctorName" class="form-control" required placeholder="أدخل اسم الطبيب">
-                </div>
-                
-                <div class="form-group">
-                    <label for="doctorSpecialty">التخصص</label>
-                    <input type="text" id="doctorSpecialty" class="form-control" required placeholder="أدخل التخصص">
-                </div>
-                
-                <div class="form-group">
-                    <label for="doctorExperience">سنوات الخبرة</label>
-                    <input type="number" id="doctorExperience" class="form-control" required min="0" placeholder="0">
-                </div>
-                
-                <div class="form-group">
-                    <label for="doctorServices">الخدمات المتخصص بها</label>
-                    <select id="doctorServices" class="form-control" multiple style="height: 150px;">
-                        <option value="1">جلسة ليزر إزالة الشعر</option>
-                        <option value="2">حقن البوتوكس</option>
-                        <option value="3">حشو الفيلر</option>
-                    </select>
-                    <small class="help-text">اضغط على Ctrl للاختيار المتعدد</small>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancelDoctorBtn">إلغاء</button>
-                    <button type="submit" class="btn btn-primary" id="saveDoctorBtn">حفظ بيانات الطبيب</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Booking Details Modal -->
-    <div class="modal" id="bookingModal">
-        <div class="modal-content">
-            <h3><i class="fas fa-calendar-alt"></i> تفاصيل الحجز</h3>
-            
-            <div class="booking-details" id="bookingDetails">
-                <!-- سيتم تعبئة تفاصيل الحجز هنا -->
-            </div>
-            
-            <div class="modal-actions">
-                <button class="btn btn-primary" id="confirmBookingBtn">
-                    <i class="fas fa-check"></i> تأكيد الحجز
-                </button>
-                <button class="btn btn-warning" id="rescheduleBookingBtn">
-                    <i class="fas fa-calendar-alt"></i> إعادة جدولة
-                </button>
-                <button class="btn btn-danger" id="cancelBookingBtn">
-                    <i class="fas fa-times"></i> إلغاء الحجز
-                </button>
-                <button class="btn btn-secondary" id="closeBookingModal">
-                    <i class="fas fa-times"></i> إغلاق
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
                 </button>
             </div>
         </div>
-    </div>
-
-    <!-- نظام إدارة لوحة التحكم -->
-    <script>
-        // نظام إدارة لوحة التحكم
-        class AdminDashboard {
-            constructor() {
-                this.services = JSON.parse(localStorage.getItem('clinicServices')) || [];
-                this.doctors = JSON.parse(localStorage.getItem('clinicDoctors')) || [];
-                this.bookings = JSON.parse(localStorage.getItem('clinicBookings')) || [];
-                this.workingHours = JSON.parse(localStorage.getItem('workingHours')) || this.getDefaultWorkingHours();
-                
-                this.currentServiceId = null;
-                this.currentDoctorId = null;
-                this.currentBookingId = null;
-                
-                this.init();
-            }
-            
-            init() {
-                // إدارة الجلسة وعرض المعلومات
-                this.setupSession();
-                
-                // تحميل البيانات
-                this.loadStats();
-                this.loadBookings();
-                this.loadServices();
-                this.loadDoctors();
-                this.loadWorkingHours();
-                
-                // إعداد الأزرار والنماذج
-                this.setupEventListeners();
-                
-                // إعداد البحث
-                this.setupSearch();
-            }
-            
-            setupSession() {
-                // عرض وقت آخر دخول
-                const session = localStorage.getItem('admin_session');
-                if (session) {
-                    try {
-                        const sessionData = JSON.parse(session);
-                        const loginTime = new Date(sessionData.loginTime);
-                        const timeStr = loginTime.toLocaleString('ar-SA', {
-                            weekday: 'long',
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        });
-                        document.getElementById('lastLoginTime').textContent = `آخر دخول: ${timeStr}`;
-                    } catch (e) {
-                        console.error('Error parsing session:', e);
-                    }
-                }
-                
-                // إعداد حدث تسجيل الخروج
-                document.getElementById('logoutBtn').addEventListener('click', () => {
-                    if (confirm('هل تريد تسجيل الخروج من لوحة التحكم؟')) {
-                        localStorage.removeItem('admin_session');
-                        window.location.href = 'login.html';
-                    }
-                });
-            }
-            
-            getDefaultWorkingHours() {
-                return {
-                    "الأحد": { start: "09:00", end: "18:00", isOpen: true },
-                    "الاثنين": { start: "09:00", end: "18:00", isOpen: true },
-                    "الثلاثاء": { start: "09:00", end: "18:00", isOpen: true },
-                    "الأربعاء": { start: "09:00", end: "18:00", isOpen: true },
-                    "الخميس": { start: "09:00", end: "18:00", isOpen: true },
-                    "الجمعة": { start: "16:00", end: "22:00", isOpen: true },
-                    "السبت": { start: "16:00", end: "22:00", isOpen: true }
-                };
-            }
-            
-            setupEventListeners() {
-                // أزرار الحجوزات
-                document.getElementById('exportBtn')?.addEventListener('click', () => this.exportData());
-                document.getElementById('refreshBtn')?.addEventListener('click', () => this.refreshData());
-                document.getElementById('applyFilters')?.addEventListener('click', () => this.applyBookingsFilter());
-                document.getElementById('clearFilters')?.addEventListener('click', () => this.clearBookingsFilter());
-                
-                // أزرار الخدمات
-                document.getElementById('addServiceBtn')?.addEventListener('click', () => this.openServiceModal());
-                document.getElementById('saveServiceBtn')?.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.saveService();
-                });
-                document.getElementById('cancelServiceBtn')?.addEventListener('click', () => {
-                    document.getElementById('serviceModal').classList.remove('active');
-                });
-                
-                // أزرار الأطباء
-                document.getElementById('addDoctorBtn')?.addEventListener('click', () => this.openDoctorModal());
-                document.getElementById('saveDoctorBtn')?.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.saveDoctor();
-                });
-                document.getElementById('cancelDoctorBtn')?.addEventListener('click', () => {
-                    document.getElementById('doctorModal').classList.remove('active');
-                });
-                
-                // أزرار أوقات العمل
-                document.getElementById('saveHoursBtn')?.addEventListener('click', () => this.saveWorkingHours());
-                
-                // إغلاق النماذج
-                document.querySelectorAll('.modal').forEach(modal => {
-                    modal.addEventListener('click', (e) => {
-                        if (e.target === modal) {
-                            modal.classList.remove('active');
-                        }
-                    });
-                });
-                
-                document.getElementById('closeBookingModal')?.addEventListener('click', () => {
-                    document.getElementById('bookingModal').classList.remove('active');
-                });
-            }
-            
-            setupSearch() {
-                // البحث في الخدمات
-                document.getElementById('searchServices')?.addEventListener('input', (e) => {
-                    this.searchServices(e.target.value);
-                });
-                
-                // البحث في الأطباء
-                document.getElementById('searchDoctors')?.addEventListener('input', (e) => {
-                    this.searchDoctors(e.target.value);
-                });
-            }
-            
-            loadStats() {
-                const total = this.bookings.length;
-                const confirmed = this.bookings.filter(b => b.status === 'confirmed').length;
-                const pending = this.bookings.filter(b => b.status === 'pending').length;
-                const cancelled = this.bookings.filter(b => b.status === 'cancelled').length;
-                
-                document.getElementById('totalBookings').textContent = total;
-                document.getElementById('confirmedBookings').textContent = confirmed;
-                document.getElementById('pendingBookings').textContent = pending;
-                document.getElementById('cancelledBookings').textContent = cancelled;
-            }
-            
-            loadBookings(filteredBookings = null) {
-                const bookings = filteredBookings || this.bookings;
-                const tableBody = document.getElementById('bookingsTable');
-                
-                if (!tableBody) return;
-                
-                if (bookings.length === 0) {
-                    tableBody.innerHTML = `
-                        <tr>
-                            <td colspan="9">
-                                <div class="empty-state">
-                                    <i class="fas fa-calendar-times"></i>
-                                    <h4>لا توجد حجوزات لعرضها</h4>
-                                    <p>يبدو أنه لا توجد حجوزات في النظام بعد</p>
-                                </div>
-                            </td>
-                        </tr>
-                    `;
-                    document.getElementById('totalResults').textContent = '0';
-                    return;
-                }
-                
-                let html = '';
-                bookings.forEach((booking, index) => {
-                    const service = this.services.find(s => s.id === booking.serviceId);
-                    const doctor = this.doctors.find(d => d.id === booking.doctorId);
-                    
-                    html += `
-                        <tr>
-                            <td>${index + 1}</td>
-                            <td>${booking.name || 'غير معروف'}</td>
-                            <td>${service ? service.name : 'غير معروف'}</td>
-                            <td>${doctor ? doctor.name : 'غير معروف'}</td>
-                            <td>${this.formatDate(booking.date)}</td>
-                            <td>${booking.time || 'غير محدد'}</td>
-                            <td>${booking.phone || 'غير متوفر'}</td>
-                            <td>
-                                <span class="status-badge status-${booking.status || 'pending'}">
-                                    ${this.getStatusText(booking.status)}
-                                </span>
-                            </td>
-                            <td>
-                                <div class="table-actions">
-                                    <button class="view" onclick="adminDashboard.viewBooking(${index})" title="عرض">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="edit" onclick="adminDashboard.editBooking(${index})" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="delete" onclick="adminDashboard.deleteBooking(${index})" title="حذف">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    `;
-                });
-                
-                tableBody.innerHTML = html;
-                document.getElementById('totalResults').textContent = bookings.length;
-            }
-            
-            loadServices(filteredServices = null) {
-                const services = filteredServices || this.services;
-                const servicesList = document.getElementById('servicesList');
-                
-                if (!servicesList) return;
-                
-                if (services.length === 0) {
-                    servicesList.innerHTML = `
-                        <div class="empty-state">
-                            <i class="fas fa-concierge-bell"></i>
-                            <h4>لا توجد خدمات</h4>
-                            <p>قم بإضافة أول خدمة للنظام</p>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                let html = '';
-                services.forEach(service => {
-                    html += `
-                        <div class="item-card">
-                            <div class="item-header">
-                                <h4 class="item-title">${service.name}</h4>
-                                <div class="item-price">${service.price} ريال</div>
-                            </div>
-                            <p class="item-description">${service.description}</p>
-                            <div class="item-footer">
-                                <span>المدة: ${service.duration} دقيقة</span>
-                                <div class="item-actions">
-                                    <button class="edit" onclick="adminDashboard.editService(${service.id})" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="delete" onclick="adminDashboard.deleteService(${service.id})" title="حذف">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                servicesList.innerHTML = html;
-            }
-            
-            loadDoctors(filteredDoctors = null) {
-                const doctors = filteredDoctors || this.doctors;
-                const doctorsList = document.getElementById('doctorsList');
-                
-                if (!doctorsList) return;
-                
-                if (doctors.length === 0) {
-                    doctorsList.innerHTML = `
-                        <div class="empty-state">
-                            <i class="fas fa-user-md"></i>
-                            <h4>لا توجد أطباء</h4>
-                            <p>قم بإضافة أول طبيب للنظام</p>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                let html = '';
-                doctors.forEach(doctor => {
-                    const doctorServices = doctor.services || [];
-                    const servicesText = doctorServices.map(id => {
-                        const service = this.services.find(s => s.id === id);
-                        return service ? service.name : 'غير معروف';
-                    }).join(', ');
-                    
-                    html += `
-                        <div class="item-card">
-                            <div class="item-header">
-                                <h4 class="item-title">${doctor.name}</h4>
-                                <div style="color: #64748B; font-size: 0.9rem;">${doctor.specialty}</div>
-                            </div>
-                            <p class="item-description">${servicesText || 'لا توجد خدمات محددة'}</p>
-                            <div class="item-footer">
-                                <span>الخبرة: ${doctor.experience} سنة</span>
-                                <div class="item-actions">
-                                    <button class="edit" onclick="adminDashboard.editDoctor(${doctor.id})" title="تعديل">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="delete" onclick="adminDashboard.deleteDoctor(${doctor.id})" title="حذف">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                doctorsList.innerHTML = html;
-            }
-            
-            loadWorkingHours() {
-                const workingHoursDiv = document.getElementById('workingHours');
-                if (!workingHoursDiv) return;
-                
-                const days = [
-                    { ar: "الأحد", en: "sunday" },
-                    { ar: "الاثنين", en: "monday" },
-                    { ar: "الثلاثاء", en: "tuesday" },
-                    { ar: "الأربعاء", en: "wednesday" },
-                    { ar: "الخميس", en: "thursday" },
-                    { ar: "الجمعة", en: "friday" },
-                    { ar: "السبت", en: "saturday" }
-                ];
-                
-                let html = '';
-                days.forEach(day => {
-                    const hours = this.workingHours[day.ar] || { start: "09:00", end: "18:00", isOpen: true };
-                    
-                    html += `
-                        <div class="day-schedule">
-                            <div class="day-name">${day.ar}</div>
-                            <div class="time-inputs">
-                                <div class="time-input-group">
-                                    <label>من:</label>
-                                    <input type="time" 
-                                           class="time-input" 
-                                           id="start-${day.en}" 
-                                           value="${hours.start}"
-                                           ${!hours.isOpen ? 'disabled' : ''}>
-                                </div>
-                                <div class="time-input-group">
-                                    <label>إلى:</label>
-                                    <input type="time" 
-                                           class="time-input" 
-                                           id="end-${day.en}" 
-                                           value="${hours.end}"
-                                           ${!hours.isOpen ? 'disabled' : ''}>
-                                </div>
-                                <div class="time-input-group">
-                                    <input type="checkbox" 
-                                           id="open-${day.en}" 
-                                           ${hours.isOpen ? 'checked' : ''}
-                                           onchange="adminDashboard.toggleDay('${day.en}', this.checked)">
-                                    <label>مفتوح</label>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                workingHoursDiv.innerHTML = html;
-            }
-            
-            // وظائف الخدمات
-            openServiceModal(serviceId = null) {
-                this.currentServiceId = serviceId;
-                const modal = document.getElementById('serviceModal');
-                const title = document.getElementById('serviceModalTitle');
-                
-                if (serviceId) {
-                    const service = this.services.find(s => s.id === serviceId);
-                    if (service) {
-                        title.textContent = 'تعديل الخدمة';
-                        document.getElementById('serviceName').value = service.name;
-                        document.getElementById('serviceDescription').value = service.description;
-                        document.getElementById('servicePrice').value = service.price;
-                        document.getElementById('serviceDuration').value = service.duration;
-                        document.getElementById('serviceCategory').value = service.category || 'other';
-                    }
-                } else {
-                    title.textContent = 'إضافة خدمة جديدة';
-                    document.getElementById('serviceForm').reset();
-                }
-                
-                modal.classList.add('active');
-            }
-            
-            saveService() {
-                const name = document.getElementById('serviceName').value.trim();
-                const description = document.getElementById('serviceDescription').value.trim();
-                const price = parseInt(document.getElementById('servicePrice').value);
-                const duration = parseInt(document.getElementById('serviceDuration').value);
-                const category = document.getElementById('serviceCategory').value;
-                
-                if (!name || !description || isNaN(price) || isNaN(duration)) {
-                    alert('يرجى ملء جميع الحقول المطلوبة بشكل صحيح');
-                    return;
-                }
-                
-                if (this.currentServiceId) {
-                    // تعديل خدمة موجودة
-                    const index = this.services.findIndex(s => s.id === this.currentServiceId);
-                    if (index !== -1) {
-                        this.services[index] = {
-                            ...this.services[index],
-                            name,
-                            description,
-                            price,
-                            duration,
-                            category,
-                            updatedAt: new Date().toISOString()
-                        };
-                    }
-                } else {
-                    // إضافة خدمة جديدة
-                    const newId = this.services.length > 0 ? Math.max(...this.services.map(s => s.id)) + 1 : 1;
-                    this.services.push({
-                        id: newId,
-                        name,
-                        description,
-                        price,
-                        duration,
-                        category,
-                        features: ["جودة عالية", "أسعار مناسبة", "نتائج مضمونة"],
-                        isActive: true,
-                        createdAt: new Date().toISOString(),
-                        updatedAt: new Date().toISOString()
-                    });
-                }
-                
-                localStorage.setItem('clinicServices', JSON.stringify(this.services));
-                this.loadServices();
-                document.getElementById('serviceModal').classList.remove('active');
-                this.showMessage('تم حفظ الخدمة بنجاح', 'success');
-            }
-            
-            deleteService(serviceId) {
-                if (confirm('هل أنت متأكد من حذف هذه الخدمة؟')) {
-                    this.services = this.services.filter(s => s.id !== serviceId);
-                    localStorage.setItem('clinicServices', JSON.stringify(this.services));
-                    this.loadServices();
-                    this.showMessage('تم حذف الخدمة بنجاح', 'success');
-                }
-            }
-            
-            editService(serviceId) {
-                this.openServiceModal(serviceId);
-            }
-            
-            searchServices(query) {
-                const filtered = this.services.filter(service => 
-                    service.name.toLowerCase().includes(query.toLowerCase()) ||
-                    service.description.toLowerCase().includes(query.toLowerCase())
-                );
-                this.loadServices(filtered);
-            }
-            
-            // وظائف الأطباء
-            openDoctorModal(doctorId = null) {
-                this.currentDoctorId = doctorId;
-                const modal = document.getElementById('doctorModal');
-                const title = document.getElementById('doctorModalTitle');
-                
-                // تعبئة قائمة الخدمات
-                const servicesSelect = document.getElementById('doctorServices');
-                if (servicesSelect) {
-                    servicesSelect.innerHTML = this.services.map(service => 
-                        `<option value="${service.id}">${service.name}</option>`
-                    ).join('');
-                }
-                
-                if (doctorId) {
-                    const doctor = this.doctors.find(d => d.id === doctorId);
-                    if (doctor) {
-                        title.textContent = 'تعديل بيانات الطبيب';
-                        document.getElementById('doctorName').value = doctor.name;
-                        document.getElementById('doctorSpecialty').value = doctor.specialty;
-                        document.getElementById('doctorExperience').value = doctor.experience;
-                        
-                        // تحديد الخدمات
-                        if (servicesSelect && doctor.services) {
-                            Array.from(servicesSelect.options).forEach(option => {
-                                option.selected = doctor.services.includes(parseInt(option.value));
-                            });
-                        }
-                    }
-                } else {
-                    title.textContent = 'إضافة طبيب جديد';
-                    document.getElementById('doctorForm').reset();
-                }
-                
-                modal.classList.add('active');
-            }
-            
-            saveDoctor() {
-                const name = document.getElementById('doctorName').value.trim();
-                const specialty = document.getElementById('doctorSpecialty').value.trim();
-                const experience = parseInt(document.getElementById('doctorExperience').value);
-                const servicesSelect = document.getElementById('doctorServices');
-                
-                if (!name || !specialty || isNaN(experience)) {
-                    alert('يرجى ملء جميع الحقول المطلوبة بشكل صحيح');
-                    return;
-                }
-                
-                const services = Array.from(servicesSelect.selectedOptions).map(option => 
-                    parseInt(option.value)
-                );
-                
-                if (this.currentDoctorId) {
-                    // تعديل طبيب موجود
-                    const index = this.doctors.findIndex(d => d.id === this.currentDoctorId);
-                    if (index !== -1) {
-                        this.doctors[index] = {
-                            ...this.doctors[index],
-                            name,
-                            specialty,
-                            experience,
-                            services,
-                            updatedAt: new Date().toISOString()
-                        };
-                    }
-                } else {
-                    // إضافة طبيب جديد
-                    const newId = this.doctors.length > 0 ? Math.max(...this.doctors.map(d => d.id)) + 1 : 1;
-                    this.doctors.push({
-                        id: newId,
-                        name,
-                        specialty,
-                        experience,
-                        services,
-                        isActive: true,
-                        schedule: this.getDefaultWorkingHours(),
-                        createdAt: new Date().toISOString(),
-                        updatedAt: new Date().toISOString()
-                    });
-                }
-                
-                localStorage.setItem('clinicDoctors', JSON.stringify(this.doctors));
-                this.loadDoctors();
-                document.getElementById('doctorModal').classList.remove('active');
-                this.showMessage('تم حفظ بيانات الطبيب بنجاح', 'success');
-            }
-            
-            deleteDoctor(doctorId) {
-                if (confirm('هل أنت متأكد من حذف بيانات هذا الطبيب؟')) {
-                    this.doctors = this.doctors.filter(d => d.id !== doctorId);
-                    localStorage.setItem('clinicDoctors', JSON.stringify(this.doctors));
-                    this.loadDoctors();
-                    this.showMessage('تم حذف الطبيب بنجاح', 'success');
-                }
-            }
-            
-            editDoctor(doctorId) {
-                this.openDoctorModal(doctorId);
-            }
-            
-            searchDoctors(query) {
-                const filtered = this.doctors.filter(doctor => 
-                    doctor.name.toLowerCase().includes(query.toLowerCase()) ||
-                    doctor.specialty.toLowerCase().includes(query.toLowerCase())
-                );
-                this.loadDoctors(filtered);
-            }
-            
-            // وظائف الحجوزات
-            applyBookingsFilter() {
-                const status = document.getElementById('filterStatus').value;
-                const date = document.getElementById('filterDate').value;
-                
-                let filtered = this.bookings;
-                
-                if (status !== 'all') {
-                    filtered = filtered.filter(booking => booking.status === status);
-                }
-                
-                if (date) {
-                    filtered = filtered.filter(booking => booking.date === date);
-                }
-                
-                this.loadBookings(filtered);
-            }
-            
-            clearBookingsFilter() {
-                document.getElementById('filterStatus').value = 'all';
-                document.getElementById('filterDate').value = '';
-                this.loadBookings();
-            }
-            
-            viewBooking(index) {
-                const booking = this.bookings[index];
-                if (!booking) return;
-                
-                const service = this.services.find(s => s.id === booking.serviceId);
-                const doctor = this.doctors.find(d => d.id === booking.doctorId);
-                
-                const details = document.getElementById('bookingDetails');
-                if (details) {
-                    details.innerHTML = `
-                        <div style="background: #F8FAFC; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>رقم الحجز:</strong>
-                                <span>${booking.id || 'غير متوفر'}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>اسم المريض:</strong>
-                                <span>${booking.name || 'غير معروف'}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>الخدمة:</strong>
-                                <span>${service ? service.name : 'غير معروف'}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>الطبيب:</strong>
-                                <span>${doctor ? doctor.name : 'غير معروف'}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>التاريخ:</strong>
-                                <span>${this.formatDate(booking.date)}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>الوقت:</strong>
-                                <span>${booking.time || 'غير محدد'}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>الهاتف:</strong>
-                                <span>${booking.phone || 'غير متوفر'}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>البريد الإلكتروني:</strong>
-                                <span>${booking.email || 'غير متوفر'}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <strong>الحالة:</strong>
-                                <span class="status-badge status-${booking.status || 'pending'}">
-                                    ${this.getStatusText(booking.status)}
-                                </span>
-                            </div>
-                            ${booking.notes ? `
-                            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #E2E8F0;">
-                                <strong>ملاحظات:</strong>
-                                <p style="margin-top: 0.5rem; color: #64748B;">${booking.notes}</p>
-                            </div>
-                            ` : ''}
-                        </div>
-                    `;
-                }
-                
-                this.currentBookingId = index;
-                document.getElementById('bookingModal').classList.add('active');
-                
-                // إعداد أحداث الأزرار
-                document.getElementById('confirmBookingBtn').onclick = () => this.changeBookingStatus('confirmed');
-                document.getElementById('cancelBookingBtn').onclick = () => this.changeBookingStatus('cancelled');
-            }
-            
-            editBooking(index) {
-                this.viewBooking(index);
-            }
-            
-            deleteBooking(index) {
-                if (confirm('هل أنت متأكد من حذف هذا الحجز؟')) {
-                    this.bookings.splice(index, 1);
-                    localStorage.setItem('clinicBookings', JSON.stringify(this.bookings));
-                    this.loadBookings();
-                    this.loadStats();
-                    this.showMessage('تم حذف الحجز بنجاح', 'success');
-                }
-            }
-            
-            changeBookingStatus(status) {
-                if (this.currentBookingId !== null) {
-                    this.bookings[this.currentBookingId].status = status;
-                    localStorage.setItem('clinicBookings', JSON.stringify(this.bookings));
-                    this.loadBookings();
-                    this.loadStats();
-                    document.getElementById('bookingModal').classList.remove('active');
-                    this.showMessage(`تم تغيير حالة الحجز إلى "${this.getStatusText(status)}"`, 'success');
-                }
-            }
-            
-            // وظائف أوقات العمل
-            toggleDay(day, isOpen) {
-                const arabicDays = {
-                    "sunday": "الأحد",
-                    "monday": "الاثنين", 
-                    "tuesday": "الثلاثاء",
-                    "wednesday": "الأربعاء",
-                    "thursday": "الخميس",
-                    "friday": "الجمعة",
-                    "saturday": "السبت"
-                };
-                
-                const dayAr = arabicDays[day];
-                if (this.workingHours[dayAr]) {
-                    this.workingHours[dayAr].isOpen = isOpen;
-                    
-                    // تعطيل/تمكين حقلي الوقت
-                    const startInput = document.getElementById(`start-${day}`);
-                    const endInput = document.getElementById(`end-${day}`);
-                    if (startInput) startInput.disabled = !isOpen;
-                    if (endInput) endInput.disabled = !isOpen;
-                }
-            }
-            
-            saveWorkingHours() {
-                const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-                const arabicDays = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
-                
-                arabicDays.forEach((day, index) => {
-                    const startInput = document.getElementById(`start-${days[index]}`);
-                    const endInput = document.getElementById(`end-${days[index]}`);
-                    const openCheckbox = document.getElementById(`open-${days[index]}`);
-                    
-                    if (startInput && endInput && openCheckbox) {
-                        this.workingHours[day] = {
-                            start: startInput.value,
-                            end: endInput.value,
-                            isOpen: openCheckbox.checked
-                        };
-                    }
-                });
-                
-                localStorage.setItem('workingHours', JSON.stringify(this.workingHours));
-                this.showMessage('تم حفظ أوقات العمل بنجاح', 'success');
-            }
-            
-            // وظائف مساعدة
-            exportData() {
-                const data = {
-                    bookings: this.bookings,
-                    services: this.services,
-                    doctors: this.doctors,
-                    workingHours: this.workingHours,
-                    exportDate: new Date().toISOString(),
-                    totalRecords: {
-                        bookings: this.bookings.length,
-                        services: this.services.length,
-                        doctors: this.doctors.length
-                    }
-                };
-                
-                const dataStr = JSON.stringify(data, null, 2);
-                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-                
-                const exportFileDefaultName = `clinic-backup-${new Date().toISOString().split('T')[0]}.json`;
-                
-                const linkElement = document.createElement('a');
-                linkElement.setAttribute('href', dataUri);
-                linkElement.setAttribute('download', exportFileDefaultName);
-                linkElement.click();
-                
-                this.showMessage('تم تصدير البيانات بنجاح', 'success');
-            }
-            
-            refreshData() {
-                this.services = JSON.parse(localStorage.getItem('clinicServices')) || [];
-                this.doctors = JSON.parse(localStorage.getItem('clinicDoctors')) || [];
-                this.bookings = JSON.parse(localStorage.getItem('clinicBookings')) || [];
-                
-                this.loadStats();
-                this.loadBookings();
-                this.loadServices();
-                this.loadDoctors();
-                
-                this.showMessage('تم تحديث البيانات بنجاح', 'success');
-            }
-            
-            formatDate(dateString) {
-                if (!dateString) return 'غير محدد';
-                
-                try {
-                    const date = new Date(dateString);
-                    return date.toLocaleDateString('ar-SA', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                } catch (e) {
-                    return dateString;
-                }
-            }
-            
-            getStatusText(status) {
-                const statusTexts = {
-                    'pending': 'قيد الانتظار',
-                    'confirmed': 'مؤكد',
-                    'cancelled': 'ملغى',
-                    'completed': 'مكتمل'
-                };
-                
-                return statusTexts[status] || 'غير معروف';
-            }
-            
-            showMessage(message, type = 'success') {
-                // إنشاء عنصر الرسالة
-                const messageDiv = document.createElement('div');
-                messageDiv.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    left: 20px;
-                    right: 20px;
-                    padding: 1rem 1.5rem;
-                    border-radius: 12px;
-                    color: white;
-                    font-weight: 600;
-                    text-align: center;
-                    z-index: 3000;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                    animation: slideInDown 0.3s ease;
-                `;
-                
-                if (type === 'success') {
-                    messageDiv.style.background = 'linear-gradient(135deg, #10B981, #059669)';
-                } else {
-                    messageDiv.style.background = 'linear-gradient(135deg, #EF4444, #DC2626)';
-                }
-                
-                messageDiv.textContent = message;
-                document.body.appendChild(messageDiv);
-                
-                // إزالة الرسالة بعد 3 ثواني
-                setTimeout(() => {
-                    messageDiv.style.animation = 'fadeOut 0.3s ease forwards';
-                    setTimeout(() => {
-                        if (messageDiv.parentNode) {
-                            messageDiv.parentNode.removeChild(messageDiv);
-                        }
-                    }, 300);
-                }, 3000);
-                
-                // إضافة أنيميشن للحذف
-                if (!document.getElementById('fadeOutStyle')) {
-                    const style = document.createElement('style');
-                    style.id = 'fadeOutStyle';
-                    style.textContent = `
-                        @keyframes fadeOut {
-                            from { opacity: 1; transform: translateY(0); }
-                            to { opacity: 0; transform: translateY(-20px); }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }
-            }
-        }
         
-        // تهيئة النظام عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', () => {
-            window.adminDashboard = new AdminDashboard();
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card primary">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalBookings">0</h3>
+                    <p>إجمالي الحجوزات</p>
+                </div>
+            </div>
             
-            // منع الإرسال الافتراضي للنماذج
-            document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            <div class="stat-card success">
+                <div class="stat-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="confirmedBookings">0</h3>
+                    <p>حجوزات مؤكدة</p>
+                </div>
+            </div>
+            
+            <div class="stat-card warning">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="pendingBookings">0</h3>
+                    <p>حجوزات قيد الانتظار</p>
+                </div>
+            </div>
+            
+            <div class="stat-card danger">
+                <div class="stat-icon">
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="cancelledBookings">0</h3>
+                    <p>حجوزات ملغاة</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="dashboard-main">
+            <!-- Bookings Section -->
+            <div class="section-title">
+                <i class="fas fa-list"></i>
+                <h2>قائمة الحجوزات</h2>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label>الحالة:</label>
+                    <select id="filterStatus">
+                        <option value="all">جميع الحالات</option>
+                        <option value="pending">قيد الانتظار</option>
+                        <option value="confirmed">مؤكد</option>
+                        <option value="cancelled">ملغى</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>التاريخ:</label>
+                    <input type="date" id="filterDate">
+                </div>
+                
+                <button class="btn btn-primary" id="applyFilters">
+                    <i class="fas fa-filter"></i> تطبيق
+                </button>
+                
+                <button class="btn btn-secondary" id="clearFilters">
+                    <i class="fas fa-times"></i> مسح
+                </button>
+                
+                <button class="btn btn-primary" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> تحديث
+                </button>
+            </div>
+            
+            <!-- Bookings Table -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>اسم المريض</th>
+                            <th>الخدمة</th>
+                            <th>التاريخ</th>
+                            <th>الوقت</th>
+                            <th>الهاتف</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTable">
+                        <!-- البيانات تظهر هنا -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Empty State -->
+            <div id="emptyBookings" class="empty-state">
+                <i class="fas fa-calendar-times"></i>
+                <h3>لا توجد حجوزات</h3>
+                <p>لم يتم إضافة أي حجوزات بعد</p>
+            </div>
+            
+            <!-- Management Cards -->
+            <div class="management-cards">
+                <!-- Services Card -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h3>
+                        <button class="btn btn-primary" id="addServiceBtn">
+                            <i class="fas fa-plus"></i> إضافة
+                        </button>
+                    </div>
+                    
+                    <div class="search-box">
+                        <input type="text" id="searchServices" placeholder="بحث عن خدمة...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="items-list" id="servicesLi
