@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ar-SA" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم عيادة ديرما كير</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Dashboard -->
+    <div class="dashboard-section">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <div class="dashboard-title">
+                    <i class="fas fa-cogs"></i>
+                    <h1>لوحة تحكم عيادة ديرما كير</h1>
+                </div>
+                
+                <div class="admin-info">
+                    <div class="admin-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h4>مسؤول النظام</h4>
+                        <p>آخر دخول: <?php echo date('Y-m-d H:i'); ?></p>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalBookings">0</h3>
+                        <p>إجمالي الحجوزات</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card success">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="confirmedBookings">0</h3>
+                        <p>حجوزات مؤكدة</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card warning">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="pendingBookings">0</h3>
+                        <p>حجوزات قيد الانتظار</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card danger">
+                    <div class="stat-icon">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="cancelledBookings">0</h3>
+                        <p>حجوزات ملغاة</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="dashboard-main">
+                <!-- Bookings Table -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> قائمة الحجوزات</h3>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" id="exportBtn">
+                                <i class="fas fa-file-export"></i> تصدير البيانات
+                            </button>
+                            <button class="btn btn-secondary" id="refreshBtn">
+                                <i class="fas fa-sync-alt"></i> تحديث
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="filterStatus">الحالة:</label>
+                            <select id="filterStatus" class="form-control">
+                                <option value="all">جميع الحالات</option>
+                                <option value="pending">قيد الانتظار</option>
+                                <option value="confirmed">مؤكد</option>
+                                <option value="cancelled">ملغى</option>
+                                <option value="completed">مكتمل</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="filterDate">التاريخ:</label>
+                            <input type="date" id="filterDate" class="form-control">
+                        </div>
+                        
+                        <button class="btn btn-primary" id="applyFilters">
+                            <i class="fas fa-filter"></i> تطبيق الفلتر
+                        </button>
+                        <button class="btn btn-secondary" id="clearFilters">
+                            <i class="fas fa-times"></i> مسح الفلاتر
+                        </button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>اسم المريض</th>
+                                    <th>الخدمة</th>
+                                    <th>الطبيب</th>
+                                    <th>التاريخ</th>
+                                    <th>الوقت</th>
+                                    <th>الهاتف</th>
+                                    <th>الحالة</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookingsTable">
+                                <!-- سيتم تعبئة البيانات من JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-footer">
+                        <div class="pagination" id="pagination">
+                            <!-- سيتم إضافة أرقام الصفحات هنا -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Management Tools -->
+                <div class="management-grid">
+                    <!-- Services Management -->
+                    <div class="management-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h3>
+                            <button class="btn btn-primary" id="addServiceBtn">
+                                <i class="fas fa-plus"></i> إضافة خدمة
+                            </button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="searchServices" class="form-control" placeholder="بحث عن خدمة...">
+                        </div>
+                        
+                        <div class="services-list" id="servicesList">
+                            <!-- سيتم تحميل قائمة الخدمات هنا -->
+                        </div>
+                    </div>
+                    
+                    <!-- Doctors Management -->
+                    <div class="management-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user-md"></i> إدارة الأطباء</h3>
+                            <button class="btn btn-primary" id="addDoctorBtn">
+                                <i class="fas fa-plus"></i> إضافة طبيب
+                            </button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="searchDoctors" class="form-control" placeholder="بحث عن طبيب...">
+                        </div>
+                        
+                        <div class="doctors-list" id="doctorsList">
+                            <!-- سيتم تحميل قائمة الأطباء هنا -->
+                        </div>
+                    </div>
+                    
+                    <!-- Working Hours -->
+                    <div class="management-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-clock"></i> أوقات العمل</h3>
+                            <button class="btn btn-primary" id="saveHoursBtn">
+                                <i class="fas fa-save"></i> حفظ
+                            </button>
+                        </div>
+                        
+                        <div class="working-hours" id="workingHours">
+                            <!-- سيتم تحميل أوقات العمل هنا -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add/Edit Service Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-concierge-bell"></i> <span id="serviceModalTitle">إضافة خدمة جديدة</span></h3>
+            
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label for="serviceName">اسم الخدمة</label>
+                    <input type="text" id="serviceName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceDescription">الوصف</label>
+                    <textarea id="serviceDescription" class="form-control" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="servicePrice">السعر (ريال)</label>
+                    <input type="number" id="servicePrice" class="form-control" required min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceDuration">المدة (دقائق)</label>
+                    <input type="number" id="serviceDuration" class="form-control" required min="15" step="15">
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceCategory">الفئة</label>
+                    <select id="serviceCategory" class="form-control" required>
+                        <option value="laser">علاجات الليزر</option>
+                        <option value="injections">الحقن التجميلية</option>
+                        <option value="skin">علاجات البشرة</option>
+                        <option value="hair">علاجات الشعر</option>
+                        <option value="other">خدمات أخرى</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelServiceBtn">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">حفظ الخدمة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Doctor Modal -->
+    <div class="modal" id="doctorModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-user-md"></i> <span id="doctorModalTitle">إضافة طبيب جديد</span></h3>
+            
+            <form id="doctorForm">
+                <div class="form-group">
+                    <label for="doctorName">اسم الطبيب</label>
+                    <input type="text" id="doctorName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctorSpecialty">التخصص</label>
+                    <input type="text" id="doctorSpecialty" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctorExperience">سنوات الخبرة</label>
+                    <input type="number" id="doctorExperience" class="form-control" required min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctorServices">الخدمات المتخصص بها</label>
+                    <select id="doctorServices" class="form-control" multiple>
+                        <!-- سيتم تعبئة الخدمات من JavaScript -->
+                    </select>
+                    <small class="help-text">اضغط على Ctrl لاختيار أكثر من خدمة</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctorSchedule">جدول العمل</label>
+                    <div id="doctorSchedule">
+                        <!-- سيتم إضافة أيام العمل هنا -->
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelDoctorBtn">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">حفظ بيانات الطبيب</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Details Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-calendar-alt"></i> تفاصيل الحجز</h3>
+            
+            <div class="booking-details" id="bookingDetails">
+                <!-- سيتم تعبئة تفاصيل الحجز هنا -->
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="confirmBookingBtn">
+                    <i class="fas fa-check"></i> تأكيد الحجز
+                </button>
+                <button class="btn btn-warning" id="rescheduleBookingBtn">
+                    <i class="fas fa-calendar-alt"></i> إعادة جدولة
+                </button>
+                <button class="btn btn-danger" id="cancelBookingBtn">
+                    <i class="fas fa-times"></i> إلغاء الحجز
+                </button>
+                <button class="btn btn-secondary" id="closeBookingModal">
+                    <i class="fas fa-times"></i> إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
