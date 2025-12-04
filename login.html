@@ -1,46 +1,542 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - عيادة ديرما كير</title>
+    <title>تسجيل الدخول - نظام إدارة عيادة ديرما كير</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* إضافات خاصة بصفحة تسجيل الدخول */
+        body.login-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #7C3AED, transparent);
+            border-radius: 50%;
+            opacity: 0.1;
+            transform: translate(30%, -30%);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+        
+        .login-logo-text h1 {
+            font-size: 1.8rem;
+            color: #1E293B;
+            margin: 0;
+        }
+        
+        .login-logo-text p {
+            color: #64748B;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .login-title {
+            color: #1E293B;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-subtitle {
+            color: #64748B;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1E293B;
+            font-size: 1rem;
+        }
+        
+        .login-form input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #F8FAFC;
+        }
+        
+        .login-form input:focus {
+            outline: none;
+            border-color: #7C3AED;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+        
+        .btn-block {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .login-footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E2E8F0;
+            text-align: center;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+        
+        .login-footer p {
+            margin: 0.5rem 0;
+        }
+        
+        .login-info {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border-right: 4px solid #F59E0B;
+        }
+        
+        .login-info h4 {
+            color: #92400E;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .login-info p {
+            color: #92400E;
+            font-size: 0.9rem;
+            margin: 0.25rem 0;
+        }
+        
+        .error-message {
+            background: linear-gradient(135deg, #FEE2E2, #FECACA);
+            color: #991B1B;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.3s ease;
+            border-right: 4px solid #EF4444;
+        }
+        
+        .error-message i {
+            font-size: 1.2rem;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* تأثيرات للمس */
+        .login-form input,
+        .btn-block {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* إضافة تأثير عند الضغط */
+        .btn-block:active {
+            transform: scale(0.98);
+        }
+        
+        /* تحسين للأجهزة الصغيرة */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .login-logo {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body class="login-page">
     <div class="login-container">
         <div class="login-header">
-            <div class="logo">
-                <i class="fas fa-stethoscope"></i>
-                <h2>عيادة ديرما كير</h2>
+            <div class="login-logo">
+                <div class="login-logo-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="login-logo-text">
+                    <h1>عيادة ديرما كير</h1>
+                    <p>نظام الإدارة الذكي</p>
+                </div>
             </div>
-            <h1>لوحة التحكم</h1>
-            <p>سجل دخولك لإدارة النظام</p>
+            
+            <h2 class="login-title">مرحباً بعودتك</h2>
+            <p class="login-subtitle">سجل دخولك للوصول إلى لوحة التحكم</p>
         </div>
         
-        <form id="loginForm">
+        <form id="loginForm" class="login-form">
+            <div id="errorContainer"></div>
+            
             <div class="form-group">
-                <label for="username">اسم المستخدم</label>
-                <input type="text" id="username" required>
+                <label for="username">
+                    <i class="fas fa-user"></i>
+                    اسم المستخدم
+                </label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    placeholder="أدخل اسم المستخدم" 
+                    required
+                    autocomplete="username"
+                >
             </div>
             
             <div class="form-group">
-                <label for="password">كلمة المرور</label>
-                <input type="password" id="password" required>
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                    كلمة المرور
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="أدخل كلمة المرور" 
+                    required
+                    autocomplete="current-password"
+                >
             </div>
             
             <button type="submit" class="btn btn-primary btn-block">
-                <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                <i class="fas fa-sign-in-alt"></i>
+                تسجيل الدخول
             </button>
-            
-            <div class="login-footer">
-                <p>كلمة المرور الافتراضية: admin / 123456</p>
-                <p>يجب تغييرها بعد أول دخول</p>
-            </div>
         </form>
+        
+        <div class="login-info">
+            <h4><i class="fas fa-info-circle"></i> معلومات الدخول الافتراضية</h4>
+            <p><strong>اسم المستخدم:</strong> admin</p>
+            <p><strong>كلمة المرور:</strong> 123456</p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">
+                <i class="fas fa-exclamation-triangle"></i>
+                يرجى تغيير كلمة المرور بعد أول دخول
+            </p>
+        </div>
+        
+        <div class="login-footer">
+            <p>© 2024 عيادة ديرما كير. جميع الحقوق محفوظة.</p>
+            <p>نظام آمن ومشفر لحماية بياناتك</p>
+        </div>
     </div>
     
+    <!-- Scripts -->
     <script src="script.js"></script>
-    <script src="login.js"></script>
+    <script>
+        // نظام تسجيل الدخول
+        class LoginSystem {
+            constructor() {
+                this.adminCredentials = {
+                    username: 'admin',
+                    password: '123456'
+                };
+                
+                this.maxAttempts = 5;
+                this.attempts = 0;
+                this.lockTime = 0;
+                
+                this.init();
+            }
+            
+            init() {
+                // التحقق من حالة الجلسة
+                this.checkSession();
+                
+                // إعداد النموذج
+                const form = document.getElementById('loginForm');
+                if (form) {
+                    form.addEventListener('submit', (e) => this.handleLogin(e));
+                }
+                
+                // إعداد حقل كلمة المرور
+                const passwordInput = document.getElementById('password');
+                if (passwordInput) {
+                    passwordInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.handleLogin(e);
+                        }
+                    });
+                }
+            }
+            
+            checkSession() {
+                // التحقق من تسجيل دخول سابق
+                const session = localStorage.getItem('admin_session');
+                if (session) {
+                    try {
+                        const sessionData = JSON.parse(session);
+                        const now = new Date().getTime();
+                        
+                        // التحقق من انتهاء الجلسة (24 ساعة)
+                        if (now - sessionData.loginTime < 24 * 60 * 60 * 1000) {
+                            // توجيه إلى لوحة التحكم
+                            window.location.href = 'admin.html';
+                        } else {
+                            // حذف الجلسة المنتهية
+                            localStorage.removeItem('admin_session');
+                        }
+                    } catch (e) {
+                        localStorage.removeItem('admin_session');
+                    }
+                }
+            }
+            
+            handleLogin(e) {
+                e.preventDefault();
+                
+                // التحقق من القفل
+                if (this.isLocked()) {
+                    this.showError('الحساب مؤقتاً مغلق. حاول مرة أخرى بعد قليل.');
+                    return;
+                }
+                
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+                
+                // التحقق من الحقول
+                if (!username || !password) {
+                    this.showError('يرجى ملء جميع الحقول المطلوبة');
+                    return;
+                }
+                
+                // التحقق من بيانات الدخول
+                if (username === this.adminCredentials.username && 
+                    password === this.adminCredentials.password) {
+                    
+                    // تسجيل الدخول الناجح
+                    this.loginSuccess();
+                } else {
+                    // محاولة خاطئة
+                    this.loginFailed();
+                }
+            }
+            
+            loginSuccess() {
+                // إنشاء جلسة جديدة
+                const sessionData = {
+                    username: this.adminCredentials.username,
+                    loginTime: new Date().getTime(),
+                    userAgent: navigator.userAgent,
+                    ip: 'local' // في الإصدار الحقيقي يتم الحصول من الخادم
+                };
+                
+                // حفظ الجلسة
+                localStorage.setItem('admin_session', JSON.stringify(sessionData));
+                
+                // إعادة تعيين المحاولات
+                this.attempts = 0;
+                localStorage.removeItem('login_attempts');
+                localStorage.removeItem('login_lock');
+                
+                // رسالة نجاح
+                this.showSuccess('تم تسجيل الدخول بنجاح! يتم توجيهك الآن...');
+                
+                // توجيه بعد تأخير بسيط
+                setTimeout(() => {
+                    window.location.href = 'admin.html';
+                }, 1500);
+            }
+            
+            loginFailed() {
+                this.attempts++;
+                
+                // حفظ المحاولات
+                localStorage.setItem('login_attempts', this.attempts);
+                
+                // التحقق من تجاوز الحد
+                if (this.attempts >= this.maxAttempts) {
+                    // قفل الحساب لمدة 15 دقيقة
+                    this.lockAccount();
+                    this.showError('تم قفل الحساب مؤقتاً بسبب محاولات دخول متعددة خاطئة. حاول مرة أخرى بعد 15 دقيقة.');
+                    return;
+                }
+                
+                // حساب المحاولات المتبقية
+                const remaining = this.maxAttempts - this.attempts;
+                
+                if (remaining === 1) {
+                    this.showError('كلمة المرور خاطئة! لديك محاولة واحدة فقط قبل قفل الحساب.');
+                } else {
+                    this.showError(`كلمة المرور خاطئة! لديك ${remaining} محاولات متبقية.`);
+                }
+            }
+            
+            lockAccount() {
+                this.lockTime = new Date().getTime() + (15 * 60 * 1000); // 15 دقيقة
+                localStorage.setItem('login_lock', this.lockTime);
+            }
+            
+            isLocked() {
+                const lockTime = localStorage.getItem('login_lock');
+                if (!lockTime) return false;
+                
+                const now = new Date().getTime();
+                if (now < parseInt(lockTime)) {
+                    return true;
+                } else {
+                    // إزالة القفل بعد انتهاء الوقت
+                    localStorage.removeItem('login_lock');
+                    localStorage.removeItem('login_attempts');
+                    this.attempts = 0;
+                    return false;
+                }
+            }
+            
+            showError(message) {
+                const errorContainer = document.getElementById('errorContainer');
+                if (!errorContainer) return;
+                
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${message}</span>
+                `;
+                
+                // إزالة الرسالة القديمة
+                while (errorContainer.firstChild) {
+                    errorContainer.removeChild(errorContainer.firstChild);
+                }
+                
+                // إضافة الرسالة الجديدة
+                errorContainer.appendChild(errorDiv);
+                
+                // التركيز على حقل كلمة المرور
+                const passwordInput = document.getElementById('password');
+                if (passwordInput) {
+                    passwordInput.focus();
+                    passwordInput.select();
+                }
+            }
+            
+            showSuccess(message) {
+                const errorContainer = document.getElementById('errorContainer');
+                if (!errorContainer) return;
+                
+                const successDiv = document.createElement('div');
+                successDiv.className = 'error-message';
+                successDiv.style.background = 'linear-gradient(135deg, #D1FAE5, #A7F3D0)';
+                successDiv.style.color = '#065F46';
+                successDiv.style.borderRightColor = '#10B981';
+                successDiv.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                `;
+                
+                // إزالة الرسالة القديمة
+                while (errorContainer.firstChild) {
+                    errorContainer.removeChild(errorContainer.firstChild);
+                }
+                
+                // إضافة الرسالة الجديدة
+                errorContainer.appendChild(successDiv);
+            }
+        }
+        
+        // تهيئة نظام تسجيل الدخول عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            window.loginSystem = new LoginSystem();
+            
+            // تحميل عدد المحاولات السابقة
+            const savedAttempts = localStorage.getItem('login_attempts');
+            if (savedAttempts) {
+                window.loginSystem.attempts = parseInt(savedAttempts);
+            }
+            
+            // التركيز على حقل اسم المستخدم
+            const usernameInput = document.getElementById('username');
+            if (usernameInput) {
+                setTimeout(() => {
+                    usernameInput.focus();
+                }, 100);
+            }
+        });
+    </script>
 </body>
 </html>
