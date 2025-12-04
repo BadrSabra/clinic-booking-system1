@@ -4,28 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول - عيادة ديرما كير</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --danger: #e74c3c;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
+        
         body {
             font-family: 'Cairo', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -34,710 +28,333 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            direction: rtl;
         }
-
+        
         .login-container {
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .login-card {
             background: white;
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-
-        .login-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-        }
-
-        .logo-section {
+        
+        .login-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
-
+        
         .logo {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 10px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .logo i {
-            font-size: 40px;
-            color: var(--secondary);
-        }
-
-        .logo h1 {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            color: var(--dark);
-            font-size: 14px;
-            opacity: 0.7;
-        }
-
-        .form-group {
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 20px;
         }
-
-        .form-group label {
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .logo-text h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .login-title {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .login-subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .login-form label {
             display: block;
             margin-bottom: 8px;
-            color: var(--primary);
-            font-weight: 500;
+            font-weight: 600;
+            color: #333;
         }
-
-        .input-with-icon {
-            position: relative;
-        }
-
-        .input-with-icon i {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--secondary);
-            font-size: 18px;
-        }
-
-        .input-with-icon input {
-            width: 100%;
-            padding: 15px 45px 15px 15px;
-            border: 2px solid var(--light);
-            border-radius: 8px;
-            font-size: 16px;
-            transition: var(--transition);
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .input-with-icon input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-
-        .login-button {
+        
+        .login-form input {
             width: 100%;
             padding: 15px;
-            background: var(--secondary);
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .login-form input:focus {
+            outline: none;
+            border-color: #7C3AED;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+        
+        .btn-block {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .login-button:hover:not(:disabled) {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        .login-button:disabled {
-            background: var(--light);
-            cursor: not-allowed;
-            transform: none;
-            color: #95a5a6;
-        }
-
-        .button-spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .security-info {
-            background: rgba(52, 152, 219, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            border-right: 4px solid var(--secondary);
-        }
-
-        .attempts-counter {
-            display: none;
-        }
-
-        .lock-timer {
-            display: none;
-            background: rgba(231, 76, 60, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            border-right: 4px solid var(--danger);
-        }
-
-        .info-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .info-title i {
-            color: var(--secondary);
-        }
-
-        .info-text {
-            font-size: 14px;
-            color: var(--dark);
-            margin-bottom: 5px;
-        }
-
-        .timer {
-            font-weight: 700;
-            color: var(--danger);
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .message-container {
-            margin: 20px 0;
-        }
-
-        .message {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message-error {
-            background: rgba(231, 76, 60, 0.1);
-            border-right: 4px solid var(--danger);
-            color: var(--danger);
-        }
-
-        .message-success {
-            background: rgba(39, 174, 96, 0.1);
-            border-right: 4px solid var(--success);
-            color: var(--success);
-        }
-
-        .message-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .message-icon {
-            font-size: 18px;
-        }
-
-        .message-close {
-            background: none;
-            border: none;
-            color: inherit;
-            cursor: pointer;
-            font-size: 14px;
-            opacity: 0.7;
-            transition: var(--transition);
-        }
-
-        .message-close:hover {
-            opacity: 1;
-        }
-
-        .test-credentials {
-            text-align: center;
             margin-top: 20px;
-            font-size: 13px;
-            color: var(--dark);
-            opacity: 0.7;
+            transition: all 0.3s;
         }
-
-        .test-credentials kbd {
-            background: var(--light);
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-family: monospace;
+        
+        .btn-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
         }
-
-        /* تأثير اهتزاز النموذج */
-        .shake {
-            animation: shake 0.5s ease-in-out;
+        
+        .login-info {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border-right: 4px solid #f59e0b;
         }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        
+        .login-info h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        /* الرداعية */
+        
+        .login-info p {
+            color: #92400e;
+            margin: 5px 0;
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 4px solid #ef4444;
+        }
+        
+        .error-message i {
+            font-size: 18px;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
         @media (max-width: 480px) {
-            .login-card {
+            .login-container {
                 padding: 30px 20px;
             }
             
-            .logo h1 {
-                font-size: 20px;
+            .logo {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <div class="login-card">
-            <div class="logo-section">
-                <div class="logo">
+        <div class="login-header">
+            <div class="logo">
+                <div class="logo-icon">
                     <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
                     <h1>عيادة ديرما كير</h1>
+                    <p>لوحة التحكم الإدارية</p>
                 </div>
-                <p class="subtitle">نظام إدارة العيادة المتكامل</p>
             </div>
-
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">اسم المستخدم</label>
-                    <div class="input-with-icon">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم" autocomplete="username">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">كلمة المرور</label>
-                    <div class="input-with-icon">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" autocomplete="current-password">
-                    </div>
-                </div>
-
-                <!-- رسائل النظام -->
-                <div id="messageContainer" class="message-container"></div>
-
-                <!-- معلومات الأمان -->
-                <div id="attemptsCounter" class="security-info attempts-counter">
-                    <div class="info-title">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>معلومات الأمان</span>
-                    </div>
-                    <p class="info-text">المحاولات الفاشلة: <span id="attemptsCount">0</span></p>
-                    <p class="info-text">المحاولات المتبقية: <span id="remainingAttempts">5</span></p>
-                </div>
-
-                <!-- مؤقت القفل -->
-                <div id="lockTimer" class="lock-timer">
-                    <div class="info-title">
-                        <i class="fas fa-lock"></i>
-                        <span>الحساب مقفل مؤقتاً</span>
-                    </div>
-                    <p class="info-text">لقد تجاوزت الحد الأقصى لمحاولات الدخول الفاشلة.</p>
-                    <p class="info-text">يمكنك المحاولة مرة أخرى خلال:</p>
-                    <div id="timerDisplay" class="timer">15:00</div>
-                </div>
-
-                <button type="submit" id="loginButton" class="login-button">
-                    <span id="buttonText">تسجيل الدخول</span>
-                    <div id="buttonSpinner" class="button-spinner"></div>
-                </button>
-            </form>
-
-            <div class="test-credentials">
-                <p>لاختبار النظام: Ctrl + D لملء بيانات الدخول</p>
-                <p>اسم المستخدم: <kbd>admin</kbd> | كلمة المرور: <kbd>123456</kbd></p>
+            
+            <h2 class="login-title">مرحباً بعودتك</h2>
+            <p class="login-subtitle">سجل دخولك للوصول إلى لوحة التحكم</p>
+        </div>
+        
+        <form id="loginForm" class="login-form">
+            <div id="errorContainer"></div>
+            
+            <div class="form-group">
+                <label for="username">
+                    <i class="fas fa-user"></i>
+                    اسم المستخدم
+                </label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    placeholder="أدخل اسم المستخدم"
+                    value="admin"
+                >
             </div>
+            
+            <div class="form-group">
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                    كلمة المرور
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="أدخل كلمة المرور"
+                    value="123456"
+                >
+            </div>
+            
+            <button type="submit" class="btn-block">
+                <i class="fas fa-sign-in-alt"></i>
+                تسجيل الدخول
+            </button>
+        </form>
+        
+        <div class="login-info">
+            <h4><i class="fas fa-info-circle"></i> بيانات الدخول الافتراضية</h4>
+            <p><strong>اسم المستخدم:</strong> admin</p>
+            <p><strong>كلمة المرور:</strong> 123456</p>
+        </div>
+        
+        <div class="login-footer">
+            <p>© 2024 عيادة ديرما كير. جميع الحقوق محفوظة.</p>
         </div>
     </div>
-
-    <!-- ملف المصادقة الأساسي -->
+    
     <script>
-        /**
-         * نظام المصادقة المبسط والمباشر
-         */
+        // نظام تسجيل الدخول المبسط
         document.addEventListener('DOMContentLoaded', function() {
-            // بيانات الدخول الثابتة
-            const VALID_CREDENTIALS = {
-                username: 'admin',
-                password: '123456'
-            };
-
-            // عناصر النموذج
             const loginForm = document.getElementById('loginForm');
-            const usernameInput = document.getElementById('username');
-            const passwordInput = document.getElementById('password');
-            const loginButton = document.getElementById('loginButton');
-            const buttonText = document.getElementById('buttonText');
-            const buttonSpinner = document.getElementById('buttonSpinner');
-            const messageContainer = document.getElementById('messageContainer');
-            const attemptsCounter = document.getElementById('attemptsCounter');
-            const remainingAttempts = document.getElementById('remainingAttempts');
-            const lockTimer = document.getElementById('lockTimer');
-            const timerDisplay = document.getElementById('timerDisplay');
-
-            // متغيرات النظام
-            let attempts = parseInt(localStorage.getItem('login_attempts')) || 0;
-            let lockUntil = parseInt(localStorage.getItem('login_lock')) || 0;
-            let isSubmitting = false;
-
-            // تهيئة الواجهة
-            updateUI();
-
-            // إعداد حدث النموذج
-            loginForm.addEventListener('submit', handleLogin);
-
-            // اختصار لملء البيانات
-            document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey && e.key === 'd') {
-                    e.preventDefault();
-                    usernameInput.value = 'admin';
-                    passwordInput.value = '123456';
-                    showMessage('تم تعبئة بيانات الاختبار بنجاح', 'success');
-                }
-            });
-
-            /**
-             * معالجة تسجيل الدخول
-             */
-            async function handleLogin(e) {
+            const errorContainer = document.getElementById('errorContainer');
+            
+            // تعريف بيانات الدخول الصحيحة
+            const correctUsername = 'admin';
+            const correctPassword = '123456';
+            
+            // التركيز على حقل كلمة المرور
+            document.getElementById('password').focus();
+            
+            loginForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                if (isSubmitting) return;
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
                 
-                // التحقق من القفل
-                if (isLocked()) {
-                    showLockMessage();
-                    return;
-                }
+                // مسح أي أخطاء سابقة
+                errorContainer.innerHTML = '';
                 
-                // التحقق من الحقول
-                if (!validateForm()) {
-                    return;
-                }
-                
-                // بدء عملية التسجيل
-                startLogin();
-                
-                try {
-                    // محاكاة تأخير الشبكة
-                    await new Promise(resolve => setTimeout(resolve, 800));
-                    
-                    // محاولة تسجيل الدخول
-                    const username = usernameInput.value.trim();
-                    const password = passwordInput.value.trim();
-                    
-                    if (username === VALID_CREDENTIALS.username && 
-                        password === VALID_CREDENTIALS.password) {
-                        await handleLoginSuccess();
-                    } else {
-                        handleLoginFailure();
-                    }
-                    
-                } catch (error) {
-                    console.error('خطأ:', error);
-                    showMessage('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.', 'error');
-                } finally {
-                    endLogin();
-                }
-            }
-
-            /**
-             * التحقق من القفل
-             */
-            function isLocked() {
-                if (lockUntil === 0) return false;
-                
-                const now = Date.now();
-                if (now < lockUntil) {
-                    return true;
-                } else {
-                    // انتهاء القفل
-                    resetSecurityData();
-                    return false;
-                }
-            }
-
-            /**
-             * التحقق من صحة النموذج
-             */
-            function validateForm() {
-                const username = usernameInput.value.trim();
-                const password = passwordInput.value.trim();
-                
+                // التحقق من البيانات
                 if (!username || !password) {
-                    showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
-                    return false;
-                }
-                
-                if (username.length < 3) {
-                    showMessage('اسم المستخدم يجب أن يكون على الأقل 3 أحرف', 'error');
-                    usernameInput.focus();
-                    return false;
-                }
-                
-                if (password.length < 6) {
-                    showMessage('كلمة المرور يجب أن تكون على الأقل 6 أحرف', 'error');
-                    passwordInput.focus();
-                    return false;
-                }
-                
-                return true;
-            }
-
-            /**
-             * بدء عملية التسجيل
-             */
-            function startLogin() {
-                isSubmitting = true;
-                loginButton.disabled = true;
-                buttonText.textContent = 'جاري التحقق...';
-                buttonSpinner.style.display = 'block';
-                clearMessages();
-            }
-
-            /**
-             * إنهاء عملية التسجيل
-             */
-            function endLogin() {
-                isSubmitting = false;
-                loginButton.disabled = false;
-                buttonText.textContent = 'تسجيل الدخول';
-                buttonSpinner.style.display = 'none';
-            }
-
-            /**
-             * معالجة تسجيل الدخول الناجح
-             */
-            async function handleLoginSuccess() {
-                // إعادة تعيين بيانات الأمان
-                resetSecurityData();
-                
-                // إنشاء جلسة
-                const sessionData = {
-                    username: 'admin',
-                    name: 'مدير النظام',
-                    role: 'administrator',
-                    loginTime: Date.now(),
-                    lastActivity: Date.now()
-                };
-                
-                localStorage.setItem('derma_session', JSON.stringify(sessionData));
-                
-                // عرض رسالة النجاح
-                showMessage('تم تسجيل الدخول بنجاح! يتم توجيهك الآن...', 'success');
-                
-                // تأخير قبل التوجيه
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                // توجيه إلى لوحة التحكم
-                window.location.href = 'admin.html';
-            }
-
-            /**
-             * معالجة فشل تسجيل الدخول
-             */
-            function handleLoginFailure() {
-                // زيادة عدد المحاولات
-                attempts++;
-                localStorage.setItem('login_attempts', attempts.toString());
-                
-                // التحقق من تجاوز الحد
-                const MAX_ATTEMPTS = 5;
-                if (attempts >= MAX_ATTEMPTS) {
-                    lockAccount();
-                    showLockMessage();
+                    showError('يرجى ملء جميع الحقول المطلوبة');
                     return;
                 }
                 
-                // حساب المحاولات المتبقية
-                const remaining = MAX_ATTEMPTS - attempts;
-                
-                // عرض رسالة الخطأ
-                let errorMessage;
-                if (remaining === 1) {
-                    errorMessage = 'بيانات الدخول غير صحيحة! لديك محاولة واحدة فقط قبل قفل الحساب.';
+                if (username === correctUsername && password === correctPassword) {
+                    // تسجيل الدخول الناجح
+                    loginSuccess();
                 } else {
-                    errorMessage = `بيانات الدخول غير صحيحة! لديك ${remaining} محاولات متبقية.`;
+                    // فشل تسجيل الدخول
+                    showError('اسم المستخدم أو كلمة المرور غير صحيحة');
                 }
-                
-                showMessage(errorMessage, 'error');
-                updateUI();
-                
-                // اهتزاز النموذج
-                shakeForm();
-            }
-
-            /**
-             * قفل الحساب
-             */
-            function lockAccount() {
-                const LOCK_DURATION = 15 * 60 * 1000; // 15 دقيقة
-                lockUntil = Date.now() + LOCK_DURATION;
-                localStorage.setItem('login_lock', lockUntil.toString());
-                startLockTimer();
-            }
-
-            /**
-             * إعادة تعيين بيانات الأمان
-             */
-            function resetSecurityData() {
-                attempts = 0;
-                lockUntil = 0;
-                localStorage.removeItem('login_attempts');
-                localStorage.removeItem('login_lock');
-                updateUI();
-            }
-
-            /**
-             * بدء عدّاد القفل
-             */
-            function startLockTimer() {
-                if (!lockTimer || !timerDisplay) return;
-                
-                lockTimer.style.display = 'block';
-                
-                const updateTimer = () => {
-                    const now = Date.now();
-                    const remaining = Math.max(0, lockUntil - now);
-                    
-                    if (remaining === 0) {
-                        lockTimer.style.display = 'none';
-                        clearMessages();
-                        showMessage('تم فتح الحساب. يمكنك المحاولة مرة أخرى.', 'success');
-                        resetSecurityData();
-                        return;
-                    }
-                    
-                    const minutes = Math.floor(remaining / 60000);
-                    const seconds = Math.floor((remaining % 60000) / 1000);
-                    
-                    timerDisplay.textContent = 
-                        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    
-                    setTimeout(updateTimer, 1000);
-                };
-                
-                updateTimer();
-            }
-
-            /**
-             * تحديث واجهة المستخدم
-             */
-            function updateUI() {
-                // تحديث عدّاد المحاولات
-                if (attemptsCounter && remainingAttempts) {
-                    if (attempts > 0) {
-                        attemptsCounter.style.display = 'block';
-                        const remaining = 5 - attempts;
-                        remainingAttempts.textContent = remaining;
-                    } else {
-                        attemptsCounter.style.display = 'none';
-                    }
+            });
+            
+            // إضافة حدث عند الضغط على Enter
+            document.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    loginForm.dispatchEvent(new Event('submit'));
                 }
-                
-                // تحديث مؤقت القفل
-                if (lockTimer) {
-                    lockTimer.style.display = isLocked() ? 'block' : 'none';
-                }
-            }
-
-            /**
-             * عرض الرسائل
-             */
-            function showMessage(message, type) {
-                if (!messageContainer) return;
-                
-                messageContainer.innerHTML = '';
-                
-                const messageElement = document.createElement('div');
-                messageElement.className = `message message-${type}`;
-                messageElement.innerHTML = `
-                    <div class="message-content">
-                        <i class="message-icon ${type === 'error' ? 'fas fa-times-circle' : 'fas fa-check-circle'}"></i>
-                        <span class="message-text">${message}</span>
-                    </div>
-                    <button class="message-close" onclick="this.parentElement.remove()">
-                        <i class="fas fa-times"></i>
-                    </button>
+            });
+            
+            function showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${message}</span>
                 `;
                 
-                messageContainer.appendChild(messageElement);
+                errorContainer.appendChild(errorDiv);
                 
-                if (type === 'error') {
-                    setTimeout(() => {
-                        if (messageElement.parentNode) {
-                            messageElement.remove();
-                        }
-                    }, 5000);
-                }
+                // اهتزاز النموذج عند الخطأ
+                loginForm.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    loginForm.style.animation = '';
+                }, 500);
+                
+                // إضافة أنيميشن الاهتزاز
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes shake {
+                        0%, 100% { transform: translateX(0); }
+                        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                        20%, 40%, 60%, 80% { transform: translateX(5px); }
+                    }
+                `;
+                document.head.appendChild(style);
             }
-
-            /**
-             * عرض رسالة القفل
-             */
-            function showLockMessage() {
-                const remainingTime = Math.ceil((lockUntil - Date.now()) / 60000);
-                const message = `الحساب مقفل مؤقتًا بسبب كثرة المحاولات الفاشلة. يرجى المحاولة مرة أخرى بعد ${remainingTime} دقيقة.`;
-                showMessage(message, 'error');
-                if (lockTimer) {
-                    lockTimer.style.display = 'block';
-                }
-            }
-
-            /**
-             * مسح الرسائل
-             */
-            function clearMessages() {
-                if (messageContainer) {
-                    messageContainer.innerHTML = '';
-                }
-            }
-
-            /**
-             * اهتزاز النموذج
-             */
-            function shakeForm() {
-                if (loginForm) {
-                    loginForm.classList.add('shake');
-                    setTimeout(() => {
-                        loginForm.classList.remove('shake');
-                    }, 500);
-                }
-            }
-
-            // التحقق من القفل عند التحميل
-            if (isLocked()) {
-                showLockMessage();
-                startLockTimer();
+            
+            function loginSuccess() {
+                // إنشاء جلسة بسيطة
+                const sessionData = {
+                    username: correctUsername,
+                    loginTime: new Date().toISOString(),
+                    userAgent: navigator.userAgent
+                };
+                
+                // حفظ الجلسة في localStorage
+                localStorage.setItem('admin_session', JSON.stringify(sessionData));
+                
+                // عرض رسالة النجاح
+                errorContainer.innerHTML = `
+                    <div class="error-message" style="background: #d1fae5; color: #065f46; border-color: #10b981;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>تم تسجيل الدخول بنجاح! يتم توجيهك الآن...</span>
+                    </div>
+                `;
+                
+                // تغيير لون الزر
+                const submitBtn = loginForm.querySelector('.btn-block');
+                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> جاري التوجيه...';
+                submitBtn.disabled = true;
+                
+                // توجيه إلى لوحة التحكم بعد 1.5 ثانية
+                setTimeout(() => {
+                    window.location.href = 'admin.html';
+                }, 1500);
             }
         });
     </script>
