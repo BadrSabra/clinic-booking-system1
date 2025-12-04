@@ -13,21 +13,21 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="style.css">
-    
     <style>
-        /* أنماط خاصة بلوحة التحكم */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Cairo', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            margin: 0;
-            padding: 0;
         }
         
         .dashboard-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 100px 20px 40px;
         }
@@ -36,7 +36,7 @@
         .dashboard-header {
             background: white;
             border-radius: 15px;
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             display: flex;
@@ -57,7 +57,6 @@
         }
         
         .dashboard-title h1 {
-            margin: 0;
             color: #333;
             font-size: 24px;
         }
@@ -81,13 +80,11 @@
         }
         
         .admin-details h4 {
-            margin: 0;
             color: #333;
-            font-size: 16px;
+            margin-bottom: 5px;
         }
         
         .admin-details p {
-            margin: 5px 0 0;
             color: #666;
             font-size: 14px;
         }
@@ -96,20 +93,20 @@
             background: #ef4444;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 600;
         }
         
         .logout-btn:hover {
             background: #dc2626;
         }
         
-        /* Stats Grid */
+        /* Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -120,22 +117,13 @@
         .stat-card {
             background: white;
             border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .stat-icon {
-            width: 60px;
-            height: 60px;
-            background: #f3f4f6;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+            font-size: 40px;
+            margin-bottom: 15px;
         }
         
         .stat-card.primary .stat-icon {
@@ -154,30 +142,28 @@
             color: #EF4444;
         }
         
-        .stat-content h3 {
-            margin: 0;
-            font-size: 32px;
-            font-weight: 700;
+        .stat-card h3 {
+            font-size: 36px;
+            margin-bottom: 5px;
         }
         
-        .stat-card.primary .stat-content h3 {
+        .stat-card.primary h3 {
             color: #7C3AED;
         }
         
-        .stat-card.success .stat-content h3 {
+        .stat-card.success h3 {
             color: #10B981;
         }
         
-        .stat-card.warning .stat-content h3 {
+        .stat-card.warning h3 {
             color: #F59E0B;
         }
         
-        .stat-card.danger .stat-content h3 {
+        .stat-card.danger h3 {
             color: #EF4444;
         }
         
-        .stat-content p {
-            margin: 5px 0 0;
+        .stat-card p {
             color: #666;
         }
         
@@ -201,45 +187,13 @@
             color: #7C3AED;
         }
         
-        /* Filters */
-        .filters {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .filter-group label {
-            font-weight: 600;
-            color: #333;
-        }
-        
-        select, input {
-            padding: 10px 15px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 16px;
-        }
-        
-        select:focus, input:focus {
-            outline: none;
-            border-color: #7C3AED;
-        }
-        
         .btn {
             padding: 10px 20px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
@@ -263,15 +217,10 @@
         }
         
         /* Table */
-        .table-container {
-            overflow-x: auto;
-            margin-bottom: 25px;
-        }
-        
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 1000px;
+            margin-top: 20px;
         }
         
         th {
@@ -311,42 +260,28 @@
             color: #065f46;
         }
         
-        .status-cancelled {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 8px;
-        }
-        
         .action-btn {
-            width: 36px;
-            height: 36px;
+            padding: 8px 15px;
             border: none;
             border-radius: 6px;
-            background: #f3f4f6;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 14px;
+            margin-left: 5px;
         }
         
         .action-btn.view {
-            color: #3b82f6;
+            background: #3b82f6;
+            color: white;
         }
         
         .action-btn.edit {
-            color: #f59e0b;
+            background: #f59e0b;
+            color: white;
         }
         
         .action-btn.delete {
-            color: #ef4444;
-        }
-        
-        .action-btn:hover {
-            background: #e5e7eb;
+            background: #ef4444;
+            color: white;
         }
         
         /* Management Cards */
@@ -371,181 +306,10 @@
         }
         
         .card-header h3 {
-            margin: 0;
             color: #333;
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-        
-        .search-box {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 12px 45px 12px 15px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-        }
-        
-        .search-box i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #9ca3af;
-        }
-        
-        .items-list {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .item-card {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 2px solid transparent;
-        }
-        
-        .item-card:hover {
-            border-color: #7C3AED;
-        }
-        
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .item-title {
-            font-weight: 600;
-            color: #333;
-            margin: 0;
-        }
-        
-        .item-price {
-            font-weight: 700;
-            color: #7C3AED;
-        }
-        
-        .item-description {
-            color: #666;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-        
-        .item-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .item-details {
-            font-size: 13px;
-            color: #9ca3af;
-        }
-        
-        .item-actions {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .item-btn {
-            width: 32px;
-            height: 32px;
-            border: none;
-            border-radius: 6px;
-            background: #f3f4f6;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .item-btn.edit {
-            color: #f59e0b;
-        }
-        
-        .item-btn.delete {
-            color: #ef4444;
-        }
-        
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        .modal-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            color: #333;
-        }
-        
-        .modal-header i {
-            color: #7C3AED;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 16px;
-        }
-        
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        
-        .form-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
         }
         
         .empty-state {
@@ -560,7 +324,51 @@
             opacity: 0.5;
         }
         
-        /* Responsive */
+        /* Login Error */
+        .login-error {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .error-content {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .error-content i {
+            font-size: 60px;
+            color: #ef4444;
+            margin-bottom: 20px;
+        }
+        
+        .error-content h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .error-content p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .error-content a {
+            display: inline-block;
+            background: #7C3AED;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
         @media (max-width: 768px) {
             .dashboard-header {
                 flex-direction: column;
@@ -572,183 +380,371 @@
                 flex-direction: column;
             }
             
-            .filters {
-                flex-direction: column;
-            }
-            
-            .filter-group {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
             .management-cards {
                 grid-template-columns: 1fr;
-            }
-            
-            .form-actions {
-                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <!-- تحقق من تسجيل الدخول -->
+    <!-- نظام تحقق من تسجيل الدخول -->
     <script>
-        (function() {
+        (function checkLogin() {
+            // بيانات الدخول الصحيحة
+            const correctUsername = 'admin';
+            const correctPassword = '123456';
+            
+            // التحقق من وجود جلسة
             const session = localStorage.getItem('admin_session');
+            
             if (!session) {
-                window.location.href = 'login.html';
+                // لا توجد جلسة، عرض رسالة خطأ
+                document.body.innerHTML = `
+                    <div class="login-error">
+                        <div class="error-content">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h2>يجب تسجيل الدخول أولاً</h2>
+                            <p>لم يتم تسجيل دخولك أو انتهت جلستك. يرجى تسجيل الدخول للمتابعة.</p>
+                            <a href="login.html">الذهاب إلى صفحة تسجيل الدخول</a>
+                        </div>
+                    </div>
+                `;
                 return;
             }
+            
+            try {
+                // التحقق من صحة الجلسة
+                const sessionData = JSON.parse(session);
+                const now = new Date();
+                const loginTime = new Date(sessionData.loginTime);
+                const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+                
+                // إذا مر أكثر من 24 ساعة
+                if (hoursDiff > 24) {
+                    localStorage.removeItem('admin_session');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // عرض وقت الدخول
+                const timeStr = loginTime.toLocaleString('ar-SA', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    day: 'numeric',
+                    month: 'long'
+                });
+                
+                // استمرار في تحميل لوحة التحكم
+                loadDashboard(timeStr);
+                
+            } catch (e) {
+                // خطأ في تحليل الجلسة
+                localStorage.removeItem('admin_session');
+                window.location.href = 'login.html';
+            }
         })();
-    </script>
-
-    <!-- لوحة التحكم -->
-    <div class="dashboard-container">
-        <!-- Header -->
-        <div class="dashboard-header">
-            <div class="dashboard-title">
-                <i class="fas fa-cogs"></i>
-                <h1>لوحة تحكم عيادة ديرما كير</h1>
-            </div>
-            
-            <div class="admin-info">
-                <div class="admin-avatar">
-                    <i class="fas fa-user-shield"></i>
-                </div>
-                <div class="admin-details">
-                    <h4>مسؤول النظام</h4>
-                    <p id="loginTime">آخر دخول: اليوم</p>
-                </div>
-                <button class="logout-btn" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                </button>
-            </div>
-        </div>
         
-        <!-- Statistics -->
-        <div class="stats-grid">
-            <div class="stat-card primary">
-                <div class="stat-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <div class="stat-content">
-                    <h3 id="totalBookings">0</h3>
-                    <p>إجمالي الحجوزات</p>
-                </div>
-            </div>
-            
-            <div class="stat-card success">
-                <div class="stat-icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-                <div class="stat-content">
-                    <h3 id="confirmedBookings">0</h3>
-                    <p>حجوزات مؤكدة</p>
-                </div>
-            </div>
-            
-            <div class="stat-card warning">
-                <div class="stat-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="stat-content">
-                    <h3 id="pendingBookings">0</h3>
-                    <p>حجوزات قيد الانتظار</p>
-                </div>
-            </div>
-            
-            <div class="stat-card danger">
-                <div class="stat-icon">
-                    <i class="fas fa-times-circle"></i>
-                </div>
-                <div class="stat-content">
-                    <h3 id="cancelledBookings">0</h3>
-                    <p>حجوزات ملغاة</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Main Content -->
-        <div class="dashboard-main">
-            <!-- Bookings Section -->
-            <div class="section-title">
-                <i class="fas fa-list"></i>
-                <h2>قائمة الحجوزات</h2>
-            </div>
-            
-            <!-- Filters -->
-            <div class="filters">
-                <div class="filter-group">
-                    <label>الحالة:</label>
-                    <select id="filterStatus">
-                        <option value="all">جميع الحالات</option>
-                        <option value="pending">قيد الانتظار</option>
-                        <option value="confirmed">مؤكد</option>
-                        <option value="cancelled">ملغى</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label>التاريخ:</label>
-                    <input type="date" id="filterDate">
-                </div>
-                
-                <button class="btn btn-primary" id="applyFilters">
-                    <i class="fas fa-filter"></i> تطبيق
-                </button>
-                
-                <button class="btn btn-secondary" id="clearFilters">
-                    <i class="fas fa-times"></i> مسح
-                </button>
-                
-                <button class="btn btn-primary" id="refreshBtn">
-                    <i class="fas fa-sync-alt"></i> تحديث
-                </button>
-            </div>
-            
-            <!-- Bookings Table -->
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>اسم المريض</th>
-                            <th>الخدمة</th>
-                            <th>التاريخ</th>
-                            <th>الوقت</th>
-                            <th>الهاتف</th>
-                            <th>الحالة</th>
-                            <th>الإجراءات</th>
-                        </tr>
-                    </thead>
-                    <tbody id="bookingsTable">
-                        <!-- البيانات تظهر هنا -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <!-- Empty State -->
-            <div id="emptyBookings" class="empty-state">
-                <i class="fas fa-calendar-times"></i>
-                <h3>لا توجد حجوزات</h3>
-                <p>لم يتم إضافة أي حجوزات بعد</p>
-            </div>
-            
-            <!-- Management Cards -->
-            <div class="management-cards">
-                <!-- Services Card -->
-                <div class="management-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h3>
-                        <button class="btn btn-primary" id="addServiceBtn">
-                            <i class="fas fa-plus"></i> إضافة
+        function loadDashboard(loginTime) {
+            document.body.innerHTML = `
+                <!-- لوحة التحكم -->
+                <div class="dashboard-container">
+                    <!-- Header -->
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">
+                            <i class="fas fa-cogs"></i>
+                            <h1>لوحة تحكم عيادة ديرما كير</h1>
+                        </div>
+                        
+                        <div class="admin-info">
+                            <div class="admin-avatar">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="admin-details">
+                                <h4>مسؤول النظام</h4>
+                                <p>آخر دخول: ${loginTime}</p>
+                            </div>
+                            <button class="logout-btn" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Statistics -->
+                    <div class="stats-grid">
+                        <div class="stat-card primary">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h3 id="totalBookings">0</h3>
+                            <p>إجمالي الحجوزات</p>
+                        </div>
+                        
+                        <div class="stat-card success">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h3 id="confirmedBookings">0</h3>
+                            <p>حجوزات مؤكدة</p>
+                        </div>
+                        
+                        <div class="stat-card warning">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 id="pendingBookings">0</h3>
+                            <p>حجوزات قيد الانتظار</p>
+                        </div>
+                        
+                        <div class="stat-card danger">
+                            <div class="stat-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <h3 id="cancelledBookings">0</h3>
+                            <p>حجوزات ملغاة</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content -->
+                    <div class="dashboard-main">
+                        <!-- Bookings Section -->
+                        <div class="section-title">
+                            <i class="fas fa-list"></i>
+                            <h2>قائمة الحجوزات</h2>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="refreshBtn">
+                            <i class="fas fa-sync-alt"></i> تحديث البيانات
                         </button>
+                        
+                        <!-- Bookings Table -->
+                        <div style="overflow-x: auto; margin-top: 20px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>اسم المريض</th>
+                                        <th>الخدمة</th>
+                                        <th>التاريخ</th>
+                                        <th>الهاتف</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookingsTable">
+                                    <!-- البيانات تظهر هنا -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Empty State -->
+                        <div id="emptyBookings" class="empty-state" style="display: none;">
+                            <i class="fas fa-calendar-times"></i>
+                            <h3>لا توجد حجوزات</h3>
+                            <p>لم يتم إضافة أي حجوزات بعد</p>
+                        </div>
+                        
+                        <!-- Management Cards -->
+                        <div class="management-cards">
+                            <!-- Services Card -->
+                            <div class="management-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h3>
+                                    <button class="btn btn-primary" id="addServiceBtn">
+                                        <i class="fas fa-plus"></i> إضافة خدمة
+                                    </button>
+                                </div>
+                                
+                                <div id="servicesList">
+                                    <!-- الخدمات تظهر هنا -->
+                                </div>
+                                
+                                <div id="emptyServices" class="empty-state">
+                                    <i class="fas fa-concierge-bell"></i>
+                                    <h3>لا توجد خدمات</h3>
+                                    <p>قم بإضافة أول خدمة</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Doctors Card -->
+                            <div class="management-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-user-md"></i> إدارة الأطباء</h3>
+                                    <button class="btn btn-primary" id="addDoctorBtn">
+                                        <i class="fas fa-plus"></i> إضافة طبيب
+                                    </button>
+                                </div>
+                                
+                                <div id="doctorsList">
+                                    <!-- الأطباء يظهرون هنا -->
+                                </div>
+                                
+                                <div id="emptyDoctors" class="empty-state">
+                                    <i class="fas fa-user-md"></i>
+                                    <h3>لا توجد أطباء</h3>
+                                    <p>قم بإضافة أول طبيب</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="search-box">
-                        <input type="text" id="searchServices" placeholder="بحث عن خدمة...">
-                        <i class="fas fa-search"></i>
+                </div>
+                
+                <!-- Modals -->
+                <!-- Service Modal -->
+                <div id="serviceModal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 500px;">
+                        <h2 style="margin-bottom: 20px; color: #333;">إضافة خدمة جديدة</h2>
+                        <form id="serviceForm">
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">اسم الخدمة</label>
+                                <input type="text" id="serviceName" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px;" required>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">السعر (ريال)</label>
+                                <input type="number" id="servicePrice" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px;" required>
+                            </div>
+                            <div style="display: flex; gap: 15px; margin-top: 30px;">
+                                <button type="button" class="btn btn-secondary" id="cancelServiceBtn">إلغاء</button>
+                                <button type="submit" class="btn btn-primary">حفظ</button>
+                            </div>
+                        </form>
                     </div>
+                </div>
+            `;
+            
+            // الآن تهيئة النظام
+            initializeDashboard();
+        }
+        
+        function initializeDashboard() {
+            // نظام إدارة لوحة التحكم
+            class DashboardManager {
+                constructor() {
+                    this.services = JSON.parse(localStorage.getItem('clinicServices')) || [];
+                    this.doctors = JSON.parse(localStorage.getItem('clinicDoctors')) || [];
+                    this.bookings = JSON.parse(localStorage.getItem('clinicBookings')) || [];
                     
-                    <div class="items-list" id="servicesLi
+                    this.init();
+                }
+                
+                init() {
+                    this.loadData();
+                    this.setupEventListeners();
+                }
+                
+                loadData() {
+                    // تحديث الإحصائيات
+                    const total = this.bookings.length;
+                    const confirmed = this.bookings.filter(b => b.status === 'confirmed').length;
+                    const pending = this.bookings.filter(b => b.status === 'pending').length;
+                    const cancelled = this.bookings.filter(b => b.status === 'cancelled').length;
+                    
+                    document.getElementById('totalBookings').textContent = total;
+                    document.getElementById('confirmedBookings').textContent = confirmed;
+                    document.getElementById('pendingBookings').textContent = pending;
+                    document.getElementById('cancelledBookings').textContent = cancelled;
+                    
+                    // تحميل الحجوزات
+                    this.loadBookings();
+                    
+                    // تحميل الخدمات
+                    this.loadServices();
+                    
+                    // تحميل الأطباء
+                    this.loadDoctors();
+                }
+                
+                loadBookings() {
+                    const table = document.getElementById('bookingsTable');
+                    const emptyState = document.getElementById('emptyBookings');
+                    
+                    if (this.bookings.length === 0) {
+                        table.innerHTML = '';
+                        emptyState.style.display = 'block';
+                        return;
+                    }
+                    
+                    emptyState.style.display = 'none';
+                    
+                    let html = '';
+                    this.bookings.forEach((booking, index) => {
+                        const service = this.services.find(s => s.id === booking.serviceId);
+                        
+                        html += `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${booking.name || 'غير معروف'}</td>
+                                <td>${service ? service.name : 'غير معروف'}</td>
+                                <td>${this.formatDate(booking.date)}</td>
+                                <td>${booking.phone || 'غير متوفر'}</td>
+                                <td>
+                                    <span class="status-badge status-${booking.status || 'pending'}">
+                                        ${this.getStatusText(booking.status)}
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="action-btn view" onclick="dashboardManager.viewBooking(${index})">عرض</button>
+                                    <button class="action-btn edit" onclick="dashboardManager.editBooking(${index})">تعديل</button>
+                                    <button class="action-btn delete" onclick="dashboardManager.deleteBooking(${index})">حذف</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    
+                    table.innerHTML = html;
+                }
+                
+                loadServices() {
+                    const servicesList = document.getElementById('servicesList');
+                    const emptyState = document.getElementById('emptyServices');
+                    
+                    if (this.services.length === 0) {
+                        servicesList.innerHTML = '';
+                        emptyState.style.display = 'block';
+                        return;
+                    }
+                    
+                    emptyState.style.display = 'none';
+                    
+                    let html = '';
+                    this.services.forEach(service => {
+                        html += `
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 2px solid #e5e7eb;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="margin: 0; color: #333;">${service.name}</h4>
+                                    <span style="font-weight: bold; color: #7C3AED;">${service.price} ريال</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: #666; font-size: 14px;">المدة: ${service.duration || 30} دقيقة</span>
+                                    <div>
+                                        <button onclick="dashboardManager.editService(${service.id})" style="background: #f59e0b; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-left: 5px; cursor: pointer;">تعديل</button>
+                                        <button onclick="dashboardManager.deleteService(${service.id})" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">حذف</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    servicesList.innerHTML = html;
+                }
+                
+                loadDoctors() {
+                    const doctorsList = document.getElementById('doctorsList');
+                    const emptyState = document.getElementById('emptyDoctors');
+                    
+                    if (this.doctors.length === 0) {
+                        doctorsList.innerHTML = '';
+                        emptyState.style.display = 'block';
+                        return;
+                    }
+                    
+                    emptyState.style.display = 'none';
+                    
+                    let html = '';
+                    this.doctors.forEach(doctor => {
+                        html += `
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 2px solid #e5e7eb;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="margin: 0; color: #333;">${doctor.name}</h4>
+                                    <span style="color: #666; font-size: 14px;">${doctor.specialty}</span>
+                                </div>
+                                <div style="display
