@@ -10,26 +10,6 @@
     <meta name="keywords" content="عيادة تجميلية, حجز مواعيد, ليزر, بوتوكس, فيلر, الرياض, عيادة تجميل, حجوزات طبية">
     <meta name="author" content="Badr Aldien">
     <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="عيادة ديرما كير - نظام الحجوزات الذكي">
-    <meta property="og:description" content="احجز موعدك في أفضل العيادات التجميلية - نظام حجوزات سهل وسريع">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:url" content="https://badrsabra.github.io/clinic-booking-system/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ar_SA">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="عيادة ديرما كير - نظام الحجوزات">
-    <meta name="twitter:description" content="نظام حجوزات ذكي للعيادات التجميلية">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://badrsabra.github.io/clinic-booking-system/">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +24,245 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* إصلاحات إضافية */
+        .contact {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #7C3AED;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item h3 {
+            color: #1E293B;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer {
+            background: #1E293B;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .footer-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #8B5CF6;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+        
+        /* إصلاح المشاكل الشائعة */
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .confirmation-details {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #1E293B;
+        }
+        
+        .detail-value {
+            color: #7C3AED;
+            font-weight: 500;
+        }
+        
+        /* إصلاح القائمة المتنقلة */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-image img {
+                transform: none;
+            }
+        }
+        
+        /* إصلاح تنسيق النص */
+        .section-header p {
+            font-size: 1.2rem;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* تحسين الأزرار */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            color: white;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #7C3AED;
+            border: 2px solid #7C3AED;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .btn-secondary:hover {
+            background: #7C3AED;
+            color: white;
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -68,7 +287,7 @@
                 <li><a href="#services"><i class="fas fa-concierge-bell"></i> الخدمات</a></li>
                 <li><a href="#booking"><i class="fas fa-calendar-check"></i> حجز موعد</a></li>
                 <li><a href="#contact"><i class="fas fa-phone-alt"></i> تواصل معنا</a></li>
-                <li><a href="admin.html" class="admin-link"><i class="fas fa-cogs"></i> لوحة التحكم</a></li>
+                <li><a href="login.html" class="admin-link"><i class="fas fa-cogs"></i> لوحة التحكم</a></li>
             </ul>
         </div>
     </nav>
@@ -106,7 +325,7 @@
             </div>
             
             <div class="hero-image animate__animated animate__fadeIn animate__delay-1s">
-                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="عيادة ديرما كير - بيئة طبية حديثة">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="عيادة ديرما كير - بيئة طبية حديثة" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\"><rect width=\"800\" height=\"600\" fill=\"%237C3AED\"/><text x=\"400\" y=\"300\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\">عيادة ديرما كير</text></svg>'">
             </div>
         </div>
     </section>
@@ -120,7 +339,63 @@
             </div>
             
             <div class="services-grid" id="servicesGrid">
-                <!-- سيتم تحميل الخدمات من JavaScript -->
+                <!-- Services will be loaded from JavaScript -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laser"></i>
+                    </div>
+                    <h3>جلسة ليزر إزالة الشعر</h3>
+                    <p>جلسة ليزر متقدمة لإزالة الشعر نهائياً باستخدام أحدث التقنيات</p>
+                    <ul class="service-features">
+                        <li>مناسبة لجميع أنواع البشرة</li>
+                        <li>نتائج دائمة</li>
+                        <li>آمنة وفعالة</li>
+                    </ul>
+                    <div class="service-price">
+                        500 ريال <span>للجلسة الواحدة</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookingSystem.selectService(1)">
+                        <i class="fas fa-calendar-plus"></i> احجز الآن
+                    </button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>حقن البوتوكس</h3>
+                    <p>حقن البوتوكس لتجديد الشباب وإزالة التجاعيد</p>
+                    <ul class="service-features">
+                        <li>نتائج فورية</li>
+                        <li>إجراء سريع</li>
+                        <li>بدون ألم</li>
+                    </ul>
+                    <div class="service-price">
+                        800 ريال <span>للجلسة الواحدة</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookingSystem.selectService(2)">
+                        <i class="fas fa-calendar-plus"></i> احجز الآن
+                    </button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-allergies"></i>
+                    </div>
+                    <h3>حشو الفيلر</h3>
+                    <p>علاج تجميلي لملء التجاعيد وتكبير الشفاه</p>
+                    <ul class="service-features">
+                        <li>نتائج طبيعية</li>
+                        <li>آمنة</li>
+                        <li>تأثير يدوم لفترات طويلة</li>
+                    </ul>
+                    <div class="service-price">
+                        1200 ريال <span>للجلسة الواحدة</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookingSystem.selectService(3)">
+                        <i class="fas fa-calendar-plus"></i> احجز الآن
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -160,6 +435,9 @@
                             <label for="serviceType"><i class="fas fa-concierge-bell"></i> نوع الخدمة</label>
                             <select id="serviceType" class="form-control" required>
                                 <option value="">اختر الخدمة المطلوبة</option>
+                                <option value="1">جلسة ليزر إزالة الشعر - 500 ريال</option>
+                                <option value="2">حقن البوتوكس - 800 ريال</option>
+                                <option value="3">حشو الفيلر - 1200 ريال</option>
                             </select>
                         </div>
                         
@@ -167,6 +445,8 @@
                             <label for="doctor"><i class="fas fa-user-md"></i> الاختصاصي</label>
                             <select id="doctor" class="form-control" required>
                                 <option value="">اختر الطبيب</option>
+                                <option value="1">د. أحمد محمد - جراحة التجميل</option>
+                                <option value="2">د. سارة عبدالله - الأمراض الجلدية</option>
                             </select>
                         </div>
                     </div>
@@ -175,13 +455,25 @@
                     <div class="form-step" data-step="2">
                         <div class="form-group">
                             <label for="appointmentDate"><i class="fas fa-calendar-day"></i> تاريخ الموعد</label>
-                            <input type="date" id="appointmentDate" class="form-control" required min="<?php echo date('Y-m-d'); ?>">
+                            <input type="date" id="appointmentDate" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="appointmentTime"><i class="fas fa-clock"></i> وقت الموعد</label>
                             <select id="appointmentTime" class="form-control" required>
                                 <option value="">اختر الوقت المناسب</option>
+                                <option value="09:00">09:00 صباحاً</option>
+                                <option value="10:00">10:00 صباحاً</option>
+                                <option value="11:00">11:00 صباحاً</option>
+                                <option value="12:00">12:00 ظهراً</option>
+                                <option value="13:00">01:00 ظهراً</option>
+                                <option value="14:00">02:00 ظهراً</option>
+                                <option value="15:00">03:00 عصراً</option>
+                                <option value="16:00">04:00 عصراً</option>
+                                <option value="17:00">05:00 مساءً</option>
+                                <option value="18:00">06:00 مساءً</option>
+                                <option value="19:00">07:00 مساءً</option>
+                                <option value="20:00">08:00 مساءً</option>
                             </select>
                         </div>
                     </div>
@@ -212,14 +504,36 @@
                     <!-- Step 4: Confirmation -->
                     <div class="form-step" data-step="4">
                         <div class="confirmation-details" id="confirmationDetails">
-                            <!-- سيتم تعبئة تفاصيل الحجز هنا -->
+                            <h3 style="margin-bottom: 1rem; color: #7C3AED;">تفاصيل الحجز</h3>
+                            <div class="detail-item">
+                                <span class="detail-label">الخدمة:</span>
+                                <span class="detail-value" id="confService">لم يتم الاختيار</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الطبيب:</span>
+                                <span class="detail-value" id="confDoctor">لم يتم الاختيار</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">التاريخ:</span>
+                                <span class="detail-value" id="confDate">لم يتم الاختيار</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الوقت:</span>
+                                <span class="detail-value" id="confTime">لم يتم الاختيار</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الاسم:</span>
+                                <span class="detail-value" id="confName">لم يتم الإدخال</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الهاتف:</span>
+                                <span class="detail-value" id="confPhone">لم يتم الإدخال</span>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="terms" required>
-                                <label for="terms">أوافق على <a href="#">الشروط والأحكام</a> وسياسة الخصوصية</label>
-                            </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">أوافق على الشروط والأحكام وسياسة الخصوصية</label>
                         </div>
                     </div>
                     
@@ -290,10 +604,10 @@
                 </div>
                 
                 <div class="footer-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="لينكدإن"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             
@@ -325,5 +639,366 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    
+    <script>
+        // إصلاحات JavaScript الأساسية
+        document.addEventListener('DOMContentLoaded', function() {
+            // إعداد القائمة المتنقلة للجوال
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+                
+                // إغلاق القائمة عند النقر على رابط
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+            
+            // إعداد التنقل السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // تحديث الروابط النشطة
+                        document.querySelectorAll('.nav-links a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // إعداد شريط التنقل المتحرك
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // إعداد تاريخ اليوم في حقل التاريخ
+            const dateInput = document.getElementById('appointmentDate');
+            if (dateInput) {
+                const today = new Date();
+                const tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.min = tomorrow.toISOString().split('T')[0];
+                
+                // تعيين تاريخ افتراضي (بعد 3 أيام)
+                const defaultDate = new Date(today);
+                defaultDate.setDate(defaultDate.getDate() + 3);
+                dateInput.value = defaultDate.toISOString().split('T')[0];
+            }
+            
+            // نظام الحجز البسيط
+            let currentStep = 1;
+            const totalSteps = 4;
+            const steps = document.querySelectorAll('.step');
+            const formSteps = document.querySelectorAll('.form-step');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (nextBtn && prevBtn && submitBtn) {
+                nextBtn.addEventListener('click', nextStep);
+                prevBtn.addEventListener('click', prevStep);
+                submitBtn.addEventListener('click', submitBooking);
+                
+                // تحديث تفاصيل التأكيد
+                updateConfirmation();
+                
+                // تحديث عند تغيير الحقول
+                document.getElementById('serviceType')?.addEventListener('change', updateConfirmation);
+                document.getElementById('doctor')?.addEventListener('change', updateConfirmation);
+                document.getElementById('appointmentDate')?.addEventListener('change', updateConfirmation);
+                document.getElementById('appointmentTime')?.addEventListener('change', updateConfirmation);
+                document.getElementById('fullName')?.addEventListener('input', updateConfirmation);
+                document.getElementById('phone')?.addEventListener('input', updateConfirmation);
+            }
+            
+            function nextStep() {
+                if (currentStep < totalSteps) {
+                    if (validateStep(currentStep)) {
+                        updateBookingData();
+                        changeStep(currentStep + 1);
+                    }
+                }
+            }
+            
+            function prevStep() {
+                if (currentStep > 1) {
+                    changeStep(currentStep - 1);
+                }
+            }
+            
+            function changeStep(step) {
+                // إخفاء الخطوة الحالية
+                steps[currentStep - 1].classList.remove('active');
+                formSteps[currentStep - 1].classList.remove('active');
+                
+                // إظهار الخطوة الجديدة
+                currentStep = step;
+                steps[currentStep - 1].classList.add('active');
+                formSteps[currentStep - 1].classList.add('active');
+                
+                // تحديث الأزرار
+                updateButtons();
+                
+                // إذا كانت الخطوة الأخيرة، تحديث التفاصيل
+                if (currentStep === totalSteps) {
+                    updateConfirmation();
+                }
+            }
+            
+            function updateButtons() {
+                prevBtn.style.display = currentStep > 1 ? 'flex' : 'none';
+                nextBtn.style.display = currentStep < totalSteps ? 'flex' : 'none';
+                submitBtn.style.display = currentStep === totalSteps ? 'flex' : 'none';
+            }
+            
+            function validateStep(step) {
+                switch(step) {
+                    case 1:
+                        const service = document.getElementById('serviceType');
+                        const doctor = document.getElementById('doctor');
+                        if (!service.value || !doctor.value) {
+                            alert('يرجى اختيار الخدمة والطبيب');
+                            return false;
+                        }
+                        return true;
+                    case 2:
+                        const date = document.getElementById('appointmentDate');
+                        const time = document.getElementById('appointmentTime');
+                        if (!date.value || !time.value) {
+                            alert('يرجى اختيار التاريخ والوقت');
+                            return false;
+                        }
+                        return true;
+                    case 3:
+                        const name = document.getElementById('fullName');
+                        const phone = document.getElementById('phone');
+                        const email = document.getElementById('email');
+                        
+                        if (!name.value || !phone.value || !email.value) {
+                            alert('يرجى ملء جميع الحقول المطلوبة');
+                            return false;
+                        }
+                        
+                        const phoneRegex = /^05\d{8}$/;
+                        if (!phoneRegex.test(phone.value)) {
+                            alert('يرجى إدخال رقم هاتف صحيح (يبدأ بـ 05 ويتكون من 10 أرقام)');
+                            return false;
+                        }
+                        
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(email.value)) {
+                            alert('يرجى إدخال بريد إلكتروني صحيح');
+                            return false;
+                        }
+                        return true;
+                    case 4:
+                        const terms = document.getElementById('terms');
+                        if (!terms.checked) {
+                            alert('يرجى الموافقة على الشروط والأحكام');
+                            return false;
+                        }
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+            
+            function updateBookingData() {
+                // يمكن إضافة منطق حفظ البيانات هنا
+                console.log('تم تحديث بيانات الحجز للخطوة:', currentStep);
+            }
+            
+            function updateConfirmation() {
+                const serviceSelect = document.getElementById('serviceType');
+                const doctorSelect = document.getElementById('doctor');
+                const dateInput = document.getElementById('appointmentDate');
+                const timeSelect = document.getElementById('appointmentTime');
+                const nameInput = document.getElementById('fullName');
+                const phoneInput = document.getElementById('phone');
+                
+                if (serviceSelect) {
+                    document.getElementById('confService').textContent = 
+                        serviceSelect.options[serviceSelect.selectedIndex]?.text || 'لم يتم الاختيار';
+                }
+                
+                if (doctorSelect) {
+                    document.getElementById('confDoctor').textContent = 
+                        doctorSelect.options[doctorSelect.selectedIndex]?.text || 'لم يتم الاختيار';
+                }
+                
+                if (dateInput && dateInput.value) {
+                    const date = new Date(dateInput.value);
+                    document.getElementById('confDate').textContent = 
+                        date.toLocaleDateString('ar-SA', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                }
+                
+                if (timeSelect) {
+                    document.getElementById('confTime').textContent = 
+                        timeSelect.options[timeSelect.selectedIndex]?.text || 'لم يتم الاختيار';
+                }
+                
+                if (nameInput) {
+                    document.getElementById('confName').textContent = 
+                        nameInput.value || 'لم يتم الإدخال';
+                }
+                
+                if (phoneInput) {
+                    document.getElementById('confPhone').textContent = 
+                        phoneInput.value || 'لم يتم الإدخال';
+                }
+            }
+            
+            function submitBooking(e) {
+                if (e) e.preventDefault();
+                
+                if (!validateStep(4)) return;
+                
+                // إنشاء رقم حجز فريد
+                const bookingId = 'BK-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4).toUpperCase();
+                const confirmationCode = Math.random().toString(36).substr(2, 6).toUpperCase();
+                
+                // عرض رسالة النجاح
+                const modal = document.getElementById('successModal');
+                const message = document.getElementById('successMessage');
+                
+                if (modal && message) {
+                    message.innerHTML = `
+                        تم تأكيد حجز موعدك بنجاح!<br>
+                        <strong>رقم الحجز:</strong> ${bookingId}<br>
+                        <strong>رمز التأكيد:</strong> ${confirmationCode}<br><br>
+                        سيتم التواصل معك على الرقم ${document.getElementById('phone').value} لتأكيد التفاصيل.
+                    `;
+                    
+                    modal.classList.add('active');
+                    
+                    // إعداد حدث طباعة الوصل
+                    document.getElementById('printReceipt').onclick = function() {
+                        printReceipt(bookingId, confirmationCode);
+                    };
+                    
+                    // إغلاق النافذة
+                    document.getElementById('closeModal').onclick = function() {
+                        modal.classList.remove('active');
+                        resetForm();
+                    };
+                }
+            }
+            
+            function printReceipt(bookingId, confirmationCode) {
+                const receiptContent = `
+                    <!DOCTYPE html>
+                    <html dir="rtl">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>وصل الحجز</title>
+                        <style>
+                            body { font-family: 'Cairo', sans-serif; padding: 20px; text-align: right; }
+                            h2 { color: #7C3AED; text-align: center; }
+                            table { width: 100%; margin: 20px 0; border-collapse: collapse; }
+                            td { padding: 8px; border-bottom: 1px solid #ddd; }
+                            .total { font-weight: bold; color: #10B981; }
+                        </style>
+                    </head>
+                    <body>
+                        <h2>عيادة ديرما كير</h2>
+                        <h3>وصل تأكيد الحجز</h3>
+                        <table>
+                            <tr><td>رقم الحجز:</td><td>${bookingId}</td></tr>
+                            <tr><td>رمز التأكيد:</td><td>${confirmationCode}</td></tr>
+                            <tr><td>التاريخ:</td><td>${document.getElementById('confDate').textContent}</td></tr>
+                            <tr><td>الوقت:</td><td>${document.getElementById('confTime').textContent}</td></tr>
+                            <tr><td>الخدمة:</td><td>${document.getElementById('confService').textContent}</td></tr>
+                            <tr><td>الطبيب:</td><td>${document.getElementById('confDoctor').textContent}</td></tr>
+                            <tr><td>اسم المريض:</td><td>${document.getElementById('confName').textContent}</td></tr>
+                            <tr><td>الهاتف:</td><td>${document.getElementById('confPhone').textContent}</td></tr>
+                        </table>
+                        <p style="text-align: center; color: #666; margin-top: 30px;">
+                            شكراً لاختياركم عيادة ديرما كير
+                        </p>
+                    </body>
+                    </html>
+                `;
+                
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(receiptContent);
+                printWindow.document.close();
+                printWindow.print();
+            }
+            
+            function resetForm() {
+                // إعادة تعيين النموذج
+                document.getElementById('bookingForm').reset();
+                
+                // العودة إلى الخطوة الأولى
+                changeStep(1);
+                
+                // إعادة تعيين التاريخ
+                const dateInput = document.getElementById('appointmentDate');
+                if (dateInput) {
+                    const today = new Date();
+                    const defaultDate = new Date(today);
+                    defaultDate.setDate(defaultDate.getDate() + 3);
+                    dateInput.value = defaultDate.toISOString().split('T')[0];
+                }
+            }
+            
+            // تعريف bookingSystem للخدمات
+            window.bookingSystem = {
+                selectService: function(serviceId) {
+                    const serviceSelect = document.getElementById('serviceType');
+                    if (serviceSelect) {
+                        serviceSelect.value = serviceId;
+                        updateConfirmation();
+                    }
+                    
+                    // التمرير إلى قسم الحجز
+                    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+        });
+    </script>
+    
+    <!-- Font Awesome for social icons -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        // Fallback for Font Awesome
+        if (typeof FontAwesomeKitConfig === 'undefined') {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+            document.head.appendChild(link);
+        }
+    </script>
 </body>
-                      </html>
+</html>
