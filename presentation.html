@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض تقديمي - نظام حجز مواعيد عيادة ديرما كير</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: #1E293B;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        .presentation-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: white;
+            position: relative;
+            padding: 3rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .presentation-header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .presentation-header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-color: #7C3AED;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #1E293B;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: #64748B;
+            font-size: 1.1rem;
+        }
+        
+        /* Demo Section */
+        .demo-section {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-section h2 {
+            font-size: 2.5rem;
+            color: #7C3AED;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-section p {
+            font-size: 1.2rem;
+            color: #64748B;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            min-height: 60px;
+            min-width: 200px;
+            justify-content: center;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+        }
+        
+        .demo-btn.secondary {
+            background: white;
+            color: #7C3AED;
+            border: 2px solid #7C3AED;
+        }
+        
+        .demo-btn.secondary:hover {
+            background: #7C3AED;
+            color: white;
+        }
+        
+        /* Price Section */
+        .price-section {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .price-section h2 {
+            font-size: 2.5rem;
+            color: #7C3AED;
+            margin-bottom: 2rem;
+        }
+        
+        .price-card {
+            display: inline-block;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            padding: 3rem 4rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border: 3px solid #7C3AED;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #7C3AED, transparent);
+            border-radius: 50%;
+            opacity: 0.1;
+            transform: translate(30%, -30%);
+        }
+        
+        .price {
+            font-size: 4rem;
+            color: #7C3AED;
+            font-weight: 900;
+            margin: 1rem 0;
+            display: block;
+        }
+        
+        .price-period {
+            font-size: 1.2rem;
+            color: #64748B;
+            margin-bottom: 2rem;
+        }
+        
+        .features-list {
+            text-align: right;
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .features-list li {
+            padding: 0.8rem 0;
+            font-size: 1.2rem;
+            color: #1E293B;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-list li:before {
+            content: '✓';
+            color: #10B981;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .special-offer {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            display: inline-block;
+            border-right: 5px solid #F59E0B;
+        }
+        
+        .special-offer h4 {
+            color: #92400E;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .special-offer p {
+            color: #92400E;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #8B5CF6;
+        }
+        
+        /* Footer */
+        .presentation-footer {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .presentation-container {
+                padding: 1rem;
+            }
+            
+            .presentation-header {
+                padding: 2rem 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .feature-card,
+            .demo-section,
+            .price-section {
+                padding: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .demo-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .price {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .presentation-header,
+            .feature-card,
+            .demo-section,
+            .price-section,
+            .contact-section {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            .demo-btn {
+                border: 2px solid black !important;
+                background: white !important;
+                color: black !important;
+            }
+            
+            .contact-section {
+                background: #f5f5f5 !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Header -->
+        <header class="presentation-header animate-up">
+            <h1>نظام حجز مواعيد عيادة ديرما كير</h1>
+            <p>حل متكامل وذكي لإدارة حجوزات العيادات الطبية والتجميلية</p>
+        </header>
+        
+        <!-- Features -->
+        <section class="features-grid">
+            <div class="feature-card animate-up delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>نظام حجر ذكي</h3>
+                <p>نظام حجز متعدد الخطوات مع واجهة عربية سهلة الاستخدام للمرضى، يدعم اختيار الخدمات والأطباء والتواريخ</p>
+            </div>
+            
+            <div class="feature-card animate-up delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>لوحة تحكم متكاملة</h3>
+                <p>إدارة كاملة للحجوزات والخدمات والأطباء مع إحصائيات حية وتقارير مفصلة</p>
+            </div>
+            
+            <div class="feature-card animate-up delay-3">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>تصميم متجاوب</h3>
+                <p>يعمل بشكل ممتاز على جميع الأجهزة: الجوال، التابلت، وأجهزة الكمبيوتر</p>
+            </div>
+        </section>
+        
+        <!-- Demo -->
+        <section class="demo-section animate-up delay-2">
+            <h2>جرب النظام الآن</h2>
+            <p>اختبر النظام بنفسك وشاهد مدى سهولة استخدامه وفعاليته</p>
+            
+            <div class="demo-links">
+                <a href="index.html" class="demo-btn" target="_blank">
+                    <i class="fas fa-user"></i>
+                    واجهة المريض
+                </a>
+                <a href="login.html" class="demo-btn secondary" target="_blank">
+                    <i class="fas fa-cogs"></i>
+                    لوحة التحكم
+                </a>
+            </div>
+            
+            <div style="margin-top: 3rem; background: #F8FAFC; padding: 1.5rem; border-radius: 15px; display: inline-block;">
+                <p style="color: #64748B; margin: 0;">
+                    <i class="fas fa-info-circle" style="color: #7C3AED;"></i>
+                    بيانات الدخول: admin / 123456
+                </p>
+            </div>
+        </section>
+        
+        <!-- Pricing -->
+        <section class="price-section animate-up delay-3">
+            <h2>العرض الخاص للعميل الأول</h2>
+            
+            <div class="price-card">
+                <h3 style="color: #7C3AED; font-size: 2rem; margin-bottom: 1rem;">الباقة الشاملة</h3>
+                <div class="price">2,500 ريال</div>
+                <div class="price-period">دفعة واحدة فقط</div>
+                
+                <ul class="features-list">
+                    <li>نظام حجز مواعيد متكامل</li>
+                    <li>لوحة تحكم احترافية</li>
+                    <li>دعم فني لمدة 30 يوم</li>
+                    <li>تدريب
