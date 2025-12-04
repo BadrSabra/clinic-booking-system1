@@ -1,53 +1,50 @@
 <!DOCTYPE html>
-<html lang="ar-SA" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم عيادة ديرما كير</title>
+    <title>لوحة التحكم - عيادة ديرما كير</title>
     
-    <!-- Meta Tags -->
-    <meta name="description" content="لوحة تحكم نظام حجز مواعيد عيادة ديرما كير - إدارة حجوزات وخدمات العيادة">
-    <meta name="keywords" content="لوحة تحكم, إدارة عيادة, نظام حجوزات, إدارة مواعيد">
+    <!-- إعدادات أساسية -->
+    <meta name="description" content="لوحة تحكم نظام إدارة عيادة ديرما كير">
     <meta name="author" content="Badr Aldien">
     
-    <!-- Fonts -->
+    <!-- الروابط الخارجية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Styles -->
+    <!-- الأنماط الداخلية -->
     <link rel="stylesheet" href="style.css">
     
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+    
+    <!-- أنماط لوحة التحكم -->
     <style>
-        /* إضافات خاصة بلوحة التحكم */
-        .admin-body {
+        /* أنماط خاصة بلوحة التحكم */
+        .admin-panel {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             font-family: 'Cairo', sans-serif;
         }
         
-        /* Dashboard Styles */
-        .dashboard-section {
-            padding: 120px 0 40px;
-            min-height: 100vh;
-        }
-        
-        .dashboard-container {
+        /* الهيكل الرئيسي */
+        .admin-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 120px 20px 40px;
         }
         
-        /* Header */
-        .dashboard-header {
-            background: white;
+        /* الرأس */
+        .admin-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,23 +53,35 @@
             animation: slideInDown 0.5s ease;
         }
         
-        .dashboard-title {
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .admin-title {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
         
-        .dashboard-title i {
+        .admin-title i {
             font-size: 2.5rem;
             color: #7C3AED;
         }
         
-        .dashboard-title h1 {
+        .admin-title h1 {
             font-size: 2rem;
             color: #1E293B;
             margin: 0;
         }
         
+        /* معلومات المدير */
         .admin-info {
             display: flex;
             align-items: center;
@@ -104,34 +113,24 @@
             margin: 0;
         }
         
-        .logout-btn {
-            background: linear-gradient(135deg, #EF4444, #DC2626);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            min-height: 44px;
-            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
-        }
-        
-        .logout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
-        }
-        
-        /* Stats Grid */
+        /* إحصائيات سريعة */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
             animation: fadeInUp 0.6s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .stat-card {
@@ -152,35 +151,35 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
         
-        .stat-card.primary {
+        .stat-card.total {
             border-right: 4px solid #7C3AED;
         }
         
-        .stat-card.primary:hover {
+        .stat-card.total:hover {
             border-color: #7C3AED;
         }
         
-        .stat-card.success {
+        .stat-card.confirmed {
             border-right: 4px solid #10B981;
         }
         
-        .stat-card.success:hover {
+        .stat-card.confirmed:hover {
             border-color: #10B981;
         }
         
-        .stat-card.warning {
+        .stat-card.pending {
             border-right: 4px solid #F59E0B;
         }
         
-        .stat-card.warning:hover {
+        .stat-card.pending:hover {
             border-color: #F59E0B;
         }
         
-        .stat-card.danger {
+        .stat-card.cancelled {
             border-right: 4px solid #EF4444;
         }
         
-        .stat-card.danger:hover {
+        .stat-card.cancelled:hover {
             border-color: #EF4444;
         }
         
@@ -196,19 +195,19 @@
             transition: all 0.3s ease;
         }
         
-        .stat-card.primary .stat-icon {
+        .stat-card.total .stat-icon {
             color: #7C3AED;
         }
         
-        .stat-card.success .stat-icon {
+        .stat-card.confirmed .stat-icon {
             color: #10B981;
         }
         
-        .stat-card.warning .stat-icon {
+        .stat-card.pending .stat-icon {
             color: #F59E0B;
         }
         
-        .stat-card.danger .stat-icon {
+        .stat-card.cancelled .stat-icon {
             color: #EF4444;
         }
         
@@ -222,19 +221,19 @@
             font-weight: 800;
         }
         
-        .stat-card.primary .stat-content h3 {
+        .stat-card.total .stat-content h3 {
             color: #7C3AED;
         }
         
-        .stat-card.success .stat-content h3 {
+        .stat-card.confirmed .stat-content h3 {
             color: #10B981;
         }
         
-        .stat-card.warning .stat-content h3 {
+        .stat-card.pending .stat-content h3 {
             color: #F59E0B;
         }
         
-        .stat-card.danger .stat-content h3 {
+        .stat-card.cancelled .stat-content h3 {
             color: #EF4444;
         }
         
@@ -244,12 +243,13 @@
             margin: 0;
         }
         
-        /* Main Content */
-        .dashboard-main {
+        /* المحتوى الرئيسي */
+        .admin-main {
             display: grid;
             gap: 2rem;
         }
         
+        /* بطاقات المحتوى */
         .dashboard-card {
             background: white;
             border-radius: 20px;
@@ -285,21 +285,7 @@
             gap: 1rem;
         }
         
-        .card-actions .btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 44px;
-        }
-        
-        /* Filters */
+        /* الفلاتر */
         .filters {
             display: flex;
             gap: 1rem;
@@ -343,7 +329,7 @@
             box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
         }
         
-        /* Table */
+        /* الجدول */
         .table-container {
             overflow-x: auto;
             border-radius: 15px;
@@ -381,6 +367,7 @@
             border-bottom: none;
         }
         
+        /* بطاقات الحالة */
         .status-badge {
             display: inline-block;
             padding: 0.5rem 1rem;
@@ -411,12 +398,13 @@
             color: #1E40AF;
         }
         
-        .table-actions {
+        /* أزرار الإجراءات */
+        .action-buttons {
             display: flex;
             gap: 0.5rem;
         }
         
-        .table-actions button {
+        .action-btn {
             width: 40px;
             height: 40px;
             border: none;
@@ -430,23 +418,24 @@
             justify-content: center;
         }
         
-        .table-actions button:hover {
+        .action-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
-        .table-actions button.view {
+        .action-btn.view {
             color: #3B82F6;
         }
         
-        .table-actions button.edit {
+        .action-btn.edit {
             color: #F59E0B;
         }
         
-        .table-actions button.delete {
+        .action-btn.delete {
             color: #EF4444;
         }
         
+        /* تذييل الجدول */
         .table-footer {
             display: flex;
             justify-content: space-between;
@@ -461,7 +450,7 @@
             gap: 0.5rem;
         }
         
-        .pagination button {
+        .pagination-btn {
             width: 40px;
             height: 40px;
             border: 1px solid #E2E8F0;
@@ -472,17 +461,17 @@
             font-weight: 600;
         }
         
-        .pagination button:hover {
+        .pagination-btn:hover {
             background: #F8FAFC;
         }
         
-        .pagination button.active {
+        .pagination-btn.active {
             background: #7C3AED;
             color: white;
             border-color: #7C3AED;
         }
         
-        /* Management Grid */
+        /* أدوات الإدارة */
         .management-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -490,14 +479,7 @@
             animation: fadeInUp 0.8s ease;
         }
         
-        .management-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            height: 100%;
-        }
-        
+        /* البحث */
         .search-box {
             position: relative;
             margin-bottom: 1.5rem;
@@ -527,6 +509,7 @@
             color: #64748B;
         }
         
+        /* قوائم العناصر */
         .items-list {
             max-height: 400px;
             overflow-y: auto;
@@ -628,66 +611,25 @@
             color: #EF4444;
         }
         
-        /* Working Hours */
-        .working-hours-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .day-schedule {
-            background: #F8FAFC;
-            border-radius: 12px;
-            padding: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .day-schedule:hover {
-            background: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .day-name {
-            font-weight: 700;
-            color: #1E293B;
-            min-width: 100px;
-        }
-        
-        .time-inputs {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .time-input-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .time-input-group label {
+        /* رسائل الحالة الفارغة */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
             color: #64748B;
-            font-size: 0.9rem;
         }
         
-        .time-input {
-            padding: 0.5rem;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
         }
         
-        .time-input:focus {
-            outline: none;
-            border-color: #7C3AED;
+        .empty-state h4 {
+            color: #64748B;
+            margin-bottom: 0.5rem;
         }
         
-        /* Modals */
+        /* النوافذ المنبثقة */
         .modal {
             display: none;
             position: fixed;
@@ -708,6 +650,15 @@
             animation: fadeIn 0.3s ease;
         }
         
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
         .modal-content {
             background: white;
             border-radius: 20px;
@@ -718,6 +669,17 @@
             animation: slideInUp 0.4s ease;
             max-height: 90vh;
             overflow-y: auto;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .modal-content::-webkit-scrollbar {
@@ -747,68 +709,7 @@
             color: #7C3AED;
         }
         
-        /* Empty States */
-        .empty-state {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: #64748B;
-        }
-        
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-        
-        .empty-state h4 {
-            color: #64748B;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Animations */
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive */
+        /* التجاوب */
         @media (max-width: 992px) {
             .management-grid {
                 grid-template-columns: 1fr;
@@ -816,7 +717,7 @@
         }
         
         @media (max-width: 768px) {
-            .dashboard-header {
+            .admin-header {
                 flex-direction: column;
                 text-align: center;
             }
@@ -844,26 +745,15 @@
                 align-items: stretch;
             }
             
-            .day-schedule {
+            .table-footer {
                 flex-direction: column;
-                align-items: stretch;
                 gap: 1rem;
-            }
-            
-            .time-inputs {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.5rem;
-            }
-            
-            .time-input-group {
-                justify-content: space-between;
             }
         }
         
         @media (max-width: 480px) {
-            .dashboard-container {
-                padding: 0 1rem;
+            .admin-container {
+                padding: 100px 1rem 2rem;
             }
             
             .dashboard-card {
@@ -874,7 +764,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .table-actions {
+            .action-buttons {
                 flex-direction: column;
             }
             
@@ -884,253 +774,300 @@
         }
     </style>
 </head>
-<body class="admin-body">
-    <!-- تحقق من تسجيل الدخول -->
+<body class="admin-panel">
+    <!-- تحقق من المصادقة -->
     <script>
         (function() {
-            const session = localStorage.getItem('admin_session');
-            if (!session) {
+            // التحقق من وجود جلسة مسجلة
+            const adminSession = localStorage.getItem('admin_session');
+            
+            if (!adminSession) {
+                // توجيه إلى صفحة تسجيل الدخول
                 window.location.href = 'login.html';
                 return;
             }
-
+            
             try {
-                const sessionData = JSON.parse(session);
-                const now = new Date().getTime();
+                const sessionData = JSON.parse(adminSession);
+                const now = Date.now();
                 
-                // التحقق من انتهاء الجلسة (24 ساعة)
+                // التحقق من انتهاء صلاحية الجلسة (24 ساعة)
                 if (now - sessionData.loginTime > 24 * 60 * 60 * 1000) {
                     localStorage.removeItem('admin_session');
                     window.location.href = 'login.html';
                     return;
                 }
                 
-                // تحديث آخر نشاط
+                // تحديث وقت النشاط الأخير
                 sessionData.lastActivity = now;
                 localStorage.setItem('admin_session', JSON.stringify(sessionData));
                 
-            } catch (e) {
+            } catch (error) {
+                console.error('خطأ في التحقق من الجلسة:', error);
                 localStorage.removeItem('admin_session');
                 window.location.href = 'login.html';
             }
         })();
     </script>
 
-    <!-- Admin Dashboard -->
-    <div class="dashboard-section">
-        <div class="dashboard-container">
-            <!-- Header -->
-            <div class="dashboard-header">
-                <div class="dashboard-title">
-                    <i class="fas fa-cogs"></i>
-                    <h1>لوحة تحكم عيادة ديرما كير</h1>
+    <!-- لوحة التحكم -->
+    <div class="admin-container">
+        <!-- رأس اللوحة -->
+        <header class="admin-header">
+            <div class="admin-title">
+                <i class="fas fa-cogs"></i>
+                <h1>لوحة تحكم عيادة ديرما كير</h1>
+            </div>
+            
+            <div class="admin-info">
+                <div class="admin-avatar">
+                    <i class="fas fa-user-shield"></i>
                 </div>
-                
-                <div class="admin-info">
-                    <div class="admin-avatar">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                    <div class="admin-details">
-                        <h4>مسؤول النظام</h4>
-                        <p id="lastLoginTime">آخر دخول: جاري التحميل...</p>
-                    </div>
-                    <button class="logout-btn" id="logoutBtn">
-                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                    </button>
+                <div class="admin-details">
+                    <h4 id="adminName">مدير النظام</h4>
+                    <p id="lastActivity">آخر نشاط: جاري التحميل...</p>
+                </div>
+                <button class="btn btn-danger" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                </button>
+            </div>
+        </header>
+
+        <!-- إحصائيات سريعة -->
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalBookings">0</h3>
+                    <p>إجمالي الحجوزات</p>
                 </div>
             </div>
             
-            <!-- Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card primary">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="totalBookings">0</h3>
-                        <p>إجمالي الحجوزات</p>
-                    </div>
+            <div class="stat-card confirmed">
+                <div class="stat-icon">
+                    <i class="fas fa-user-check"></i>
                 </div>
-                
-                <div class="stat-card success">
-                    <div class="stat-icon">
-                        <i class="fas fa-user-check"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="confirmedBookings">0</h3>
-                        <p>حجوزات مؤكدة</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card warning">
-                    <div class="stat-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="pendingBookings">0</h3>
-                        <p>حجوزات قيد الانتظار</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card danger">
-                    <div class="stat-icon">
-                        <i class="fas fa-times-circle"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 id="cancelledBookings">0</h3>
-                        <p>حجوزات ملغاة</p>
-                    </div>
+                <div class="stat-content">
+                    <h3 id="confirmedBookings">0</h3>
+                    <p>حجوزات مؤكدة</p>
                 </div>
             </div>
             
-            <!-- Main Content -->
-            <div class="dashboard-main">
-                <!-- Bookings Table -->
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-list"></i> قائمة الحجوزات</h3>
-                        <div class="card-actions">
-                            <button class="btn btn-primary" id="exportBtn">
-                                <i class="fas fa-file-export"></i> تصدير البيانات
-                            </button>
-                            <button class="btn btn-secondary" id="refreshBtn">
-                                <i class="fas fa-sync-alt"></i> تحديث
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="filters">
-                        <div class="filter-group">
-                            <label for="filterStatus">الحالة:</label>
-                            <select id="filterStatus" class="form-control">
-                                <option value="all">جميع الحالات</option>
-                                <option value="pending">قيد الانتظار</option>
-                                <option value="confirmed">مؤكد</option>
-                                <option value="cancelled">ملغى</option>
-                                <option value="completed">مكتمل</option>
-                            </select>
-                        </div>
-                        
-                        <div class="filter-group">
-                            <label for="filterDate">التاريخ:</label>
-                            <input type="date" id="filterDate" class="form-control">
-                        </div>
-                        
-                        <button class="btn btn-primary" id="applyFilters">
-                            <i class="fas fa-filter"></i> تطبيق الفلتر
-                        </button>
-                        <button class="btn btn-secondary" id="clearFilters">
-                            <i class="fas fa-times"></i> مسح الفلاتر
-                        </button>
-                    </div>
-                    
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>اسم المريض</th>
-                                    <th>الخدمة</th>
-                                    <th>الطبيب</th>
-                                    <th>التاريخ</th>
-                                    <th>الوقت</th>
-                                    <th>الهاتف</th>
-                                    <th>الحالة</th>
-                                    <th>الإجراءات</th>
-                                </tr>
-                            </thead>
-                            <tbody id="bookingsTable">
-                                <tr>
-                                    <td colspan="9">
-                                        <div class="empty-state">
-                                            <i class="fas fa-calendar-times"></i>
-                                            <h4>لا توجد حجوزات لعرضها</h4>
-                                            <p>يبدو أنه لا توجد حجوزات في النظام بعد</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="table-footer">
-                        <div class="table-info">
-                            <p>إجمالي النتائج: <span id="totalResults">0</span></p>
-                        </div>
-                        <div class="pagination" id="pagination">
-                            <button class="active">1</button>
-                        </div>
-                    </div>
+            <div class="stat-card pending">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
                 </div>
-                
-                <!-- Management Tools -->
-                <div class="management-grid">
-                    <!-- Services Management -->
-                    <div class="management-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h3>
-                            <button class="btn btn-primary" id="addServiceBtn">
-                                <i class="fas fa-plus"></i> إضافة خدمة
-                            </button>
-                        </div>
-                        
-                        <div class="search-box">
-                            <input type="text" id="searchServices" placeholder="بحث عن خدمة...">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        
-                        <div class="items-list" id="servicesList">
-                            <div class="empty-state">
-                                <i class="fas fa-concierge-bell"></i>
-                                <h4>لا توجد خدمات</h4>
-                                <p>قم بإضافة أول خدمة للنظام</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Doctors Management -->
-                    <div class="management-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-user-md"></i> إدارة الأطباء</h3>
-                            <button class="btn btn-primary" id="addDoctorBtn">
-                                <i class="fas fa-plus"></i> إضافة طبيب
-                            </button>
-                        </div>
-                        
-                        <div class="search-box">
-                            <input type="text" id="searchDoctors" placeholder="بحث عن طبيب...">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        
-                        <div class="items-list" id="doctorsList">
-                            <div class="empty-state">
-                                <i class="fas fa-user-md"></i>
-                                <h4>لا توجد أطباء</h4>
-                                <p>قم بإضافة أول طبيب للنظام</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Working Hours -->
-                    <div class="management-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-clock"></i> أوقات العمل</h3>
-                            <button class="btn btn-primary" id="saveHoursBtn">
-                                <i class="fas fa-save"></i> حفظ التغييرات
-                            </button>
-                        </div>
-                        
-                        <div class="working-hours-list" id="workingHours">
-                            <!-- سيتم تحميل أوقات العمل هنا -->
-                        </div>
-                    </div>
+                <div class="stat-content">
+                    <h3 id="pendingBookings">0</h3>
+                    <p>حجوزات قيد الانتظار</p>
+                </div>
+            </div>
+            
+            <div class="stat-card cancelled">
+                <div class="stat-icon">
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="cancelledBookings">0</h3>
+                    <p>حجوزات ملغاة</p>
                 </div>
             </div>
         </div>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="admin-main">
+            <!-- قسم الحجوزات -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> قائمة الحجوزات</h3>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" id="exportBtn">
+                            <i class="fas fa-file-export"></i> تصدير البيانات
+                        </button>
+                        <button class="btn btn-secondary" id="refreshBtn">
+                            <i class="fas fa-sync-alt"></i> تحديث
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- فلاتر البحث -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="filterStatus">الحالة:</label>
+                        <select id="filterStatus" class="form-control">
+                            <option value="all">جميع الحالات</option>
+                            <option value="pending">قيد الانتظار</option>
+                            <option value="confirmed">مؤكد</option>
+                            <option value="cancelled">ملغى</option>
+                            <option value="completed">مكتمل</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filterDate">التاريخ:</label>
+                        <input type="date" id="filterDate" class="form-control">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filterSearch">بحث:</label>
+                        <input type="text" id="filterSearch" class="form-control" placeholder="ابحث بالاسم أو الهاتف...">
+                    </div>
+                    
+                    <button class="btn btn-primary" id="applyFilters">
+                        <i class="fas fa-filter"></i> تطبيق
+                    </button>
+                    <button class="btn btn-secondary" id="clearFilters">
+                        <i class="fas fa-times"></i> مسح
+                    </button>
+                </div>
+                
+                <!-- جدول الحجوزات -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>رقم الحجز</th>
+                                <th>اسم المريض</th>
+                                <th>الخدمة</th>
+                                <th>الطبيب</th>
+                                <th>التاريخ</th>
+                                <th>الوقت</th>
+                                <th>الهاتف</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTable">
+                            <!-- البيانات ستتم تعبئتها بواسطة JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- تذييل الجدول -->
+                <div class="table-footer">
+                    <div class="table-info">
+                        <p>إجمالي النتائج: <span id="totalResults">0</span></p>
+                    </div>
+                    <div class="pagination" id="pagination">
+                        <!-- أزرار الترقيم ستتم إضافتها بواسطة JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- أدوات الإدارة -->
+            <div class="management-grid">
+                <!-- إدارة الخدمات -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-concierge-bell"></i> إدارة الخدمات</h3>
+                        <button class="btn btn-primary" id="addServiceBtn">
+                            <i class="fas fa-plus"></i> إضافة خدمة
+                        </button>
+                    </div>
+                    
+                    <div class="search-box">
+                        <input type="text" id="searchServices" placeholder="ابحث عن خدمة...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="items-list" id="servicesList">
+                        <!-- قائمة الخدمات ستتم تعبئتها بواسطة JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- إدارة الأطباء -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-md"></i> إدارة الأطباء</h3>
+                        <button class="btn btn-primary" id="addDoctorBtn">
+                            <i class="fas fa-plus"></i> إضافة طبيب
+                        </button>
+                    </div>
+                    
+                    <div class="search-box">
+                        <input type="text" id="searchDoctors" placeholder="ابحث عن طبيب...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="items-list" id="doctorsList">
+                        <!-- قائمة الأطباء ستتم تعبئتها بواسطة JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- إعدادات النظام -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sliders-h"></i> إعدادات النظام</h3>
+                    </div>
+                    
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <label class="setting-label">اسم العيادة:</label>
+                            <input type="text" id="clinicName" class="form-control" value="عيادة ديرما كير">
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">رقم الهاتف:</label>
+                            <input type="tel" id="clinicPhone" class="form-control" value="+966 11 123 4567">
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">البريد الإلكتروني:</label>
+                            <input type="email" id="clinicEmail" class="form-control" value="info@dermacare.com">
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">العنوان:</label>
+                            <textarea id="clinicAddress" class="form-control" rows="2">الرياض، حي الصحافة، شارع الملك فهد</textarea>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">ساعات العمل:</label>
+                            <textarea id="clinicHours" class="form-control" rows="3">الأحد - الخميس: 9 صباحاً - 9 مساءً
+الجمعة - السبت: 4 مساءً - 10 مساءً</textarea>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="saveSettingsBtn">
+                            <i class="fas fa-save"></i> حفظ الإعدادات
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <!-- Modals -->
-    <!-- Add/Edit Service Modal -->
+    <!-- النوافذ المنبثقة -->
+    
+    <!-- نافذة تفاصيل الحجز -->
+    <div class="modal" id="bookingDetailsModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-calendar-alt"></i> تفاصيل الحجز</h3>
+            
+            <div class="booking-details" id="bookingDetailsContent">
+                <!-- تفاصيل الحجز ستتم تعبئتها بواسطة JavaScript -->
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="confirmBookingBtn">
+                    <i class="fas fa-check"></i> تأكيد الحجز
+                </button>
+                <button class="btn btn-warning" id="rescheduleBookingBtn">
+                    <i class="fas fa-calendar-alt"></i> إعادة جدولة
+                </button>
+                <button class="btn btn-danger" id="cancelBookingBtn">
+                    <i class="fas fa-times"></i> إلغاء الحجز
+                </button>
+                <button class="btn btn-secondary" id="closeBookingModal">
+                    <i class="fas fa-times"></i> إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- نافذة إضافة/تعديل خدمة -->
     <div class="modal" id="serviceModal">
         <div class="modal-content">
             <h3><i class="fas fa-concierge-bell"></i> <span id="serviceModalTitle">إضافة خدمة جديدة</span></h3>
@@ -1168,6 +1105,18 @@
                     </select>
                 </div>
                 
+                <div class="form-group">
+                    <label for="serviceIcon">أيقونة الخدمة</label>
+                    <select id="serviceIcon" class="form-control">
+                        <option value="fas fa-laser">ليزر</option>
+                        <option value="fas fa-syringe">حقن</option>
+                        <option value="fas fa-allergies">تجميل</option>
+                        <option value="fas fa-spa">سبا</option>
+                        <option value="fas fa-stethoscope">فحص</option>
+                        <option value="fas fa-heartbeat">قلب</option>
+                    </select>
+                </div>
+                
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" id="cancelServiceBtn">إلغاء</button>
                     <button type="submit" class="btn btn-primary">حفظ الخدمة</button>
@@ -1175,170 +1124,7 @@
             </form>
         </div>
     </div>
-
-    <!-- Add/Edit Doctor Modal -->
-    <div class="modal" id="doctorModal">
-        <div class="modal-content">
-            <h3><i class="fas fa-user-md"></i> <span id="doctorModalTitle">إضافة طبيب جديد</span></h3>
-            
-            <form id="doctorForm">
-                <div class="form-group">
-                    <label for="doctorName">اسم الطبيب</label>
-                    <input type="text" id="doctorName" class="form-control" required placeholder="أدخل اسم الطبيب">
-                </div>
-                
-                <div class="form-group">
-                    <label for="doctorSpecialty">التخصص</label>
-                    <input type="text" id="doctorSpecialty" class="form-control" required placeholder="أدخل التخصص">
-                </div>
-                
-                <div class="form-group">
-                    <label for="doctorExperience">سنوات الخبرة</label>
-                    <input type="number" id="doctorExperience" class="form-control" required min="0" placeholder="0">
-                </div>
-                
-                <div class="form-group">
-                    <label for="doctorServices">الخدمات المتخصص بها</label>
-                    <select id="doctorServices" class="form-control" multiple style="height: 150px;">
-                        <!-- سيتم تعبئة الخدمات من JavaScript -->
-                    </select>
-                    <small class="help-text">اضغط على Ctrl للاختيار المتعدد</small>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancelDoctorBtn">إلغاء</button>
-                    <button type="submit" class="btn btn-primary">حفظ بيانات الطبيب</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Booking Details Modal -->
-    <div class="modal" id="bookingModal">
-        <div class="modal-content">
-            <h3><i class="fas fa-calendar-alt"></i> تفاصيل الحجز</h3>
-            
-            <div class="booking-details" id="bookingDetails">
-                <!-- سيتم تعبئة تفاصيل الحجز هنا -->
-            </div>
-            
-            <div class="modal-actions">
-                <button class="btn btn-primary" id="confirmBookingBtn">
-                    <i class="fas fa-check"></i> تأكيد الحجز
-                </button>
-                <button class="btn btn-warning" id="rescheduleBookingBtn">
-                    <i class="fas fa-calendar-alt"></i> إعادة جدولة
-                </button>
-                <button class="btn btn-danger" id="cancelBookingBtn">
-                    <i class="fas fa-times"></i> إلغاء الحجز
-                </button>
-                <button class="btn btn-secondary" id="closeBookingModal">
-                    <i class="fas fa-times"></i> إغلاق
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
     
-    <script>
-        // إدارة الجلسة وعرض المعلومات
-        document.addEventListener('DOMContentLoaded', function() {
-            // عرض وقت آخر دخول
-            const session = localStorage.getItem('admin_session');
-            if (session) {
-                try {
-                    const sessionData = JSON.parse(session);
-                    const loginTime = new Date(sessionData.loginTime);
-                    const timeStr = loginTime.toLocaleString('ar-SA', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-                    document.getElementById('lastLoginTime').textContent = `آخر دخول: ${timeStr}`;
-                } catch (e) {
-                    console.error('Error parsing session:', e);
-                }
-            }
-            
-            // إعداد حدث تسجيل الخروج
-            document.getElementById('logoutBtn').addEventListener('click', function() {
-                if (confirm('هل تريد تسجيل الخروج من لوحة التحكم؟')) {
-                    localStorage.removeItem('admin_session');
-                    window.location.href = 'login.html';
-                }
-            });
-            
-            // مراقبة النشاط لتجديد الجلسة
-            let activityTimeout;
-            
-            function resetActivityTimeout() {
-                clearTimeout(activityTimeout);
-                activityTimeout = setTimeout(() => {
-                    // بعد 30 دقيقة من عدم النشاط، تسجيل الخروج التلقائي
-                    if (confirm('انتهت جلستك بسبب عدم النشاط. هل تريد البقاء مسجلاً؟')) {
-                        resetActivityTimeout();
-                    } else {
-                        localStorage.removeItem('admin_session');
-                        window.location.href = 'login.html';
-                    }
-                }, 30 * 60 * 1000); // 30 دقيقة
-            }
-            
-            // إضافة أحداث النشاط
-            ['click', 'keypress', 'mousemove', 'scroll'].forEach(event => {
-                document.addEventListener(event, resetActivityTimeout, { passive: true });
-            });
-            
-            // بدء المؤقت
-            resetActivityTimeout();
-            
-            // إغلاق النوافذ المنبثقة بالنقر خارجها
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                    }
-                });
-            });
-            
-            // إغلاق النوافذ بالأزرار
-            document.getElementById('cancelServiceBtn')?.addEventListener('click', () => {
-                document.getElementById('serviceModal').classList.remove('active');
-            });
-            
-            document.getElementById('cancelDoctorBtn')?.addEventListener('click', () => {
-                document.getElementById('doctorModal').classList.remove('active');
-            });
-            
-            document.getElementById('closeBookingModal')?.addEventListener('click', () => {
-                document.getElementById('bookingModal').classList.remove('active');
-            });
-            
-            // تهيئة بيانات العرض (إذا كان النظام جاهزاً)
-            if (window.bookingSystem && typeof bookingSystem.loadAdminData === 'function') {
-                // سيتم تحميل البيانات من خلال نظام الحجز
-            } else {
-                // عرض بيانات تجريبية حتى يتم تحميل النظام
-                setTimeout(() => {
-                    document.getElementById('totalBookings').textContent = '0';
-                    document.getElementById('confirmedBookings').textContent = '0';
-                    document.getElementById('pendingBookings').textContent = '0';
-                    document.getElementById('cancelledBookings').textContent = '0';
-                }, 100);
-            }
-        });
-        
-        // منع الإرسال الافتراضي للنماذج
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-            });
-        });
-    </script>
-</body>
-</html>
+    <!-- نافذة إضافة/تعديل طبيب -->
+    <div class="modal" id="doctorModal">
+       
